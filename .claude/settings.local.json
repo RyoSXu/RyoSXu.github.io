@@ -5,7 +5,8 @@
       "Bash(cp \"C:\\\\Users\\\\31479\\\\OneDrive\\\\SHU\\\\1\\\\FIG\\\\Figure 1.jpg\" assets/arpat/)",
       "Bash(cp \"C:\\\\Users\\\\31479\\\\OneDrive\\\\SHU\\\\1\\\\FIG\\\\Figure 2.jpg\" assets/arpat/)",
       "Bash(cp \"C:\\\\Users\\\\31479\\\\OneDrive\\\\SHU\\\\1\\\\FIG\\\\Figure 3.jpg\" assets/arpat/)",
-      "Bash(cp \"C:\\\\Users\\\\31479\\\\OneDrive\\\\SHU\\\\1\\\\FIG\\\\Figure 4.jpg\" assets/arpat/)"
+      "Bash(cp \"C:\\\\Users\\\\31479\\\\OneDrive\\\\SHU\\\\1\\\\FIG\\\\Figure 4.jpg\" assets/arpat/)",
+      "Bash(powershell *)"
     ]
   }
 }
