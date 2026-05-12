@@ -1,9 +1,6 @@
 # 徐尚 · Ryo Xu — Personal Portfolio
 
-> 专注于 AI + 材料科学的研究者，同时热衷于全栈开发的探索者。
-> 目前致力于利用 Transformer 架构加速晶体结构建模与性能预测。
-
-**🌐 网站**：[ryosxu.github.io](https://ryosxu.github.io/my_portfolio)　｜　**📧 邮箱**：[xushang@shu.edu.cn](mailto:xushang@shu.edu.cn)　｜　**💻 GitHub**：[RyoSXu](https://github.com/RyoSXu)
+**🌐 网站**：[ryosxu.github.io](https://ryosxu.github.io)　｜　**📧 邮箱**：[xushang@shu.edu.cn](mailto:xushang@shu.edu.cn)　｜　**💻 GitHub**：[RyoSXu](https://github.com/RyoSXu)
 
 ---
 
@@ -38,10 +35,10 @@
 
 ## 技术技能
 
-- **语言与环境**：Python · C++ · Linux · CMake / GDB
+- **语言与环境**：Python · C++ · Linux · git
 - **AI / 深度学习**：PyTorch · Transformer · GNN
-- **工程与开发**：Vue.js · 微信小程序 · PLC 编程（西门子）
-
+- **工程与开发**：Vue.js · 微信小程序 · PLC 编程
+- **AI coding**: Claude · Codex · Github-copilot · Antigravity
 ---
 
 ## 教育背景
