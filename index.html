@@ -16,6 +16,7 @@
         .gradient-text {
             background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .nav-link {
@@ -128,7 +129,7 @@
                                     <span class="text-slate-400 text-sm shrink-0 ml-4">2026.04 — 至今</span>
                                 </div>
                                 <p class="text-slate-600 text-sm leading-relaxed">
-                                    负责机械设备振动分析软件 M Doctor 的 Web 重构和故障诊断算法开发。
+                                    负责机械设备振动分析软件 M Doctor 的 Web 从头重构、PLC 侧部署和故障诊断算法的开发。将原本需要工程师带电脑到现场采集分析振动数据的软件，重新开发为前后端分离的 Web 应用并运行在 B&R 生产的 PLC 上，使工厂员工可实时监看设备运转情况。
                                 </p>
                             </div>
                             <div>
@@ -299,6 +300,23 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
+                <!-- M Doctor -->
+                <div class="reveal project-card bg-white p-6 rounded-3xl border border-slate-200">
+                    <div class="w-full h-48 bg-slate-100 flex items-center justify-center rounded-xl mb-6">
+                        <i data-lucide="activity" class="w-12 h-12 text-slate-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">M Doctor - 振动分析软件</h3>
+                    <p class="text-slate-600 mb-6 text-sm">
+                        在贝加莱（B&R）实习期间负责的重点项目。将原本需要工程师现场采集数据的传统软件重构为前后端分离的 Web 应用，并部署在客户设备的 PLC 上，实现工厂员工对设备运转状态的实时监控与故障诊断。
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-100 rounded text-xs">Web 开发</span>
+                        <span class="px-2 py-1 bg-slate-100 rounded text-xs">前后端分离</span>
+                        <span class="px-2 py-1 bg-slate-100 rounded text-xs">PLC 部署</span>
+                        <span class="px-2 py-1 bg-slate-100 rounded text-xs">故障诊断算法</span>
+                    </div>
+                </div>
+
                 <!-- 2Prac -->
                 <div class="reveal project-card bg-white p-6 rounded-3xl border border-slate-200">
                     <img src="assets/projects/2Prac.png" alt="2Prac Screenshot" class="w-full h-48 object-cover rounded-xl mb-6 border border-slate-100">
