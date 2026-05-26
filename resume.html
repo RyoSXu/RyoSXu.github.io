@@ -9,7 +9,7 @@
       --level-1-size: 14.5pt;
       --level-1-line: 1.2;
       --level-1-weight: 500;
-      --level-2-size: 10.6pt;
+      --level-2-size: 10.8pt;
       --level-2-line: 1.35;
       --level-2-weight: 500;
       --level-3-size: var(--level-2-size);
@@ -129,7 +129,7 @@
     }
 
     .section {
-      margin-top: 4.5mm;
+      margin-top: 9.3mm;
     }
 
     .section-title {
@@ -192,8 +192,18 @@
       column-gap: 5mm;
     }
 
+    .education-sub {
+      display: inline-flex;
+      gap: .7mm;
+      align-items: baseline;
+    }
+
+    .education-program-undergrad {
+      margin-left: 3.8mm;
+    }
+
     .aligned-entries .entry-line {
-      grid-template-columns: 78mm 55mm 48mm;
+      grid-template-columns: 84mm 55mm 48mm;
       column-gap: 0;
       justify-content: space-between;
     }
@@ -339,14 +349,14 @@
       <div class="row">
         <div class="entry-line">
           <div class="entry-main">上海大学</div>
-          <div class="entry-sub">材料基因组工程研究院 | 计算机科学与技术 | 硕士</div>
+          <div class="entry-sub education-sub"><span>材料基因组工程研究院</span><span>| 计算机科学与技术 |</span><span>硕士</span></div>
           <div class="entry-date">2024-09 至 2027-06</div>
         </div>
       </div>
       <div class="row">
         <div class="entry-line">
           <div class="entry-main">安徽财经大学</div>
-          <div class="entry-sub">管理科学与工程学院 | 计算机科学与技术 | 本科</div>
+          <div class="entry-sub education-sub"><span>管理科学与工程学院</span><span class="education-program-undergrad">| 计算机科学与技术 |</span><span>本科</span></div>
           <div class="entry-date">2020-09 至 2024-06</div>
         </div>
       </div>
