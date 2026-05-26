@@ -54,6 +54,7 @@
                     <a href="#info" class="nav-link">经历与技能</a>
                     <a href="#research" class="nav-link">学术研究</a>
                     <a href="#projects" class="nav-link">软件开发</a>
+                    <a href="resume.html" target="_blank" class="nav-link">在线简历</a>
                 </div>
                 <div class="md:hidden">
                     <i data-lucide="menu" class="w-6 h-6"></i>
@@ -80,6 +81,10 @@
                             class="bg-slate-900 text-white px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-slate-800 transition shadow-md hover:shadow-lg">
                             <i data-lucide="download" class="w-4 h-4"></i> 下载简历
                         </a>
+                        <a href="resume.html" target="_blank"
+                            class="bg-white text-slate-900 border border-slate-200 px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-slate-50 transition shadow-sm hover:shadow-md">
+                            <i data-lucide="file-text" class="w-4 h-4"></i> HTML 简历
+                        </a>
                         <a href="https://github.com/RyoSXu" target="_blank"
                             class="bg-white text-slate-900 border border-slate-200 px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-slate-50 transition shadow-sm hover:shadow-md">
                             <i data-lucide="github" class="w-4 h-4"></i> GitHub
@@ -103,7 +108,7 @@
                         <span class="text-sm font-semibold text-slate-500 shrink-0">期望方向</span>
                         <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">AI应用开发</span>
                         <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">机器学习</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">测试开发</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">工业软件开发</span>
                         <span class="ml-auto text-slate-400 text-sm flex items-center gap-1">
                             <i data-lucide="map-pin" class="w-4 h-4"></i> 上海市
                         </span>
@@ -154,9 +159,8 @@
                                     <span class="text-slate-400 text-sm shrink-0 ml-4">2026.04 — 至今</span>
                                 </div>
                                 <p class="text-slate-600 text-sm leading-relaxed">
-                                    负责机械设备振动分析软件 M Doctor 的 Web 从头重构、PLC
-                                    侧部署和故障诊断算法的开发。将原本需要工程师带电脑到现场采集分析振动数据的软件，重新开发为前后端分离的 Web 应用并运行在 B&R 生产的 PLC
-                                    上，使工厂员工可实时监看设备运转情况。
+                                    独立负责 MDoctor 工业振动分析软件工程化开发与部署，在 mentor 与业务负责人给出方向后，完成需求拆解、技术方案设计、后端数据解析、PLC
+                                    通信联调、异常检测算法、前端状态展示及本地数据存储等核心模块开发。
                                 </p>
                             </div>
                             <div>
@@ -194,8 +198,9 @@
                                     <span
                                         class="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-md text-xs font-medium">Linux</span>
                                     <span
-                                        class="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-md text-xs font-medium">CMake
-                                        / GDB</span>
+                                        class="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-md text-xs font-medium">Git</span>
+                                    <span
+                                        class="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-md text-xs font-medium">JavaScript</span>
                                 </div>
                             </div>
                             <div>
@@ -215,10 +220,11 @@
                                     <span
                                         class="px-2.5 py-1 bg-violet-50 text-violet-700 rounded-md text-xs font-medium">Vue.js</span>
                                     <span
-                                        class="px-2.5 py-1 bg-violet-50 text-violet-700 rounded-md text-xs font-medium">微信小程序</span>
+                                        class="px-2.5 py-1 bg-violet-50 text-violet-700 rounded-md text-xs font-medium">FastAPI</span>
                                     <span
-                                        class="px-2.5 py-1 bg-violet-50 text-violet-700 rounded-md text-xs font-medium">PLC
-                                        编程</span>
+                                        class="px-2.5 py-1 bg-violet-50 text-violet-700 rounded-md text-xs font-medium">SQLite</span>
+                                    <span
+                                        class="px-2.5 py-1 bg-violet-50 text-violet-700 rounded-md text-xs font-medium">Electron</span>
                                 </div>
                             </div>
                             <div>
@@ -230,13 +236,7 @@
                                     <span
                                         class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-md text-xs font-medium">Codex</span>
                                     <span
-                                        class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-md text-xs font-medium">GitHub
-                                        Copilot</span>
-                                    <span
                                         class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-md text-xs font-medium">Antigravity</span>
-                                    <span
-                                        class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-md text-xs font-medium">Gemini
-                                        CLI</span>
                                 </div>
                             </div>
                         </div>
@@ -309,7 +309,7 @@
                             <span class="px-3 py-1 bg-white border border-slate-200 rounded-md text-sm">Materials
                                 AI</span>
                         </div>
-                        <a href="https://github.com/RyoSXu/ARPAT_U" target="_blank"
+                        <a href="https://github.com/RyoSXu/ARPAT" target="_blank"
                             class="inline-flex items-center gap-2 text-blue-600 font-medium hover:underline">
                             查看源代码 <i data-lucide="external-link" class="w-4 h-4"></i>
                         </a>
@@ -372,13 +372,14 @@
                     </div>
                     <h3 class="text-xl font-bold mb-2">M Doctor - 振动分析软件</h3>
                     <p class="text-slate-600 mb-6 text-sm">
-                        在贝加莱（B&R）实习期间负责的重点项目。将原本需要工程师现场采集数据的传统软件重构为前后端分离的 Web 应用，并部署在客户设备的 PLC
-                        上，实现工厂员工对设备运转状态的实时监控与故障诊断。
+                        在贝加莱（B&R）实习期间负责的重点项目。将原本需要工程师现场采集和分析振动数据的传统工具重构为可部署于工控机的 Electron 应用，接入 PLC
+                        侧 CSV 数据流，实现设备状态监控、趋势展示与故障诊断。
                     </p>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-2 py-1 bg-slate-100 rounded text-xs">Web 开发</span>
-                        <span class="px-2 py-1 bg-slate-100 rounded text-xs">前后端分离</span>
-                        <span class="px-2 py-1 bg-slate-100 rounded text-xs">PLC 部署</span>
+                        <span class="px-2 py-1 bg-slate-100 rounded text-xs">FastAPI</span>
+                        <span class="px-2 py-1 bg-slate-100 rounded text-xs">Electron</span>
+                        <span class="px-2 py-1 bg-slate-100 rounded text-xs">PLC 数据接入</span>
                         <span class="px-2 py-1 bg-slate-100 rounded text-xs">故障诊断算法</span>
                     </div>
                 </div>

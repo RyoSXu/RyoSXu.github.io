@@ -11,7 +11,7 @@
 基于 Transformer 架构（而非传统图神经网络）对晶体结构建模，快速预测材料的声子态密度（Phonon DOS）。创新性地引入原子相对位置编码以捕获长程几何特征，预测精度较原 SOTA 模型 Mat2Spec **提升 27.6%**，推理速度较 DFT 计算提升数个数量级。
 
 - **论文**：*Phonon Density of States Prediction from Atomic Relative Position Encoding Attention Transformer*（npj Computational Materials，审稿中）
-- **代码**：[github.com/RyoSXu/ARPAT_U](https://github.com/RyoSXu/ARPAT_U)
+- **代码**：[github.com/RyoSXu/ARPAT](https://github.com/RyoSXu/ARPAT)
 - **技术栈**：Python · PyTorch · Transformer · Materials AI
 
 ### CLPP — Contrastive Learning Property Prediction
@@ -37,8 +37,8 @@
 
 - **语言与环境**：Python · C++ · Linux · git
 - **AI / 深度学习**：PyTorch · Transformer · GNN
-- **工程与开发**：Vue.js · 微信小程序 · PLC 编程
-- **AI coding**: Claude · Codex · Github-copilot · Antigravity
+- **工程与开发**：Vue3 · FastAPI · SQLite · Electron · PLC 数据接入
+- **AI coding**: Claude Code · Codex · Antigravity
 ---
 
 ## 教育背景
