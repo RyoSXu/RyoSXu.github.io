@@ -1,6 +1,6 @@
 # 徐尚 · Ryo Xu — Personal Portfolio
 
-**🌐 网站**：[ryosxu.github.io](https://ryosxu.github.io)　｜　**📄 在线简历**：[resume.html](resume.html)　｜　**📎 PDF 简历**：[resume.pdf](resume.pdf)　｜　**📧 邮箱**：[xushang@shu.edu.cn](mailto:xushang@shu.edu.cn)　｜　**💻 GitHub**：[RyoSXu](https://github.com/RyoSXu)
+**🌐 网站**：[ryosxu.github.io](https://ryosxu.github.io)　｜　**📧 邮箱**：[xushang@shu.edu.cn](mailto:xushang@shu.edu.cn)　｜　**💻 GitHub**：[RyoSXu](https://github.com/RyoSXu)
 
 ---
 
