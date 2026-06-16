@@ -424,6 +424,201 @@
     <section class="section">
       <div class="section-title"><span>资格证书</span></div>
       <div class="cert-row">
+    .aligned-entries .entry-date {
+      display: grid;
+      grid-template-columns: 10mm 1fr;
+      column-gap: 1mm;
+      align-items: baseline;
+    }
+
+    .entry-location,
+    .entry-time {
+      min-width: 0;
+    }
+
+    .main-line {
+      color: #111;
+      font-size: var(--level-3-size);
+      line-height: var(--level-3-line);
+      font-weight: var(--level-3-weight);
+    }
+
+    .sub-line {
+      color: #111;
+      font-size: var(--level-3-size);
+      line-height: var(--level-3-line);
+      font-weight: var(--level-3-weight);
+      margin-top: .2mm;
+    }
+
+    .right {
+      color: #111;
+      font-size: var(--level-3-size);
+      line-height: var(--level-3-line);
+      font-weight: var(--level-3-weight);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .desc {
+      grid-column: 1 / -1;
+      margin-top: .8mm;
+      color: #555;
+      font-size: var(--level-4-size);
+      line-height: var(--level-4-line);
+      font-weight: var(--level-4-weight);
+    }
+
+    .skills,
+    .certs {
+      padding-left: 6mm;
+      font-size: var(--level-4-size);
+      line-height: var(--level-4-line);
+      font-weight: var(--level-4-weight);
+    }
+
+    .skills p {
+      margin: 0 0 .8mm;
+    }
+
+    .skill-label {
+      color: #111;
+      font-weight: 500;
+    }
+
+    .cert-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6mm;
+      color: #111;
+      font-size: var(--level-4-size);
+      line-height: var(--level-4-line);
+      font-weight: var(--level-4-weight);
+      padding-left: 6mm;
+    }
+
+    .cert-row::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.45mm;
+      width: 2.4mm;
+      height: 2.4mm;
+      background: #e2e3e8;
+    }
+
+    .cert-row span:last-child {
+      align-self: center;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="contact-bar">
+      <span>手机 18701898786</span>
+      <span>邮箱 xushang@shu.edu.cn</span>
+      <span>微信 18701898786</span>
+      <span>网站 ryosxu.github.io</span>
+    </div>
+
+    <section class="profile">
+      <img class="avatar" src="/avatar.jpg" alt="徐尚照片">
+      <div class="profile-copy">
+        <div class="identity">
+          <div class="name">徐尚</div>
+          <div class="meta">22岁&nbsp;&nbsp;男</div>
+        </div>
+        <div class="profile-intention">
+          <span>期望职位： AI应用开发 / 机器学习 / 工业软件开发</span>
+          <span>期望地点： 上海市</span>
+        </div>
+        <div class="intro">
+          上海大学27届计算机科学与技术硕士，研究方向为材料机器学习与深度学习建模。具备 Python/PyTorch、FastAPI、Vue3、C++、Linux 与工业自动化系统开发经验，曾在 ABB/B&amp;R 负责振动分析软件 MDoctor 的 Web 化重构、工控机部署与故障诊断算法开发。
+        </div>
+      </div>
+    </section>
+
+    <section class="section education">
+      <div class="section-title"><span>教育背景</span></div>
+      <div class="row">
+        <div class="entry-line">
+          <div class="entry-main">上海大学</div>
+          <div class="entry-sub education-sub"><span>材料基因组工程研究院</span><span>| 计算机科学与技术 |</span><span>硕士</span></div>
+          <div class="entry-date">2024-09 至 2027-06</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="entry-line">
+          <div class="entry-main">安徽财经大学</div>
+          <div class="entry-sub education-sub"><span>管理科学与工程学院</span><span class="education-program-undergrad">| 计算机科学与技术 |</span><span>本科</span></div>
+          <div class="entry-date">2020-09 至 2024-06</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section aligned-entries">
+      <div class="section-title"><span>工作经历</span></div>
+      <div class="row">
+        <div class="entry-line">
+          <div class="entry-main">ABB(中国)有限公司 / B&amp;R(贝加莱工业自动化)</div>
+          <div class="entry-sub">研发部 | AI应用开发实习生</div>
+          <div class="entry-date"><span class="entry-location">上海 |</span><span class="entry-time">2026-04 至今</span></div>
+        </div>
+        <div class="desc">负责 MDoctor 工业振动分析软件项目，独立完成从立项到工控机上线的完整交付，构建可在产线部署的振动监测与故障诊断系统；期间主动对接现场工程师、梳理设备数据，并持续沟通以对齐产品方向与现场需求。</div>
+      </div>
+      <div class="row">
+        <div class="entry-line">
+          <div class="entry-main">安徽航展自动化科技有限公司</div>
+          <div class="entry-sub">自动化实习生</div>
+          <div class="entry-date"><span class="entry-location">滁州 |</span><span class="entry-time">2023-12 至 2024-02</span></div>
+        </div>
+        <div class="desc">负责自动化系统设计、西门子PLC 程序编写、传感器配置；参与工厂自动化生产线升级改造、智能仓储系统开发；具备工业现场调试与问题定位经验。</div>
+      </div>
+    </section>
+
+    <section class="section aligned-entries">
+      <div class="section-title"><span>项目经历</span></div>
+      <div class="row">
+        <div class="entry-line">
+          <div class="entry-main">B&amp;R / MDoctor 工业振动分析软件</div>
+          <div class="entry-sub">独立全栈开发</div>
+          <div class="entry-date"><span class="entry-location"></span><span class="entry-time">2026-04 至今</span></div>
+        </div>
+        <div class="desc">独立主导项目从产品到上线全流程，完成需求拆解、产品定位与架构设计，独立承担前端开发、后端服务、故障诊断算法及工控机本地部署。技术栈：Electron 桌面端封装，Vue3 构建状态监控与结果可视化界面，FastAPI 提供数据解析、特征分析与故障诊断服务，SQLite 负责本地数据存储。</div>
+      </div>
+      <div class="row">
+        <div class="entry-line">
+          <div class="entry-main">ARPAT / 晶体材料声子态密度预测</div>
+          <div class="entry-sub">第一作者</div>
+          <div class="entry-date"><span class="entry-location"></span><span class="entry-time">2024-11 至 2025-08</span></div>
+        </div>
+        <div class="desc">基于 PyTorch 独立实现 ARPAT 模型，用于从晶体结构预测声子态密度。在 Transformer 注意力机制中引入原子相对位置/距离编码以捕获晶体几何关系，MAE 较原 SOTA 模型 Mat2Spec 降低 27.6%，将传统 DFT 小时级计算压缩至毫秒级推理。相关论文投稿至 npj Computational Materials，当前审稿中；代码与数据已开源。</div>
+      </div>
+      <div class="row">
+        <div class="entry-line">
+          <div class="entry-main">基于 1D-CNN 的时间序列预测系统</div>
+          <div class="entry-sub">本科毕业设计</div>
+          <div class="entry-date"><span class="entry-location"></span><span class="entry-time">2023-11 至 2024-06</span></div>
+        </div>
+        <div class="desc">开发基于 1D-CNN 的时间序列预测桌面系统，支持 CSV 数据导入、字段选择、数据清洗、归一化、训练集划分、模型参数配置、训练过程可视化与预测结果展示。使用 PyTorch 实现 1D-CNN 预测模型，Tkinter 构建 GUI，Matplotlib 集成训练与预测曲线可视化。</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title"><span>个人技能</span></div>
+      <div class="skills">
+        <p><span class="skill-label">编程与环境：</span>熟悉 Python、C++，了解 JavaScript，具备算法与数据结构基础；熟悉 Linux、Git 等常用开发环境与工具。</p>
+        <p><span class="skill-label">AI/算法：</span>熟悉 PyTorch，具备 Transformer、GNN、CNN 等模型复现、结构改进与实验分析经验。</p>
+        <p><span class="skill-label">工程开发：</span>具备 Web 与桌面端应用开发经验，了解 Vue3、FastAPI、SQLite、Electron，具备前后端分离、桌面端封装、本地数据存储经验。</p>
+        <p><span class="skill-label">工业软件：</span>了解 PLC 数据采集、传感器数据处理、FTP 数据传输、工控机部署与工业现场调试流程。</p>
+        <p><span class="skill-label">AI Coding：</span>熟练使用 Claude Code、Codex、Antigravity 等工具进行多任务的需求拆解、文档编写、代码生成、测试验收等。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title"><span>资格证书</span></div>
+      <div class="cert-row">
         <span>大学英语四级（CET-4）</span>
         <span>2021-03 永久有效</span>
       </div>
@@ -431,11 +626,3 @@
   </main>
 </body>
 </html>
-
-<script>
-  if (window.location.search.includes('print=1')) {
-    window.onload = () => {
-      setTimeout(() => window.print(), 500);
-    };
-  }
-</script>
