@@ -63,30 +63,28 @@ const printResume = () => {
     <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-20">
       
       <!-- Header / Hero Section -->
-      <header v-motion-slide-visible-once-bottom class="flex flex-col md:flex-row items-center gap-8 mb-20 relative z-10 print-break-before">
-        <div class="shrink-0 relative">
-          <div class="absolute inset-0 bg-blue-500 rounded-full blur-2xl opacity-20 dark:opacity-40"></div>
-          <img :src="resumeData.avatar" alt="Avatar" class="w-40 h-40 rounded-full object-cover border-2 border-white dark:border-white/20 relative z-10 shadow-xl dark:shadow-2xl" />
+      <header v-motion-slide-visible-once-bottom class="flex flex-col md:flex-row items-center md:items-center justify-start gap-8 mb-20 relative z-10 print-break-before">
+        <div class="shrink-0 relative group">
+          <div class="absolute -inset-2 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl blur-xl opacity-20 dark:opacity-40 group-hover:opacity-30 dark:group-hover:opacity-50 transition-opacity duration-500"></div>
+          <img :src="resumeData.avatar" alt="Avatar" class="w-24 md:w-28 h-auto rounded-2xl border border-white/50 dark:border-white/10 relative z-10 shadow-lg transition-transform duration-500 group-hover:scale-[1.02]" />
         </div>
-        <div class="text-center md:text-left">
-          <h1 class="text-5xl font-extrabold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500 dark:from-white dark:to-gray-400">
-            你好，我是 <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-blue-400 dark:to-emerald-400">{{ resumeData.name }}</span>
+        
+        <div class="flex-1 text-center md:text-left">
+          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-slate-900 dark:text-white">
+            {{ resumeData.name }}
           </h1>
           
-          <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-6">
-            <span v-for="kw in resumeData.keywords" :key="kw" class="px-3 py-1 bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-full text-sm font-medium border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-200">
-              {{ kw }}
-            </span>
-            <span class="flex items-center gap-1 text-slate-500 dark:text-gray-400 text-sm ml-2">
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-6">
+            <span class="flex items-center gap-1.5 text-slate-500 dark:text-gray-400 text-sm">
               <MapPin class="w-4 h-4" /> {{ resumeData.location }}
             </span>
           </div>
 
           <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <button @click="showResumePreview = true" class="no-print px-5 py-2.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white rounded-xl font-medium transition-all duration-300 shadow-lg shadow-blue-500/25 flex items-center gap-2 hover:shadow-blue-500/40 hover:-translate-y-0.5">
+            <button @click="showResumePreview = true" class="no-print px-5 py-2 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-gray-200 active:scale-95 text-white dark:text-slate-900 rounded-xl font-medium transition duration-150 ease-out shadow-sm hover:shadow-lg hover:scale-105 flex items-center gap-2 will-change-transform">
               <FileText class="w-4 h-4" /> 简历
             </button>
-            <a :href="resumeData.contact.github" target="_blank" class="no-print px-5 py-2.5 bg-white/60 dark:bg-white/10 hover:bg-white/80 dark:hover:bg-white/20 active:scale-95 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-xl font-medium transition-all duration-300 flex items-center gap-2 shadow-sm dark:shadow-none hover:-translate-y-0.5">
+            <a :href="resumeData.contact.github" target="_blank" class="no-print px-5 py-2 bg-white/60 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 active:scale-95 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-xl font-medium transition duration-150 ease-out shadow-sm hover:shadow-md dark:shadow-none hover:scale-105 flex items-center gap-2 will-change-transform">
               <Github class="w-4 h-4" /> GitHub
             </a>
           </div>

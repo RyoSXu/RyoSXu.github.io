@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="spotlight-wrapper group" 
+    class="spotlight-wrapper group will-change-transform" 
     @mousemove="handleMouseMove" 
     @mouseleave="handleMouseLeave"
     ref="cardRef"
@@ -26,21 +26,33 @@ import { ref, computed } from 'vue'
 const cardRef = ref<HTMLElement | null>(null)
 const mousePos = ref({ x: 0, y: 0 })
 const isHovered = ref(false)
+let ticking = false
 
 const handleMouseMove = (e: MouseEvent) => {
   if (!cardRef.value) return
   isHovered.value = true
-  const rect = cardRef.value.getBoundingClientRect()
-  const x = e.clientX - rect.left
-  const y = e.clientY - rect.top
   
-  cardRef.value.style.setProperty('--mouse-x', `${x}px`)
-  cardRef.value.style.setProperty('--mouse-y', `${y}px`)
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      if (!cardRef.value || !isHovered.value) {
+        ticking = false
+        return
+      }
+      const rect = cardRef.value.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      
+      cardRef.value.style.setProperty('--mouse-x', `${x}px`)
+      cardRef.value.style.setProperty('--mouse-y', `${y}px`)
 
-  // Calculate tilt percentages (-0.5 to 0.5)
-  mousePos.value = {
-    x: (x / rect.width) - 0.5,
-    y: (y / rect.height) - 0.5
+      // Calculate tilt percentages (-0.5 to 0.5)
+      mousePos.value = {
+        x: (x / rect.width) - 0.5,
+        y: (y / rect.height) - 0.5
+      }
+      ticking = false
+    })
+    ticking = true
   }
 }
 
