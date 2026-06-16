@@ -42,22 +42,28 @@ const printResume = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-slate-50 dark:bg-[#0b0c10] text-slate-800 dark:text-gray-200 relative overflow-hidden pb-32 transition-colors duration-500">
+  <div class="min-h-screen text-slate-800 dark:text-gray-200 relative overflow-hidden pb-32 transition-colors duration-500">
+    <!-- Ambient Fixed Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none transition-colors duration-500 bg-slate-100 dark:bg-[#0b0c10]">
+      <div class="absolute inset-0 opacity-50 dark:opacity-40">
+        <div class="blob bg-blue-300/60 dark:bg-blue-600/60 w-[70vw] h-[70vw] top-[-20%] left-[-10%]" style="animation-duration: 12s;"></div>
+        <div class="blob bg-purple-300/60 dark:bg-purple-600/60 w-[60vw] h-[60vw] top-[10%] right-[-10%]" style="animation-delay: -3s; animation-duration: 15s;"></div>
+        <div class="blob bg-teal-200/60 dark:bg-emerald-600/50 w-[70vw] h-[70vw] bottom-[-20%] left-[0%]" style="animation-delay: -7s; animation-duration: 18s;"></div>
+        <div class="blob bg-amber-200/50 dark:bg-amber-600/40 w-[60vw] h-[60vw] bottom-[10%] right-[10%]" style="animation-delay: -11s; animation-duration: 14s;"></div>
+      </div>
+    </div>
     <!-- Theme Toggle -->
     <button @click="toggleDark()" class="no-print fixed top-6 right-6 p-3 rounded-full bg-white/40 dark:bg-white/10 backdrop-blur-md border border-slate-200 dark:border-white/10 hover:bg-white/60 dark:hover:bg-white/20 transition-all z-50 shadow-sm dark:shadow-none">
       <Sun v-if="isDark" class="w-5 h-5 text-yellow-300" />
       <Moon v-else class="w-5 h-5 text-slate-700" />
     </button>
 
-    <!-- Background Animated Blobs -->
-    <div class="blob bg-blue-400/30 dark:bg-blue-500/40 w-96 h-96 top-0 left-[-10%] mix-blend-multiply dark:mix-blend-screen"></div>
-    <div class="blob bg-purple-400/30 dark:bg-purple-500/40 w-96 h-96 top-[20%] right-[-10%] mix-blend-multiply dark:mix-blend-screen animation-delay-2000"></div>
-    <div class="blob bg-emerald-400/30 dark:bg-emerald-500/30 w-80 h-80 bottom-[10%] left-[20%] mix-blend-multiply dark:mix-blend-screen animation-delay-4000"></div>
+    <!-- Background Animated Blobs (Moved to fixed container above) -->
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-20">
       
       <!-- Header / Hero Section -->
-      <header class="flex flex-col md:flex-row items-center gap-8 mb-20 relative z-10 print-break-before">
+      <header v-motion-slide-visible-once-bottom class="flex flex-col md:flex-row items-center gap-8 mb-20 relative z-10 print-break-before">
         <div class="shrink-0 relative">
           <div class="absolute inset-0 bg-blue-500 rounded-full blur-2xl opacity-20 dark:opacity-40"></div>
           <img :src="resumeData.avatar" alt="Avatar" class="w-40 h-40 rounded-full object-cover border-2 border-white dark:border-white/20 relative z-10 shadow-xl dark:shadow-2xl" />
@@ -77,10 +83,10 @@ const printResume = () => {
           </div>
 
           <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <button @click="showResumePreview = true" class="no-print px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-medium transition-colors shadow-lg shadow-blue-500/25 flex items-center gap-2">
+            <button @click="showResumePreview = true" class="no-print px-5 py-2.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white rounded-xl font-medium transition-all duration-300 shadow-lg shadow-blue-500/25 flex items-center gap-2 hover:shadow-blue-500/40 hover:-translate-y-0.5">
               <FileText class="w-4 h-4" /> 简历
             </button>
-            <a :href="resumeData.contact.github" target="_blank" class="no-print px-5 py-2.5 bg-white/60 dark:bg-white/10 hover:bg-white/80 dark:hover:bg-white/20 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-xl font-medium transition-colors flex items-center gap-2 shadow-sm dark:shadow-none">
+            <a :href="resumeData.contact.github" target="_blank" class="no-print px-5 py-2.5 bg-white/60 dark:bg-white/10 hover:bg-white/80 dark:hover:bg-white/20 active:scale-95 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-xl font-medium transition-all duration-300 flex items-center gap-2 shadow-sm dark:shadow-none hover:-translate-y-0.5">
               <Github class="w-4 h-4" /> GitHub
             </a>
           </div>
@@ -93,7 +99,7 @@ const printResume = () => {
         <div class="lg:col-span-2 space-y-12">
           
           <!-- Experience -->
-          <section>
+          <section v-motion-slide-visible-once-bottom>
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
               <Briefcase class="w-6 h-6 text-blue-500 dark:text-blue-400" /> 工作经历
             </h2>
@@ -114,7 +120,7 @@ const printResume = () => {
           </section>
 
           <!-- Education -->
-          <section class="print-break-before">
+          <section v-motion-slide-visible-once-bottom class="print-break-before">
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
               <GraduationCap class="w-6 h-6 text-emerald-500 dark:text-emerald-400" /> 教育经历
             </h2>
@@ -138,7 +144,7 @@ const printResume = () => {
           </section>
 
           <!-- Research -->
-          <section class="print-break-before">
+          <section v-motion-slide-visible-once-bottom class="print-break-before">
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
               <Microscope class="w-6 h-6 text-purple-500 dark:text-purple-400" /> 学术研究
             </h2>
@@ -171,7 +177,7 @@ const printResume = () => {
           </section>
 
           <!-- Projects (Masonry) -->
-          <section class="print-break-before">
+          <section v-motion-slide-visible-once-bottom class="print-break-before">
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
               <Code2 class="w-6 h-6 text-amber-500 dark:text-amber-400" /> 软件开发
             </h2>
@@ -206,7 +212,7 @@ const printResume = () => {
         <div class="space-y-8">
           
           <!-- Contact -->
-          <section>
+          <section v-motion-slide-visible-once-bottom>
             <GlassCard>
               <h2 class="text-lg font-bold mb-5 flex items-center gap-2 text-slate-900 dark:text-white">
                 联系方式
@@ -229,7 +235,7 @@ const printResume = () => {
           </section>
 
           <!-- Skills -->
-          <section>
+          <section v-motion-slide-visible-once-bottom :delay="200">
             <GlassCard>
               <h2 class="text-lg font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
                 <Cpu class="w-5 h-5 text-blue-500 dark:text-blue-400" /> 技术栈
