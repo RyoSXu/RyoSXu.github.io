@@ -69,12 +69,20 @@ export const resumeData: ResumeData = {
   ],
   research: [
     {
-      title: 'ARPAT: Atomic Relative Position Encoding Attention Transformer',
+      title: 'Phonon Density of States Prediction from Atomic Relative Position Encoding Attention Transformer',
       status: 'npj Computational Materials',
-      description: '该模型采用 Transformer 架构而非传统的图神经网络对晶体结构进行建模，旨在快速预测材料的声子态密度（Phonon Density of States）。通过引入原子相对位置编码，能够更精准地捕捉长程相互作用。',
+      journalMetrics: {
+        publisher: 'Nature Portfolio',
+        if: '11.9',
+        if5: '13.0',
+        jcr: 'Q1',
+        cas: '材料科学1区 (TOP期刊)'
+      },
+      description: '针对传统计算方法预测声子态密度（Phonon Density of States）成本高、速度慢的问题，提出了 ARPAT (Atomic Relative Position Encoding Attention Transformer) 模型。该模型将径向基函数编码的相对距离与球谐函数编码的方向特征融合至注意力机制中，大幅增强了对三维晶格几何与长程原子相互作用的表征能力。',
       highlights: [
-        '在相同数据集上性能优于 E3NN, GATGNN, Mat2Spec (原 SOTA) 及 M3GNet',
-        '实现高效的晶体结构特征表征，支持大规模材料筛选',
+        '构建并验证了包含逾 2.4 万条数据、覆盖 86 种元素的声子态密度大规模数据集',
+        '在预测精度上显著优于 E3NN、GATGNN、M3GNet 以及原 SOTA 模型 Mat2Spec',
+        '具备极高的计算效率（较传统方法实现数个数量级的速度跨越），及在复杂体系中的优异泛化能力，为新材料高通量筛选提供了全新路径',
       ],
       tags: ['Python', 'PyTorch', 'Transformer', 'Materials AI'],
       githubUrl: 'https://github.com/RyoSXu/ARPAT',

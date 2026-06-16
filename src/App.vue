@@ -5,7 +5,7 @@ import { resumeData } from './data/resume'
 import GlassCard from './components/GlassCard.vue'
 import BaseItemCard from './components/BaseItemCard.vue'
 import MasonryLayout from './components/MasonryLayout.vue'
-import { User, Download, FileText, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Sun, Moon, Send, FolderKanban } from 'lucide-vue-next'
+import { User, Download, FileText, BookOpen, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Sun, Moon, Send, FolderKanban } from 'lucide-vue-next'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -13,6 +13,10 @@ const showResumePreview = ref(false)
 
 const { copy } = useClipboard()
 const copyStatus = ref<'email' | 'phone' | null>(null)
+
+const handleArticleClick = () => {
+  window.alert('该文章正在编辑出版中')
+}
 
 const handleCopy = (text: string, type: 'email' | 'phone') => {
   let copyText = text
@@ -93,7 +97,7 @@ const printResume = () => {
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         <!-- Left Column: Main Content -->
-        <div class="lg:col-span-2 space-y-12">
+        <div class="lg:col-span-2 space-y-8">
           
           <!-- Header / Hero Section -->
           <header class="flex flex-col md:flex-row items-center md:items-center justify-start gap-8 relative z-10 print-break-before">
@@ -117,7 +121,7 @@ const printResume = () => {
               </div>
 
               <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
-                <button @click="showResumePreview = true" class="no-print px-5 py-2 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-gray-200 active:scale-95 text-white dark:text-slate-900 rounded-xl font-medium transition duration-150 ease-out shadow-sm hover:shadow-lg hover:scale-105 flex items-center gap-2 will-change-transform">
+                <button @click="showResumePreview = true" class="no-print px-5 py-2 bg-white/60 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 active:scale-95 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-xl font-medium transition duration-150 ease-out shadow-sm hover:shadow-md dark:shadow-none hover:scale-105 flex items-center gap-2 will-change-transform">
                   <FileText class="w-4 h-4" /> 简历
                 </button>
                 <a :href="resumeData.contact.github" target="_blank" class="no-print px-5 py-2 bg-white/60 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 active:scale-95 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-xl font-medium transition duration-150 ease-out shadow-sm hover:shadow-md dark:shadow-none hover:scale-105 flex items-center gap-2 will-change-transform">
@@ -129,7 +133,7 @@ const printResume = () => {
           
           <!-- Experience -->
           <section class="print-break-before">
-            <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
+            <h2 class="text-[18px] font-bold mb-4 flex items-center gap-2 text-slate-900 dark:text-white">
               <Briefcase class="w-6 h-6 text-blue-500 dark:text-blue-400" /> 工作经历
             </h2>
             <div class="space-y-6">
@@ -150,7 +154,7 @@ const printResume = () => {
 
           <!-- Research -->
           <section class="print-break-before">
-            <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
+            <h2 class="text-[18px] font-bold mb-4 flex items-center gap-2 text-slate-900 dark:text-white">
               <Microscope class="w-6 h-6 text-purple-500 dark:text-purple-400" /> 学术研究
             </h2>
             <div class="space-y-6">
@@ -161,7 +165,6 @@ const printResume = () => {
                 theme="purple"
                 tagTheme="neutral"
                 :title="res.title"
-                :badge="res.status"
                 :description="res.description"
                 :tags="res.tags"
               >
@@ -173,10 +176,44 @@ const printResume = () => {
                     </li>
                   </ul>
                 </template>
-                <template #footer-extra v-if="res.githubUrl">
-                  <a :href="res.githubUrl" target="_blank" class="no-print inline-flex items-center gap-1.5 text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 text-sm font-medium transition-colors">
-                    <Github class="w-4 h-4" /> 查看源代码
-                  </a>
+                <template #footer-extra>
+                  <div class="flex flex-wrap items-center gap-6">
+                    <div class="relative group/tooltip inline-flex items-center">
+                      <button @click="handleArticleClick" class="no-print inline-flex items-center gap-1.5 text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 text-sm font-medium transition-colors cursor-pointer text-left">
+                        <BookOpen class="w-4 h-4" /> 查看原文
+                      </button>
+                      
+                      <!-- Hover Tooltip -->
+                      <div v-if="res.journalMetrics" class="absolute bottom-full left-0 md:left-1/2 md:-translate-x-1/2 mb-2 w-64 p-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] dark:shadow-none border border-slate-200 dark:border-white/10 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-200 z-50 transform-gpu translate-y-2 group-hover/tooltip:translate-y-0 pointer-events-none cursor-default antialiased text-left font-sans">
+                        <div class="font-bold text-slate-900 dark:text-white pb-1 mb-1 text-[13px] leading-tight">
+                          {{ res.status }}
+                        </div>
+                        <div class="space-y-1.5 text-xs">
+                          <div class="flex justify-between items-center">
+                            <span class="text-slate-500 dark:text-gray-400">出版社</span>
+                            <span class="font-bold text-purple-600 dark:text-purple-400">{{ res.journalMetrics.publisher }}</span>
+                          </div>
+                          <div class="flex justify-between items-center">
+                            <span class="text-slate-500 dark:text-gray-400">影响因子</span>
+                            <span class="font-bold text-purple-600 dark:text-purple-400">{{ res.journalMetrics.if }} <span class="text-slate-500 dark:text-gray-400 font-normal text-[10px] ml-0.5">(5年: {{ res.journalMetrics.if5 }})</span></span>
+                          </div>
+                          <div class="flex justify-between items-center">
+                            <span class="text-slate-500 dark:text-gray-400">JCR 分区</span>
+                            <span class="font-medium px-1.5 py-0.5 bg-purple-50 dark:bg-purple-500/10 rounded text-purple-600 dark:text-purple-400">{{ res.journalMetrics.jcr }}</span>
+                          </div>
+                          <div class="flex justify-between items-center">
+                            <span class="text-slate-500 dark:text-gray-400">中科院分区</span>
+                            <span class="font-medium px-1.5 py-0.5 bg-purple-50 dark:bg-purple-500/10 rounded text-purple-600 dark:text-purple-400">{{ res.journalMetrics.cas }}</span>
+                          </div>
+                        </div>
+                        <div class="absolute -bottom-1.5 left-6 md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-b border-r border-slate-200 dark:border-white/10 rotate-45"></div>
+                      </div>
+                    </div>
+                    
+                    <a v-if="res.githubUrl" :href="res.githubUrl" target="_blank" class="no-print inline-flex items-center gap-1.5 text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 text-sm font-medium transition-colors">
+                      <Github class="w-4 h-4" /> 查看源代码
+                    </a>
+                  </div>
                 </template>
               </BaseItemCard>
             </div>
@@ -184,7 +221,7 @@ const printResume = () => {
 
           <!-- Project Experience -->
           <section class="print-break-before">
-            <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
+            <h2 class="text-[18px] font-bold mb-4 flex items-center gap-2 text-slate-900 dark:text-white">
               <FolderKanban class="w-6 h-6 text-rose-500 dark:text-rose-400" /> 项目经历
             </h2>
             <div class="space-y-6">
@@ -210,7 +247,7 @@ const printResume = () => {
 
           <!-- Projects (Masonry) -->
           <section class="print-break-before">
-            <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
+            <h2 class="text-[18px] font-bold mb-4 flex items-center gap-2 text-slate-900 dark:text-white">
               <Code2 class="w-6 h-6 text-amber-500 dark:text-amber-400" /> 软件开发
             </h2>
             <MasonryLayout :items="resumeData.projects">
@@ -242,7 +279,7 @@ const printResume = () => {
           <!-- Education -->
           <section>
             <GlassCard>
-              <h2 class="text-xl font-bold mb-3 flex items-center gap-2 text-slate-900 dark:text-white">
+              <h2 class="text-[18px] font-bold mb-3 flex items-center gap-2 text-slate-900 dark:text-white">
                 <GraduationCap class="w-5 h-5 text-emerald-500 dark:text-emerald-400" /> 教育经历
               </h2>
               <div class="flex flex-col gap-6">
@@ -256,7 +293,7 @@ const printResume = () => {
                         <div class="flex items-center gap-1.5">
                           <h3 class="font-bold text-slate-900 dark:text-white text-[15px] whitespace-nowrap">{{ edu.school }}</h3>
                           <div v-if="edu.tags" class="flex items-center gap-1">
-                            <span v-for="tag in edu.tags" :key="tag" class="px-1 py-0.5 text-[10px] font-bold tracking-wide bg-blue-100/80 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400 rounded leading-none shrink-0 border border-blue-200/50 dark:border-blue-500/20 shadow-sm">
+                            <span v-for="tag in edu.tags" :key="tag" class="px-1 py-0.5 text-[10px] font-bold tracking-wide bg-emerald-100/80 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 rounded leading-none shrink-0 border border-emerald-200/50 dark:border-emerald-500/20 shadow-sm">
                               {{ tag }}
                             </span>
                           </div>
@@ -277,24 +314,24 @@ const printResume = () => {
           <!-- Contact -->
           <section>
             <GlassCard>
-              <h2 class="text-xl font-bold mb-3 flex items-center gap-2 text-slate-900 dark:text-white">
-                <Send class="w-5 h-5 text-purple-500 dark:text-purple-400" /> 联系方式
+              <h2 class="text-[18px] font-bold mb-3 flex items-center gap-2 text-slate-900 dark:text-white">
+                <Send class="w-5 h-5 text-cyan-500 dark:text-cyan-400" /> 联系方式
               </h2>
               <ul class="space-y-4 text-sm">
                 <li class="flex items-center gap-3 group/item relative cursor-pointer w-fit" @click="handleCopy(resumeData.contact.email, 'email')">
                   <Mail class="w-4 h-4 text-slate-500 dark:text-gray-400 group-hover/item:text-blue-500 transition-colors shrink-0" />
                   <span class="text-slate-700 dark:text-gray-300 group-hover/item:text-blue-600 dark:group-hover/item:text-white transition-colors">{{ resumeData.contact.email }}</span>
-                  <div class="absolute left-10 top-full mt-2 px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-gray-200 text-xs rounded-md opacity-0 group-hover/item:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                  <div class="absolute left-10 top-full mt-2 px-2.5 py-1.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-gray-200 text-xs rounded-md opacity-0 group-hover/item:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-xl">
                     {{ copyStatus === 'email' ? '已复制！' : '点击复制' }}
-                    <div class="absolute -top-1.5 left-4 w-2.5 h-2.5 bg-white dark:bg-slate-800 border-t border-l border-slate-200 dark:border-slate-700 rotate-45"></div>
+                    <div class="absolute -top-1.5 left-4 w-2.5 h-2.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-t border-l border-slate-200 dark:border-slate-700 rotate-45"></div>
                   </div>
                 </li>
                 <li class="flex items-center gap-3 group/item relative cursor-pointer w-fit" @click="handleCopy(resumeData.contact.phone, 'phone')">
                   <Phone class="w-4 h-4 text-slate-500 dark:text-gray-400 group-hover/item:text-blue-500 transition-colors shrink-0" />
                   <span class="text-slate-700 dark:text-gray-300 group-hover/item:text-blue-600 dark:group-hover/item:text-white transition-colors">{{ resumeData.contact.phone }}</span>
-                  <div class="absolute left-10 top-full mt-2 px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-gray-200 text-xs rounded-md opacity-0 group-hover/item:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                  <div class="absolute left-10 top-full mt-2 px-2.5 py-1.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-gray-200 text-xs rounded-md opacity-0 group-hover/item:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-xl">
                     {{ copyStatus === 'phone' ? '已复制！' : '点击复制' }}
-                    <div class="absolute -top-1.5 left-4 w-2.5 h-2.5 bg-white dark:bg-slate-800 border-t border-l border-slate-200 dark:border-slate-700 rotate-45"></div>
+                    <div class="absolute -top-1.5 left-4 w-2.5 h-2.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-t border-l border-slate-200 dark:border-slate-700 rotate-45"></div>
                   </div>
                 </li>
               </ul>
@@ -304,8 +341,8 @@ const printResume = () => {
           <!-- Skills -->
           <section>
             <GlassCard>
-              <h2 class="text-xl font-bold mb-3 flex items-center gap-2 text-slate-900 dark:text-white">
-                <Cpu class="w-5 h-5 text-blue-500 dark:text-blue-400" /> 技术栈
+              <h2 class="text-[18px] font-bold mb-3 flex items-center gap-2 text-slate-900 dark:text-white">
+                <Cpu class="w-5 h-5 text-cyan-500 dark:text-cyan-400" /> 技术栈
               </h2>
               <div class="space-y-6">
                 <div v-for="category in resumeData.skills" :key="category.name">

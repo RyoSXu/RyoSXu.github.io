@@ -24,10 +24,10 @@
           {{ badge }}
         </span>
         
-        <h3 class="text-base font-bold text-slate-900 dark:text-white">{{ title }}</h3>
+        <h3 class="text-[15px] font-bold text-slate-900 dark:text-white">{{ title }}</h3>
         
-        <span v-if="subtitle" :class="['font-medium text-sm', layout === 'horizontal' ? themeClasses.text : 'block mt-1 text-slate-500 dark:text-gray-400']">
-          {{ subtitle }}
+        <span v-if="subtitle || $slots.subtitle" :class="['font-medium text-sm', layout === 'horizontal' ? themeClasses.text : 'block mt-1 text-slate-500 dark:text-gray-400']">
+          <slot name="subtitle">{{ subtitle }}</slot>
         </span>
         <span v-if="meta" class="text-slate-400 dark:text-gray-500 font-normal text-sm">
           <span v-if="layout === 'horizontal'">· </span>{{ meta }}
@@ -49,7 +49,7 @@
 
     <!-- Bottom Tags -->
     <div v-if="tags && tags.length" class="flex flex-wrap gap-2 mt-auto" :class="{'mb-3': $slots['footer-extra']}">
-      <span v-for="tag in tags" :key="tag" :class="['px-2.5 py-1 rounded-md text-xs border', tagThemeClasses]">
+      <span v-for="tag in tags" :key="tag" class="px-2.5 py-1 bg-white/20 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 text-slate-700 dark:text-gray-300 rounded-md text-xs transition-colors hover:bg-white/40 dark:hover:bg-white/10">
         {{ tag }}
       </span>
     </div>

@@ -22,6 +22,14 @@ export interface SkillCategory {
   skills: string[];
 }
 
+export interface JournalMetrics {
+  publisher: string;
+  if: string;
+  if5: string;
+  jcr: string;
+  cas: string;
+}
+
 export interface Research {
   title: string;
   status: string;
@@ -30,6 +38,7 @@ export interface Research {
   tags: string[];
   githubUrl: string;
   images?: string[];
+  journalMetrics?: JournalMetrics;
 }
 
 export interface Project {
