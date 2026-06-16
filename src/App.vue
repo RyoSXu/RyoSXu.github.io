@@ -10,13 +10,34 @@ const isDark = useDark()
 const toggleDark = useToggle(isDark)
 const showResumePreview = ref(false)
 
-const downloadResume = () => {
-  const link = document.createElement('a')
-  link.href = './resume.pdf'
-  link.download = '徐尚_简历.pdf'
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
+const printResume = () => {
+  const iframe = document.createElement('iframe')
+  iframe.style.position = 'fixed'
+  iframe.style.width = '0'
+  iframe.style.height = '0'
+  iframe.src = './resume.html'
+  document.body.appendChild(iframe)
+  
+  iframe.onload = () => {
+    try {
+      const style = iframe.contentDocument?.createElement('style')
+      if (style) {
+        style.textContent = `
+          * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+        `
+        iframe.contentDocument?.head.appendChild(style)
+      }
+    } catch (e) {
+      console.warn('Could not inject print styles', e)
+    }
+    iframe.contentWindow?.print()
+    setTimeout(() => {
+      document.body.removeChild(iframe)
+    }, 10000)
+  }
 }
 </script>
 
@@ -242,7 +263,7 @@ const downloadResume = () => {
               简历预览
             </h3>
             <div class="flex items-center gap-3">
-              <button @click="downloadResume" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-colors shadow-md flex items-center gap-2 text-sm">
+              <button @click="printResume" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-colors shadow-md flex items-center gap-2 text-sm">
                 <Download class="w-4 h-4" /> 下载 PDF
               </button>
               <button @click="showResumePreview = false" class="p-2 hover:bg-slate-200 dark:hover:bg-white/10 rounded-full transition-colors">
