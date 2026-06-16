@@ -5,6 +5,7 @@ export interface Education {
   major: string;
   college: string;
   period: string;
+  tags?: string[];
 }
 
 export interface Experience {

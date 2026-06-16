@@ -20,6 +20,7 @@ export const resumeData: ResumeData = {
       major: '计算机科学与技术',
       degree: '硕士',
       period: '2024.09 — 2027.06',
+      tags: ['211'],
     },
     {
       school: '安徽财经大学',

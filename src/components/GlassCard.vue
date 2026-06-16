@@ -7,13 +7,18 @@
     :style="cardStyle"
   >
     <!-- Multi-layered glass panel -->
-    <div class="glass-panel relative overflow-hidden bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-white/40 dark:border-white/10 rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.05)] transition-colors duration-500 p-6 h-full flex flex-col group-hover:bg-white/20 dark:group-hover:bg-white/10">
+    <div class="glass-panel relative p-3 h-full flex flex-col">
       
-      <!-- Inner glare/sheen -->
-      <div class="absolute inset-0 bg-gradient-to-br from-white/30 dark:from-white/10 via-white/5 dark:via-transparent to-transparent opacity-40 pointer-events-none group-hover:opacity-70 transition-opacity duration-500"></div>
+      <!-- Glass Background Layer -->
+      <div class="absolute inset-0 rounded-2xl overflow-hidden bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.05)] group-hover:bg-white/20 dark:group-hover:bg-white/10 transition-colors duration-500 pointer-events-none">
+        <!-- Inner glare/sheen -->
+        <div class="absolute inset-0 bg-gradient-to-br from-white/30 dark:from-white/10 via-white/5 dark:via-transparent to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-500"></div>
+        <!-- Spotlight Effect -->
+        <div class="spotlight-effect absolute opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none w-[1000px] h-[1000px] left-0 top-0" style="transform: translate3d(calc(var(--mouse-x, 0px) - 500px), calc(var(--mouse-y, 0px) - 500px), 0);"></div>
+      </div>
       
       <!-- Content wrapper -->
-      <div class="relative z-10 flex flex-col h-full" style="transform: translateZ(10px);">
+      <div class="relative z-10 flex flex-col h-full">
         <slot></slot>
       </div>
     </div>
@@ -64,7 +69,7 @@ const handleMouseLeave = () => {
 const cardStyle = computed(() => {
   if (!isHovered.value) {
     return {
-      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
       transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'
     }
   }
@@ -72,7 +77,7 @@ const cardStyle = computed(() => {
   const rotateX = mousePos.value.y * -4 // Subtle tilt
   const rotateY = mousePos.value.x * 4
   return {
-    transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`,
+    transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
     transition: 'transform 0s'
   }
 })
