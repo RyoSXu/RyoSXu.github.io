@@ -328,7 +328,7 @@
     </div>
 
     <section class="profile">
-      <img class="avatar" src="public/avatar.jpg" alt="徐尚照片">
+      <img class="avatar" src="/avatar.jpg" alt="徐尚照片">
       <div class="profile-copy">
         <div class="identity">
           <div class="name">徐尚</div>
@@ -431,3 +431,11 @@
   </main>
 </body>
 </html>
+
+<script>
+  if (window.location.search.includes('print=1')) {
+    window.onload = () => {
+      setTimeout(() => window.print(), 500);
+    };
+  }
+</script>

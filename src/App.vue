@@ -45,9 +45,9 @@ const toggleDark = useToggle(isDark)
           </div>
 
           <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <button onclick="window.print()" class="no-print px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-medium transition-colors shadow-lg shadow-blue-500/25 flex items-center gap-2">
+            <a href="./resume.html?print=1" target="_blank" class="no-print px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-medium transition-colors shadow-lg shadow-blue-500/25 flex items-center gap-2">
               <Download class="w-4 h-4" /> 生成 PDF 简历
-            </button>
+            </a>
             <a :href="resumeData.contact.github" target="_blank" class="no-print px-5 py-2.5 bg-white/60 dark:bg-white/10 hover:bg-white/80 dark:hover:bg-white/20 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-xl font-medium transition-colors flex items-center gap-2 shadow-sm dark:shadow-none">
               <Github class="w-4 h-4" /> GitHub
             </a>
