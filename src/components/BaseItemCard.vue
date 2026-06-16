@@ -49,7 +49,7 @@
 
     <!-- Bottom Tags -->
     <div v-if="tags && tags.length" class="flex flex-wrap gap-2 mt-auto" :class="{'mb-3': $slots['footer-extra']}">
-      <span v-for="tag in tags" :key="tag" class="px-2.5 py-1 bg-white/20 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 text-slate-700 dark:text-gray-300 rounded-md text-xs transition-colors hover:bg-white/40 dark:hover:bg-white/10">
+      <span v-for="tag in tags" :key="tag" :class="['px-2.5 py-1 rounded-md text-xs border transition-colors', tagThemeClasses.badge]">
         {{ tag }}
       </span>
     </div>
