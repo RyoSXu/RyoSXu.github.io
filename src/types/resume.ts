@@ -45,6 +45,7 @@ export interface ResumeData {
   avatar: string;
   keywords: string[];
   location: string;
+  birthdate?: string;
   contact: {
     email: string;
     phone: string;

@@ -1,14 +1,26 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useDark, useToggle } from '@vueuse/core'
 import { resumeData } from './data/resume'
 import GlassCard from './components/GlassCard.vue'
 import MasonryLayout from './components/MasonryLayout.vue'
-import { Download, FileText, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Sun, Moon } from 'lucide-vue-next'
+import { User, Download, FileText, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Sun, Moon } from 'lucide-vue-next'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 const showResumePreview = ref(false)
+
+const age = computed(() => {
+  if (!resumeData.birthdate) return null;
+  const birthDate = new Date(resumeData.birthdate);
+  const today = new Date();
+  let a = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    a--;
+  }
+  return a;
+})
 
 const printResume = () => {
   const iframe = document.createElement('iframe')
@@ -75,6 +87,9 @@ const printResume = () => {
           </h1>
           
           <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-6">
+            <span v-if="age !== null" class="flex items-center gap-1.5 text-slate-500 dark:text-gray-400 text-sm">
+              <User class="w-4 h-4" /> {{ age }} 岁
+            </span>
             <span class="flex items-center gap-1.5 text-slate-500 dark:text-gray-400 text-sm">
               <MapPin class="w-4 h-4" /> {{ resumeData.location }}
             </span>

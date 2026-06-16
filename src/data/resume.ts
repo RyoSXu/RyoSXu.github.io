@@ -6,6 +6,7 @@ export const resumeData: ResumeData = {
   avatar: './avatar.jpg', // we will move avatar to public later
   keywords: ['AI应用开发', '机器学习', '工业软件开发'],
   location: '上海市',
+  birthdate: '2003-06-25',
   contact: {
     email: 'xushang@shu.edu.cn',
     phone: '187 0189 8786',
