@@ -3,7 +3,7 @@ import type { ResumeData } from '../types/resume'
 export const resumeData: ResumeData = {
   name: '徐尚',
   englishName: 'Ryo Xu',
-  avatar: '/avatar.jpg', // we will move avatar to public later
+  avatar: './avatar.jpg', // we will move avatar to public later
   keywords: ['AI应用开发', '机器学习', '工业软件开发'],
   location: '上海市',
   contact: {
@@ -14,7 +14,7 @@ export const resumeData: ResumeData = {
   education: [
     {
       school: '上海大学',
-      logo: '/assets/logo/SHU_logo.png',
+      logo: './assets/logo/SHU_logo.png',
       college: '材料基因组工程研究院',
       major: '计算机科学与技术',
       degree: '硕士',
@@ -22,7 +22,7 @@ export const resumeData: ResumeData = {
     },
     {
       school: '安徽财经大学',
-      logo: '/assets/logo/AUFE_logo.png',
+      logo: './assets/logo/AUFE_logo.png',
       college: '管理科学与工程学院',
       major: '计算机科学与技术',
       degree: '本科',
@@ -74,10 +74,10 @@ export const resumeData: ResumeData = {
       tags: ['Python', 'PyTorch', 'Transformer', 'Materials AI'],
       githubUrl: 'https://github.com/RyoSXu/ARPAT',
       images: [
-        '/assets/arpat/Figure 1.jpg',
-        '/assets/arpat/Figure 2.jpg',
-        '/assets/arpat/Figure 3.jpg',
-        '/assets/arpat/Figure 4.jpg',
+        './assets/arpat/Figure 1.jpg',
+        './assets/arpat/Figure 2.jpg',
+        './assets/arpat/Figure 3.jpg',
+        './assets/arpat/Figure 4.jpg',
       ],
     },
     {
@@ -100,7 +100,7 @@ export const resumeData: ResumeData = {
       title: '2Prac - 自定义刷题程序',
       description: '一个将题库转换为刷题程序的工具。基于开源程序修改，增加了通过脚本将自定义题库转换为 JSON 格式并导入的功能。解决了同类产品付费且使用复杂的痛点。',
       tags: ['Vue.js', 'JavaScript', 'JSON Processing'],
-      image: '/assets/projects/2Prac.png',
+      images: ['./assets/projects/2prac1.png', './assets/projects/2prac2.png'],
     },
     {
       title: 'loveCom - 微信小程序平台',
