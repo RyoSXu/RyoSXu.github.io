@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0b0c10] text-gray-200 antialiased selection:bg-blue-500/30;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+  }
+
+  .glass-panel::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none;
+  }
+
+  /* Spotlight hover effect container */
+  .spotlight-wrapper {
+    @apply relative;
+  }
+
+  .spotlight-wrapper::after {
+    content: '';
+    @apply absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-500 pointer-events-none;
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.1), transparent 40%);
+  }
+  
+  .spotlight-wrapper:hover::after {
+    @apply opacity-100;
+  }
+}
+
+/* Background animated blobs */
+.blob {
+  @apply absolute filter blur-[100px] rounded-full opacity-30 animate-pulse;
+  z-index: -1;
+}
+
+/* Print CSS */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+  .glass-panel {
+    @apply bg-transparent backdrop-blur-none border-none shadow-none text-black break-inside-avoid;
+  }
+  .blob, nav, .no-print {
+    display: none !important;
+  }
+  h1, h2, h3, p, span {
+    @apply text-black !important;
+  }
+  .print-break-before {
+    break-before: page;
+  }
+}
