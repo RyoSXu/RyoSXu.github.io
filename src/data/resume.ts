@@ -70,7 +70,7 @@ export const resumeData: ResumeData = {
   research: [
     {
       title: 'ARPAT: Atomic Relative Position Encoding Attention Transformer',
-      status: 'npj Computational Materials 审稿中',
+      status: 'npj Computational Materials',
       description: '该模型采用 Transformer 架构而非传统的图神经网络对晶体结构进行建模，旨在快速预测材料的声子态密度（Phonon Density of States）。通过引入原子相对位置编码，能够更精准地捕捉长程相互作用。',
       highlights: [
         '在相同数据集上性能优于 E3NN, GATGNN, Mat2Spec (原 SOTA) 及 M3GNet',
