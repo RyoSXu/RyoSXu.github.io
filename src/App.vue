@@ -10,34 +10,13 @@ const isDark = useDark()
 const toggleDark = useToggle(isDark)
 const showResumePreview = ref(false)
 
-const printResume = () => {
-  const iframe = document.createElement('iframe')
-  iframe.style.position = 'fixed'
-  iframe.style.width = '0'
-  iframe.style.height = '0'
-  iframe.src = './resume.html'
-  document.body.appendChild(iframe)
-  
-  iframe.onload = () => {
-    try {
-      const style = iframe.contentDocument?.createElement('style')
-      if (style) {
-        style.textContent = `
-          * {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-          }
-        `
-        iframe.contentDocument?.head.appendChild(style)
-      }
-    } catch (e) {
-      console.warn('Could not inject print styles', e)
-    }
-    iframe.contentWindow?.print()
-    setTimeout(() => {
-      document.body.removeChild(iframe)
-    }, 10000)
-  }
+const downloadResume = () => {
+  const link = document.createElement('a')
+  link.href = './resume.pdf'
+  link.download = '徐尚_简历.pdf'
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
 }
 </script>
 
@@ -77,11 +56,8 @@ const printResume = () => {
           </div>
 
           <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <button @click="showResumePreview = true" class="no-print px-5 py-2.5 bg-white/60 dark:bg-white/10 hover:bg-white/80 dark:hover:bg-white/20 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-xl font-medium transition-colors flex items-center gap-2 shadow-sm dark:shadow-none">
-              <FileText class="w-4 h-4" /> 预览简历
-            </button>
-            <button @click="printResume" class="no-print px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-medium transition-colors shadow-lg shadow-blue-500/25 flex items-center gap-2">
-              <Download class="w-4 h-4" /> 直接下载
+            <button @click="showResumePreview = true" class="no-print px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-medium transition-colors shadow-lg shadow-blue-500/25 flex items-center gap-2">
+              <FileText class="w-4 h-4" /> 简历
             </button>
             <a :href="resumeData.contact.github" target="_blank" class="no-print px-5 py-2.5 bg-white/60 dark:bg-white/10 hover:bg-white/80 dark:hover:bg-white/20 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-xl font-medium transition-colors flex items-center gap-2 shadow-sm dark:shadow-none">
               <Github class="w-4 h-4" /> GitHub
@@ -266,7 +242,7 @@ const printResume = () => {
               简历预览
             </h3>
             <div class="flex items-center gap-3">
-              <button @click="printResume" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-colors shadow-md flex items-center gap-2 text-sm">
+              <button @click="downloadResume" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-colors shadow-md flex items-center gap-2 text-sm">
                 <Download class="w-4 h-4" /> 下载 PDF
               </button>
               <button @click="showResumePreview = false" class="p-2 hover:bg-slate-200 dark:hover:bg-white/10 rounded-full transition-colors">
