@@ -19,11 +19,11 @@
   .spotlight-wrapper::after {
     content: '';
     @apply absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-300 pointer-events-none;
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(0,0,0,0.06), transparent 40%);
+    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(0,0,0,0.06), transparent 40%);
     z-index: 10;
   }
   .dark .spotlight-wrapper::after {
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.15), transparent 40%);
+    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.15), transparent 40%);
   }
   
   .spotlight-wrapper:hover::after {

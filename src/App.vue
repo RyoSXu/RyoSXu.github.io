@@ -1,14 +1,29 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useDark, useToggle } from '@vueuse/core'
+import { useDark, useToggle, useClipboard } from '@vueuse/core'
 import { resumeData } from './data/resume'
 import GlassCard from './components/GlassCard.vue'
 import MasonryLayout from './components/MasonryLayout.vue'
-import { User, Download, FileText, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Sun, Moon } from 'lucide-vue-next'
+import { User, Download, FileText, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Sun, Moon, Send, FolderKanban } from 'lucide-vue-next'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 const showResumePreview = ref(false)
+
+const { copy } = useClipboard()
+const copyStatus = ref<'email' | 'phone' | null>(null)
+
+const handleCopy = (text: string, type: 'email' | 'phone') => {
+  let copyText = text
+  if (type === 'phone') {
+    copyText = text.replace(/[\s\-()]/g, '')
+  }
+  copy(copyText)
+  copyStatus.value = type
+  setTimeout(() => {
+    if (copyStatus.value === type) copyStatus.value = null
+  }, 2000)
+}
 
 const age = computed(() => {
   if (!resumeData.birthdate) return null;
@@ -73,85 +88,63 @@ const printResume = () => {
     <!-- Background Animated Blobs (Moved to fixed container above) -->
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-20">
-      
-      <!-- Header / Hero Section -->
-      <header v-motion-slide-visible-once-bottom class="flex flex-col md:flex-row items-center md:items-center justify-start gap-8 mb-20 relative z-10 print-break-before">
-        <div class="shrink-0 relative group">
-          <div class="absolute -inset-2 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl blur-xl opacity-20 dark:opacity-40 group-hover:opacity-30 dark:group-hover:opacity-50 transition-opacity duration-500"></div>
-          <img :src="resumeData.avatar" alt="Avatar" class="w-24 md:w-28 h-auto rounded-2xl border border-white/50 dark:border-white/10 relative z-10 shadow-lg transition-transform duration-500 group-hover:scale-[1.02]" />
-        </div>
-        
-        <div class="flex-1 text-center md:text-left">
-          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-slate-900 dark:text-white">
-            {{ resumeData.name }}
-          </h1>
-          
-          <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-6">
-            <span v-if="age !== null" class="flex items-center gap-1.5 text-slate-500 dark:text-gray-400 text-sm">
-              <User class="w-4 h-4" /> {{ age }} 岁
-            </span>
-            <span class="flex items-center gap-1.5 text-slate-500 dark:text-gray-400 text-sm">
-              <MapPin class="w-4 h-4" /> {{ resumeData.location }}
-            </span>
-          </div>
-
-          <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <button @click="showResumePreview = true" class="no-print px-5 py-2 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-gray-200 active:scale-95 text-white dark:text-slate-900 rounded-xl font-medium transition duration-150 ease-out shadow-sm hover:shadow-lg hover:scale-105 flex items-center gap-2 will-change-transform">
-              <FileText class="w-4 h-4" /> 简历
-            </button>
-            <a :href="resumeData.contact.github" target="_blank" class="no-print px-5 py-2 bg-white/60 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 active:scale-95 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-xl font-medium transition duration-150 ease-out shadow-sm hover:shadow-md dark:shadow-none hover:scale-105 flex items-center gap-2 will-change-transform">
-              <Github class="w-4 h-4" /> GitHub
-            </a>
-          </div>
-        </div>
-      </header>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <!-- Left Column: Experience & Education -->
+        <!-- Left Column: Main Content -->
         <div class="lg:col-span-2 space-y-12">
           
+          <!-- Header / Hero Section -->
+          <header v-motion-slide-visible-once-bottom class="flex flex-col md:flex-row items-center md:items-center justify-start gap-8 relative z-10 print-break-before">
+            <div class="shrink-0 relative group">
+              <div class="absolute -inset-2 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl blur-xl opacity-20 dark:opacity-40 group-hover:opacity-30 dark:group-hover:opacity-50 transition-opacity duration-500"></div>
+              <img :src="resumeData.avatar" alt="Avatar" class="w-24 md:w-28 h-auto rounded-2xl border border-white/50 dark:border-white/10 relative z-10 shadow-lg transition-transform duration-500 group-hover:scale-[1.02]" />
+            </div>
+            
+            <div class="flex-1 text-center md:text-left">
+              <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-slate-900 dark:text-white">
+                {{ resumeData.name }}
+              </h1>
+              
+              <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-6">
+                <span v-if="age !== null" class="flex items-center gap-1.5 text-slate-500 dark:text-gray-400 text-sm">
+                  <User class="w-4 h-4" /> {{ age }} 岁
+                </span>
+                <span class="flex items-center gap-1.5 text-slate-500 dark:text-gray-400 text-sm">
+                  <MapPin class="w-4 h-4" /> {{ resumeData.location }}
+                </span>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                <button @click="showResumePreview = true" class="no-print px-5 py-2 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-gray-200 active:scale-95 text-white dark:text-slate-900 rounded-xl font-medium transition duration-150 ease-out shadow-sm hover:shadow-lg hover:scale-105 flex items-center gap-2 will-change-transform">
+                  <FileText class="w-4 h-4" /> 简历
+                </button>
+                <a :href="resumeData.contact.github" target="_blank" class="no-print px-5 py-2 bg-white/60 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 active:scale-95 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white rounded-xl font-medium transition duration-150 ease-out shadow-sm hover:shadow-md dark:shadow-none hover:scale-105 flex items-center gap-2 will-change-transform">
+                  <Github class="w-4 h-4" /> GitHub
+                </a>
+              </div>
+            </div>
+          </header>
+          
           <!-- Experience -->
-          <section v-motion-slide-visible-once-bottom>
+          <section v-motion-slide-visible-once-bottom class="print-break-before">
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
               <Briefcase class="w-6 h-6 text-blue-500 dark:text-blue-400" /> 工作经历
             </h2>
             <div class="space-y-6">
               <GlassCard v-for="exp in resumeData.experience" :key="exp.company">
-                <div class="flex justify-between items-start mb-2 flex-wrap gap-2">
-                  <div>
-                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">{{ exp.company }}</h3>
-                    <p class="text-blue-600 dark:text-blue-300 font-medium text-sm">{{ exp.role }} <span v-if="exp.location">· {{ exp.location }}</span></p>
+                <div class="flex justify-between items-center mb-1 flex-wrap gap-2">
+                  <div class="flex items-center flex-wrap gap-2 flex-1 pr-4">
+                    <span v-if="exp.type" class="px-1.5 py-0.5 bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-300 rounded text-[11px] border border-blue-200 dark:border-blue-500/30 font-bold leading-none shrink-0">{{ exp.type }}</span>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">{{ exp.company }}</h3>
+                    <span class="text-blue-600 dark:text-blue-300 font-medium text-sm">{{ exp.role }}</span>
+                    <span v-if="exp.location" class="text-slate-400 dark:text-gray-500 font-normal text-sm">· {{ exp.location }}</span>
                   </div>
-                  <span class="text-slate-500 dark:text-gray-400 text-sm font-mono bg-black/5 dark:bg-white/5 px-2 py-1 rounded">{{ exp.period }}</span>
+                  <span class="text-slate-500 dark:text-gray-400 text-sm font-mono shrink-0">{{ exp.period }}</span>
                 </div>
-                <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed mt-4">
+                <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed mt-2">
                   {{ exp.description }}
                 </p>
-              </GlassCard>
-            </div>
-          </section>
-
-          <!-- Education -->
-          <section v-motion-slide-visible-once-bottom class="print-break-before">
-            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
-              <GraduationCap class="w-6 h-6 text-emerald-500 dark:text-emerald-400" /> 教育经历
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <GlassCard v-for="edu in resumeData.education" :key="edu.school">
-                <div class="flex items-center gap-3 mb-4">
-                  <div class="w-10 h-10 bg-white rounded-lg p-1 flex items-center justify-center border border-slate-100 dark:border-transparent">
-                    <img :src="edu.logo" :alt="edu.school" class="max-w-full max-h-full object-contain" />
-                  </div>
-                  <div>
-                    <h3 class="font-bold text-slate-900 dark:text-white">{{ edu.school }}</h3>
-                    <p class="text-slate-500 dark:text-gray-400 text-xs font-mono">{{ edu.period }}</p>
-                  </div>
-                </div>
-                <div class="text-sm text-slate-600 dark:text-gray-300">
-                  <p>{{ edu.college }}</p>
-                  <p class="text-emerald-600 dark:text-emerald-300 font-medium mt-1">{{ edu.major }} · {{ edu.degree }}</p>
-                </div>
               </GlassCard>
             </div>
           </section>
@@ -185,6 +178,34 @@ const printResume = () => {
                 <a v-if="res.githubUrl" :href="res.githubUrl" target="_blank" class="no-print inline-flex items-center gap-1.5 text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 text-sm font-medium transition-colors">
                   <Github class="w-4 h-4" /> 查看源代码
                 </a>
+              </GlassCard>
+            </div>
+          </section>
+
+          <!-- Project Experience -->
+          <section v-motion-slide-visible-once-bottom class="print-break-before">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
+              <FolderKanban class="w-6 h-6 text-rose-500 dark:text-rose-400" /> 项目经历
+            </h2>
+            <div class="space-y-6">
+              <GlassCard v-for="item in resumeData.projectExperience" :key="item.title">
+                <div class="w-12 h-12 bg-black/5 dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 flex items-center justify-center mb-5" v-if="item.icon || !item.image">
+                  <Activity v-if="item.icon === 'activity'" class="w-6 h-6 text-rose-500 dark:text-rose-400" />
+                  <ShoppingBag v-else-if="item.icon === 'shopping-bag'" class="w-6 h-6 text-rose-500 dark:text-rose-400" />
+                  <Code2 v-else class="w-6 h-6 text-rose-500 dark:text-rose-400" />
+                </div>
+                <div v-if="item.image" class="mb-5 rounded-xl overflow-hidden border border-slate-200 dark:border-white/10">
+                  <img :src="item.image" :alt="item.title" class="w-full h-32 object-cover opacity-90 dark:opacity-80 hover:opacity-100 transition-opacity" />
+                </div>
+
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">{{ item.title }}</h3>
+                <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed mb-5">{{ item.description }}</p>
+                
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  <span v-for="tag in item.tags" :key="tag" class="px-2.5 py-1 bg-rose-100 dark:bg-rose-500/10 text-rose-700 dark:text-rose-300/90 border border-transparent dark:border-rose-500/20 rounded-md text-xs">
+                    {{ tag }}
+                  </span>
+                </div>
               </GlassCard>
             </div>
           </section>
@@ -224,24 +245,58 @@ const printResume = () => {
         <!-- Right Column: Skills & Contact -->
         <div class="space-y-8">
           
+          <!-- Education -->
+          <section v-motion-slide-visible-once-bottom>
+            <GlassCard>
+              <h2 class="text-lg font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
+                <GraduationCap class="w-5 h-5 text-emerald-500 dark:text-emerald-400" /> 教育经历
+              </h2>
+              <div class="flex flex-col gap-6">
+                <div v-for="edu in resumeData.education" :key="edu.school">
+                  <div class="flex items-center gap-4 mb-3">
+                    <div class="w-10 h-10 bg-white rounded-lg p-1.5 flex items-center justify-center border border-slate-100 dark:border-transparent shrink-0">
+                      <img :src="edu.logo" :alt="edu.school" class="max-w-full max-h-full object-contain" />
+                    </div>
+                    <div>
+                      <h3 class="font-bold text-slate-900 dark:text-white text-base">{{ edu.school }}</h3>
+                      <p class="text-slate-500 dark:text-gray-400 text-sm font-mono">{{ edu.period }}</p>
+                    </div>
+                  </div>
+                  <div class="text-sm text-slate-600 dark:text-gray-300 pl-14">
+                    <p>{{ edu.college }}</p>
+                    <p class="text-emerald-600 dark:text-emerald-300 font-medium mt-1">{{ edu.major }} · {{ edu.degree }}</p>
+                  </div>
+                </div>
+              </div>
+            </GlassCard>
+          </section>
+
           <!-- Contact -->
           <section v-motion-slide-visible-once-bottom>
             <GlassCard>
-              <h2 class="text-lg font-bold mb-5 flex items-center gap-2 text-slate-900 dark:text-white">
-                联系方式
+              <h2 class="text-lg font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
+                <Send class="w-5 h-5 text-purple-500 dark:text-purple-400" /> 联系方式
               </h2>
               <ul class="space-y-4 text-sm">
-                <li class="flex items-center gap-3">
-                  <div class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center shrink-0">
-                    <Mail class="w-4 h-4 text-slate-500 dark:text-gray-400" />
+                <li class="flex items-center gap-3 group/item relative cursor-pointer w-fit" @click="handleCopy(resumeData.contact.email, 'email')">
+                  <div class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center shrink-0 group-hover/item:bg-blue-100 dark:group-hover/item:bg-blue-900/30 transition-colors">
+                    <Mail class="w-4 h-4 text-slate-500 dark:text-gray-400 group-hover/item:text-blue-500" />
                   </div>
-                  <a :href="'mailto:' + resumeData.contact.email" class="text-slate-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition-colors">{{ resumeData.contact.email }}</a>
+                  <span class="text-slate-700 dark:text-gray-300 group-hover/item:text-blue-600 dark:group-hover/item:text-white transition-colors">{{ resumeData.contact.email }}</span>
+                  <div class="absolute left-10 -top-8 px-2 py-1 bg-slate-800 dark:bg-slate-700 text-white text-xs rounded opacity-0 group-hover/item:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10 shadow-lg">
+                    {{ copyStatus === 'email' ? '已复制！' : '点击复制' }}
+                    <div class="absolute -bottom-1 left-4 w-2 h-2 bg-slate-800 dark:bg-slate-700 rotate-45"></div>
+                  </div>
                 </li>
-                <li class="flex items-center gap-3">
-                  <div class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center shrink-0">
-                    <Phone class="w-4 h-4 text-slate-500 dark:text-gray-400" />
+                <li class="flex items-center gap-3 group/item relative cursor-pointer w-fit" @click="handleCopy(resumeData.contact.phone, 'phone')">
+                  <div class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center shrink-0 group-hover/item:bg-blue-100 dark:group-hover/item:bg-blue-900/30 transition-colors">
+                    <Phone class="w-4 h-4 text-slate-500 dark:text-gray-400 group-hover/item:text-blue-500" />
                   </div>
-                  <span class="text-slate-700 dark:text-gray-300">{{ resumeData.contact.phone }}</span>
+                  <span class="text-slate-700 dark:text-gray-300 group-hover/item:text-blue-600 dark:group-hover/item:text-white transition-colors">{{ resumeData.contact.phone }}</span>
+                  <div class="absolute left-10 -top-8 px-2 py-1 bg-slate-800 dark:bg-slate-700 text-white text-xs rounded opacity-0 group-hover/item:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10 shadow-lg">
+                    {{ copyStatus === 'phone' ? '已复制！' : '点击复制' }}
+                    <div class="absolute -bottom-1 left-4 w-2 h-2 bg-slate-800 dark:bg-slate-700 rotate-45"></div>
+                  </div>
                 </li>
               </ul>
             </GlassCard>

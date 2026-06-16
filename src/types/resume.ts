@@ -13,6 +13,7 @@ export interface Experience {
   period: string;
   location?: string;
   description: string;
+  type?: string;
 }
 
 export interface SkillCategory {
@@ -55,5 +56,6 @@ export interface ResumeData {
   experience: Experience[];
   skills: SkillCategory[];
   research: Research[];
+  projectExperience: Project[];
   projects: Project[];
 }

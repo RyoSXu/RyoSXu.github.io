@@ -32,8 +32,10 @@ export const resumeData: ResumeData = {
   ],
   experience: [
     {
-      company: 'ABB(中国)有限公司 - 贝加莱工业自动化',
+      company: 'ABB(中国)有限公司 - B&R工业自动化',
       role: 'AI应用开发',
+      location: '上海',
+      type: '实习',
       period: '2026.04 — 至今',
       description: '负责 MDoctor 工业振动分析软件项目，独立完成从立项到工控机上线的完整交付，构建可在产线部署的振动监测与故障诊断系统；期间主动对接现场工程师、梳理设备数据，并持续沟通以对齐产品方向与现场需求。',
     },
@@ -41,6 +43,7 @@ export const resumeData: ResumeData = {
       company: '安徽航展自动化科技有限公司',
       role: '自动化实习生',
       location: '滁州',
+      type: '实习',
       period: '2023.12 — 2024.02',
       description: '负责自动化系统设计、西门子 PLC 程序编写、传感器配置；参与工厂自动化生产线升级改造与智能仓储系统开发；具备工业现场调试与问题定位经验。',
     },
@@ -81,22 +84,16 @@ export const resumeData: ResumeData = {
         './assets/arpat/Figure 4.jpg',
       ],
     },
-    {
-      title: 'CLPP: Contrastive Learning Property Prediction',
-      status: '探索性工作',
-      description: '探索使用对比学习（Contrastive Learning）方法进行材料属性预测训练，并为谱线或序列等专用数据构建了专门的编码器。',
-      highlights: [],
-      tags: ['Contrastive Learning', 'Deep Learning', 'Representation Learning'],
-      githubUrl: 'https://github.com/RyoSXu/CLPP',
-    },
   ],
-  projects: [
+  projectExperience: [
     {
       title: 'MDoctor - 工业振动分析软件',
       description: '在贝加莱（B&R）实习期间独立全栈开发的重点项目，主导从产品到上线全流程：完成需求拆解、产品定位与架构设计，独立承担前端开发、后端服务、故障诊断算法及工控机本地部署，最终交付可在产线部署的设备状态监控与故障诊断系统。',
       tags: ['Web 开发', 'FastAPI', 'Electron', 'PLC 数据接入', '故障诊断算法'],
       icon: 'activity',
     },
+  ],
+  projects: [
     {
       title: '2Prac - 自定义刷题程序',
       description: '一个将题库转换为刷题程序的工具。基于开源程序修改，增加了通过脚本将自定义题库转换为 JSON 格式并导入的功能。解决了同类产品付费且使用复杂的痛点。',

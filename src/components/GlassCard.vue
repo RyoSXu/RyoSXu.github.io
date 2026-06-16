@@ -73,7 +73,7 @@ const cardStyle = computed(() => {
   const rotateY = mousePos.value.x * 4
   return {
     transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`,
-    transition: 'transform 0.1s ease-out'
+    transition: 'transform 0s'
   }
 })
 </script>
