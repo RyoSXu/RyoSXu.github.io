@@ -10,7 +10,7 @@ const toggleDark = useToggle(isDark)
 </script>
 
 <template>
-  <div class="min-h-screen relative overflow-hidden pb-32 transition-colors duration-500">
+  <div class="min-h-screen bg-slate-50 dark:bg-[#0b0c10] text-slate-800 dark:text-gray-200 relative overflow-hidden pb-32 transition-colors duration-500">
     <!-- Theme Toggle -->
     <button @click="toggleDark()" class="no-print fixed top-6 right-6 p-3 rounded-full bg-white/40 dark:bg-white/10 backdrop-blur-md border border-slate-200 dark:border-white/10 hover:bg-white/60 dark:hover:bg-white/20 transition-all z-50 shadow-sm dark:shadow-none">
       <Sun v-if="isDark" class="w-5 h-5 text-yellow-300" />
