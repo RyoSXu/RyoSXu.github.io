@@ -36,7 +36,7 @@
 
 | 项目               | 简介                                                                                               | 技术栈                                  |
 | ------------------ | -------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| **MDoctor**  | 工业振动分析软件。独立全栈开发，包含设备状态监控与故障诊断算法，完成工控机本地部署                 | Web 开发 · FastAPI · Electron · PLC   |
+| **MDoctor**  | 工业振动分析软件。独立全栈开发，包含设备状态监控与故障诊断算法，完成工控机本地部署                 | Web 开发 · FastAPI · PyInstaller+Inno Setup 桌面化打包 · PLC   |
 | **2Prac**    | 将自定义题库转换为刷题程序的工具，支持脚本一键将题库转为 JSON 格式导入，解决同类产品付费复杂的痛点 | Vue.js · JavaScript · JSON Processing |
 | **loveCom**  | 自定义商品售卖的微信小程序平台，提供零手续费的开店体验                                             | 微信小程序 · CloudBase · Serverless   |
 | **今日食份** | 情侣伙食助手，含食材入库、过期预警看板、菜谱管理与饮食日志                                         | 微信小程序 · 云开发                    |
@@ -45,10 +45,11 @@
 
 ## 技术技能
 
-- **语言与环境**：Python · C++ · Linux · Git · JavaScript
-- **AI / 深度学习**：PyTorch · Transformer · GNN
-- **工程与开发**：Vue.js · FastAPI · SQLite · Electron · PLC 数据接入
-- **AI 辅助编程**: Claude Code · Codex · Antigravity
+- **编程语言**：Python · C++ · JavaScript
+- **深度学习**：PyTorch · Transformer · GNN
+- **全栈开发**：Vue3 · FastAPI · SQLite
+- **系统协议**：Linux · OPC UA
+- **开发工具**：Git · Claude Code · Codex · Cursor · Antigravity
 ---
 
 ## 教育背景

@@ -51,20 +51,24 @@ export const resumeData: ResumeData = {
   ],
   skills: [
     {
-      name: '语言与环境',
-      skills: ['Python', 'C++', 'Linux', 'Git', 'JavaScript'],
+      name: '编程语言',
+      skills: ['Python', 'C++', 'JavaScript'],
     },
     {
-      name: 'AI / 深度学习',
+      name: '深度学习',
       skills: ['PyTorch', 'Transformer', 'GNN'],
     },
     {
-      name: '工程与开发',
-      skills: ['Vue.js', 'FastAPI', 'SQLite', 'Electron'],
+      name: '全栈开发',
+      skills: ['Vue3', 'FastAPI', 'SQLite'],
     },
     {
-      name: 'AI 辅助编程',
-      skills: ['Claude Code', 'Codex', 'Antigravity'],
+      name: '系统协议',
+      skills: ['Linux', 'OPC UA'],
+    },
+    {
+      name: '开发工具',
+      skills: ['Git', 'Claude Code', 'Codex', 'Cursor', 'Antigravity'],
     },
   ],
   research: [
@@ -99,7 +103,7 @@ export const resumeData: ResumeData = {
     {
       title: 'MDoctor - 工业振动分析软件',
       description: '在贝加莱（B&R）实习期间独立全栈开发的重点项目，主导从产品到上线全流程：完成需求拆解、产品定位与架构设计，独立承担前端开发、后端服务、故障诊断算法及工控机本地部署，最终交付可在产线部署的设备状态监控与故障诊断系统。',
-      tags: ['Web 开发', 'FastAPI', 'Electron', 'PLC 数据接入', '故障诊断算法'],
+      tags: ['Web 开发', 'FastAPI', 'PyInstaller+Inno Setup 桌面化打包', 'PLC 数据接入', '故障诊断算法'],
       icon: 'activity',
     },
   ],
