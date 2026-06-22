@@ -85,7 +85,7 @@ export const resumeData: ResumeData = {
         '具备极高的计算效率（较传统方法实现数个数量级的速度跨越），及在复杂体系中的优异泛化能力，为新材料高通量筛选提供了全新路径',
       ],
       tags: ['Python', 'PyTorch', 'Transformer', 'Materials AI'],
-      githubUrl: 'https://github.com/RyoSXu/PPhT',
+      githubUrl: 'https://github.com/RyoSXu/ARPAT',
       images: [
         './assets/ppht/Figure 1.jpg',
         './assets/ppht/Figure 2.jpg',

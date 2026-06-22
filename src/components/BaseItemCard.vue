@@ -24,7 +24,7 @@
           {{ badge }}
         </span>
         
-        <h3 class="text-[15px] font-bold text-slate-900 dark:text-white">{{ title }}</h3>
+        <h3 class="text-[15px] font-bold leading-none text-slate-900 dark:text-white">{{ title }}</h3>
         
         <span v-if="subtitle || $slots.subtitle" :class="['font-medium text-sm', layout === 'horizontal' ? themeClasses.text : 'block mt-1 text-slate-500 dark:text-gray-400']">
           <slot name="subtitle">{{ subtitle }}</slot>
