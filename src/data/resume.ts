@@ -102,7 +102,7 @@ export const resumeData: ResumeData = {
   projectExperience: [
     {
       title: 'MDoctor - 工业振动分析软件',
-      description: '在贝加莱（B&R）实习期间独立全栈开发的重点项目，主导从产品到上线全流程：完成需求拆解、产品定位与架构设计，独立承担前端开发、后端服务、故障诊断算法及工控机本地部署，最终交付可在产线部署的设备状态监控与故障诊断系统。',
+      description: '在贝加莱（B&R）实习期间，在业务团队明确应用场景的基础上，独立承担该项目从 0 到 1 的工程研发工作。主导完成了技术选型与系统架构设计，并独立实现前端交互界面、后端核心分析服务、故障诊断算法集成以及工控机的本地环境部署。',
       tags: ['Web 开发', 'FastAPI', 'PyInstaller+Inno Setup 桌面化打包', 'PLC 数据接入', '故障诊断算法'],
       icon: 'activity',
     },
