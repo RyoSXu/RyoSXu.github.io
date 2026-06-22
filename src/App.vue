@@ -366,23 +366,23 @@ const printResume = () => {
     <Teleport to="body">
       <div v-if="showResumePreview" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 no-print">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="showResumePreview = false"></div>
-        <div class="relative w-full max-w-4xl h-[90vh] bg-slate-50 dark:bg-[#0b0c10] rounded-[14px] shadow-2xl overflow-hidden flex flex-col border border-slate-200 dark:border-white/10">
-          <div class="flex justify-between items-center p-4 border-b border-slate-200 dark:border-white/10">
-            <h3 class="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
-              <FileText class="w-5 h-5 text-blue-500" />
+        <div class="relative w-full max-w-4xl h-[90vh] bg-white/60 dark:bg-[#0b0c10]/60 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-white/40 dark:border-white/10 ring-1 ring-black/5 dark:ring-white/10">
+          <div class="flex justify-between items-center p-5 border-b border-slate-200/50 dark:border-white/10">
+            <h3 class="text-lg font-bold text-slate-800 dark:text-gray-100 flex items-center gap-2">
+              <FileText class="w-5 h-5 text-blue-500 dark:text-blue-400" />
               简历预览
             </h3>
             <div class="flex items-center gap-3">
-              <button @click="printResume" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-colors shadow-md flex items-center gap-2 text-sm">
+              <button @click="printResume" class="px-5 py-2 bg-blue-500/90 hover:bg-blue-600 dark:bg-blue-600/80 dark:hover:bg-blue-500 text-white rounded-xl font-medium transition-all shadow-sm hover:shadow-md active:scale-95 flex items-center gap-2 text-sm backdrop-blur-md">
                 <Download class="w-4 h-4" /> 下载 PDF
               </button>
-              <button @click="showResumePreview = false" class="p-2 hover:bg-slate-200 dark:hover:bg-white/10 rounded-full transition-colors">
-                <X class="w-5 h-5 text-slate-500 dark:text-gray-400" />
+              <button @click="showResumePreview = false" class="p-2 bg-slate-200/50 hover:bg-slate-300/50 dark:bg-white/5 dark:hover:bg-white/10 rounded-full transition-colors backdrop-blur-md text-slate-600 dark:text-gray-300">
+                <X class="w-5 h-5" />
               </button>
             </div>
           </div>
-          <div class="flex-1 overflow-hidden p-2 bg-slate-200/50 dark:bg-black/50">
-            <iframe src="./resume.html" class="w-full h-full border border-slate-200 dark:border-white/10 bg-white shadow-sm rounded-lg" title="Resume Preview"></iframe>
+          <div class="flex-1 overflow-hidden flex justify-center bg-slate-100/30 dark:bg-black/20">
+            <iframe src="./resume.html" class="w-full max-w-[210mm] h-full bg-white shadow-2xl mx-auto border-x border-slate-200 dark:border-slate-800" title="Resume Preview"></iframe>
           </div>
         </div>
       </div>
