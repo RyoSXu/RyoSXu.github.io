@@ -10,7 +10,7 @@
 
     <!-- Top Badge / Header extra (For vertical layout) -->
     <div v-if="layout === 'vertical' && (badge || $slots['header-extra'])" class="flex items-center gap-3 mb-2 shrink-0">
-      <span v-if="badge" :class="['px-2.5 py-1 rounded-md text-xs font-bold border', themeClasses.badge]">
+      <span v-if="badge" :class="themeClasses.badge">
         {{ badge }}
       </span>
       <slot name="header-extra"></slot>
@@ -20,7 +20,7 @@
     <div :class="['shrink-0', layout === 'horizontal' ? 'flex justify-between items-center mb-1 flex-wrap gap-2' : 'mb-2']">
       <div :class="layout === 'horizontal' ? 'flex items-center flex-wrap gap-2 flex-1 pr-4' : ''">
         <!-- Inline badge for horizontal layout -->
-        <span v-if="layout === 'horizontal' && badge" :class="['px-1.5 py-0.5 rounded text-[11px] font-bold leading-none shrink-0 border', themeClasses.badge]">
+        <span v-if="layout === 'horizontal' && badge" :class="themeClasses.badge">
           {{ badge }}
         </span>
         
@@ -47,9 +47,9 @@
       <slot name="content-extra"></slot>
     </div>
 
-    <!-- Bottom Tags -->
-    <div v-if="tags && tags.length" class="flex flex-wrap gap-2 mt-auto" :class="{'mb-3': $slots['footer-extra']}">
-      <span v-for="tag in tags" :key="tag" :class="['px-2.5 py-1 rounded-md text-xs border transition-colors', tagThemeClasses.badge]">
+    <!-- Tags -->
+    <div v-if="tags && tags.length" class="flex flex-wrap gap-1.5 mt-auto pt-3 shrink-0">
+      <span v-for="tag in tags" :key="tag" :class="tagThemeClasses.badge">
         {{ tag }}
       </span>
     </div>
@@ -89,33 +89,56 @@ const getThemeClasses = (theme: string) => {
   switch (theme) {
     case 'blue':
       return {
-        badge: 'bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-500/30',
+        badge: 'tag-glass bg-blue-500/10 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/20 dark:border-blue-500/30',
         text: 'text-blue-600 dark:text-blue-300'
       }
     case 'purple':
       return {
-        badge: 'bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-500/30',
+        badge: 'tag-glass bg-purple-500/10 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/20 dark:border-purple-500/30',
         text: 'text-purple-600 dark:text-purple-300'
       }
     case 'rose':
       return {
-        badge: 'bg-rose-100 dark:bg-rose-500/10 text-rose-700 dark:text-rose-300/90 border-transparent dark:border-rose-500/20',
+        badge: 'tag-glass bg-rose-500/10 dark:bg-rose-500/20 text-rose-700 dark:text-rose-300 border-rose-500/20 dark:border-rose-500/30',
         text: 'text-rose-600 dark:text-rose-300'
       }
     case 'amber':
       return {
-        badge: 'bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300/90 border-transparent dark:border-amber-500/20',
+        badge: 'tag-glass bg-amber-500/10 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 border-amber-500/20 dark:border-amber-500/30',
         text: 'text-amber-600 dark:text-amber-300'
+      }
+    case 'indigo':
+      return {
+        badge: 'tag-glass bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 border-indigo-500/20 dark:border-indigo-500/30',
+        text: 'text-indigo-600 dark:text-indigo-300'
+      }
+    case 'teal':
+      return {
+        badge: 'tag-glass bg-teal-500/10 dark:bg-teal-500/20 text-teal-700 dark:text-teal-300 border-teal-500/20 dark:border-teal-500/30',
+        text: 'text-teal-600 dark:text-teal-300'
+      }
+    case 'fuchsia':
+      return {
+        badge: 'tag-glass bg-fuchsia-500/10 dark:bg-fuchsia-500/20 text-fuchsia-700 dark:text-fuchsia-300 border-fuchsia-500/20 dark:border-fuchsia-500/30',
+        text: 'text-fuchsia-600 dark:text-fuchsia-300'
+      }
+    case 'emerald':
+      return {
+        badge: 'tag-glass bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/20 dark:border-emerald-500/30',
+        text: 'text-emerald-600 dark:text-emerald-300'
       }
     default:
       return {
-        badge: 'bg-black/5 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-600 dark:text-gray-300',
+        badge: 'tag-glass bg-black/5 dark:bg-white/10 border-slate-200/50 dark:border-white/10 text-slate-700 dark:text-gray-300',
         text: 'text-slate-600 dark:text-gray-300'
       }
   }
 }
 
 const themeClasses = computed(() => getThemeClasses(props.theme))
-const tagThemeClasses = computed(() => getThemeClasses(props.tagTheme))
+const tagThemeClasses = computed(() => {
+  const themeToUse = props.tagTheme && props.tagTheme !== 'neutral' ? props.tagTheme : props.theme
+  return getThemeClasses(themeToUse)
+})
 
 </script>
