@@ -366,7 +366,7 @@ const printResume = () => {
     <Teleport to="body">
       <div v-if="showResumePreview" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 no-print">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="showResumePreview = false"></div>
-        <div class="relative w-full max-w-4xl h-[90vh] bg-white/60 dark:bg-[#0b0c10]/60 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-white/40 dark:border-white/10 ring-1 ring-black/5 dark:ring-white/10">
+        <div class="relative w-full max-w-[210mm] h-[90vh] mx-auto bg-white/60 dark:bg-[#0b0c10]/60 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-white/40 dark:border-white/10 ring-1 ring-black/5 dark:ring-white/10">
           <div class="flex justify-between items-center p-5 border-b border-slate-200/50 dark:border-white/10">
             <h3 class="text-lg font-bold text-slate-800 dark:text-gray-100 flex items-center gap-2">
               <FileText class="w-5 h-5 text-blue-500 dark:text-blue-400" />
@@ -382,7 +382,7 @@ const printResume = () => {
             </div>
           </div>
           <div class="flex-1 overflow-hidden flex justify-center bg-slate-100/30 dark:bg-black/20">
-            <iframe src="./resume.html" class="w-full max-w-[210mm] h-full bg-white shadow-2xl mx-auto border-x border-slate-200 dark:border-slate-800" title="Resume Preview"></iframe>
+            <iframe src="./resume.html" class="w-full h-full bg-white mx-auto border-none" title="Resume Preview"></iframe>
           </div>
         </div>
       </div>
