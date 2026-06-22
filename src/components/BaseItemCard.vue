@@ -73,8 +73,8 @@ const props = withDefaults(defineProps<{
   image?: string
   badge?: string
   tags?: string[]
-  theme?: 'blue' | 'purple' | 'rose' | 'amber' | 'neutral'
-  tagTheme?: 'blue' | 'purple' | 'rose' | 'amber' | 'neutral'
+  theme?: 'blue' | 'purple' | 'rose' | 'amber' | 'neutral' | 'indigo' | 'teal' | 'fuchsia' | 'emerald'
+  tagTheme?: 'blue' | 'purple' | 'rose' | 'amber' | 'neutral' | 'indigo' | 'teal' | 'fuchsia' | 'emerald'
   layout?: 'horizontal' | 'vertical'
 }>(), {
   theme: 'blue',
