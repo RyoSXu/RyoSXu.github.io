@@ -1,4 +1,4 @@
-# 徐尚 · Ryo Xu — Personal Portfolio
+# 徐尚 · Ryo Xu — 个人主页
 
 **🌐 网站**：[ryosxu.github.io](https://ryosxu.github.io)　｜　**📧 邮箱**：[xushang@shu.edu.cn](mailto:xushang@shu.edu.cn)　｜　**💻 GitHub**：[RyoSXu](https://github.com/RyoSXu)
 
@@ -8,18 +8,15 @@
 
 ### PPhT — Pre-trained Phonon Transformer
 
-基于 Transformer 架构（而非传统图神经网络）对晶体结构建模，快速预测材料的声子态密度（Phonon DOS）。创新性地引入原子相对位置编码以捕获长程几何特征，并构建了包含逾 2.4 万条数据、覆盖 86 种元素的声子态密度数据集。预测精度较原 SOTA 模型 Mat2Spec **提升 27.6%**，推理速度较传统 DFT 计算提升数个数量级。
+针对传统计算方法预测声子态密度（Phonon Density of States）成本高、速度慢的问题，提出了 PPhT (Pre-trained Phonon Transformer) 模型。该模型将径向基函数编码的相对距离与球谐函数编码的方向特征融合至注意力机制中，大幅增强了对三维晶格几何与长程原子相互作用的表征能力。
 
-- **论文**：*Phonon Density of States Prediction from the Pre-trained Phonon Transformer*（npj Computational Materials 已接收）
-- **代码**：[github.com/RyoSXu/PPhT](https://github.com/RyoSXu/PPhT)
+- 构建并验证了包含逾 2.4 万条数据、覆盖 86 种元素的声子态密度大规模数据集。
+- 在预测精度上显著优于 E3NN、GATGNN、M3GNet 以及原 SOTA 模型 Mat2Spec。
+- 具备极高的计算效率（较传统方法实现数个数量级的速度跨越），及在复杂体系中的优异泛化能力，为新材料高通量筛选提供了全新路径。
+
+- **论文**：*Phonon Density of States Prediction from the Pre-trained Phonon Transformer*（npj Computational Materials）
+- **代码**：[github.com/RyoSXu/ARPAT](https://github.com/RyoSXu/ARPAT)
 - **技术栈**：Python · PyTorch · Transformer · Materials AI
-
-### CLPP — Contrastive Learning Property Prediction
-
-探索使用对比学习方法进行材料属性预测训练，并为谱线、序列等专用数据构建了专门的编码器。
-
-- **代码**：[github.com/RyoSXu/CLPP](https://github.com/RyoSXu/CLPP)
-- **技术栈**：Contrastive Learning · Deep Learning · Representation Learning
 
 ---
 

@@ -67,7 +67,19 @@ const printResume = () => {
     } catch (e) {
       console.warn('Could not inject print styles', e)
     }
+    
+    const originalTitle = document.title
+    document.title = '徐尚_个人简历'
+    if (iframe.contentDocument) {
+      iframe.contentDocument.title = '徐尚_个人简历'
+    }
+    
     iframe.contentWindow?.print()
+    
+    setTimeout(() => {
+      document.title = originalTitle
+    }, 500)
+    
     setTimeout(() => {
       document.body.removeChild(iframe)
     }, 10000)
