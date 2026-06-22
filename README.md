@@ -6,12 +6,12 @@
 
 ## 学术研究
 
-### ARPAT — Atomic Relative Position Encoding Attention Transformer
+### PPhT — Pre-trained Phonon Transformer
 
 基于 Transformer 架构（而非传统图神经网络）对晶体结构建模，快速预测材料的声子态密度（Phonon DOS）。创新性地引入原子相对位置编码以捕获长程几何特征，并构建了包含逾 2.4 万条数据、覆盖 86 种元素的声子态密度数据集。预测精度较原 SOTA 模型 Mat2Spec **提升 27.6%**，推理速度较传统 DFT 计算提升数个数量级。
 
-- **论文**：*Phonon Density of States Prediction from Atomic Relative Position Encoding Attention Transformer*（npj Computational Materials 已接收）
-- **代码**：[github.com/RyoSXu/ARPAT](https://github.com/RyoSXu/ARPAT)
+- **论文**：*Phonon Density of States Prediction from the Pre-trained Phonon Transformer*（npj Computational Materials 已接收）
+- **代码**：[github.com/RyoSXu/PPhT](https://github.com/RyoSXu/PPhT)
 - **技术栈**：Python · PyTorch · Transformer · Materials AI
 
 ### CLPP — Contrastive Learning Property Prediction
