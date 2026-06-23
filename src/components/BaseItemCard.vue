@@ -39,7 +39,7 @@
     </div>
 
     <!-- Description -->
-    <p v-if="description" class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed" :class="{'mb-3': $slots['content-extra'] || tags?.length || $slots['footer-extra']}">
+    <p v-if="description" class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed text-justify [text-justify:inter-ideograph]" :class="{'mb-3': $slots['content-extra'] || tags?.length || $slots['footer-extra']}">
       {{ description }}
     </p>
 

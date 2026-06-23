@@ -4,7 +4,7 @@ export const resumeData: ResumeData = {
   name: '徐尚',
   englishName: 'Ryo Xu',
   avatar: './avatar.jpg', // we will move avatar to public later
-  keywords: ['AI应用开发', '机器学习', '工业软件开发'],
+  keywords: ['AI应用开发', '软件开发', '机器学习'],
   location: '上海市',
   birthdate: '2003-06-25',
   contact: {
@@ -37,8 +37,8 @@ export const resumeData: ResumeData = {
       role: 'AI应用开发',
       location: '上海',
       type: '实习',
-      period: '2026.04 — 至今',
-      description: '负责 MDoctor 工业振动分析软件项目，独立完成从立项到工控机上线的完整交付，构建可在产线部署的振动监测与故障诊断系统；期间主动对接现场工程师、梳理设备数据，并持续沟通以对齐产品方向与现场需求。',
+      period: '2026.04 — 2026.10',
+      description: '独立负责 MDoctor 工业振动分析软件的端到端研发与上线交付；深入产线梳理设备通讯环境并打通底层数据链路，主动对接现场工程师拆解业务需求，成功构建可直接在工控机上落地的状态监测系统。',
     },
     {
       company: '安徽航展自动化科技有限公司',
@@ -102,8 +102,8 @@ export const resumeData: ResumeData = {
   projectExperience: [
     {
       title: 'MDoctor - 工业振动分析软件',
-      description: '在贝加莱（B&R）实习期间，在业务团队明确应用场景的基础上，独立承担该项目从 0 到 1 的工程研发工作。主导完成了技术选型与系统架构设计，并独立实现前端交互界面、后端核心分析服务、故障诊断算法集成以及工控机的本地环境部署。',
-      tags: ['Web 开发', 'FastAPI', 'PyInstaller+Inno Setup 桌面化打包', 'PLC 数据接入', '故障诊断算法'],
+      description: '在贝加莱（B&R）实习期间，独立承担该项目从 0 到 1 的工程研发。主导系统架构设计并打通工业数据链路：通过 PLC 采集振动数据并经 FTP 传输，同时结合 OPC UA 协议实现与底层设备的交互控制；并独立完成基于 Vue3 + FastAPI 的全栈分析系统开发与桌面化部署。',
+      tags: ['FastAPI', 'Vue3', 'PyInstaller', 'PLC & FTP', 'OPC UA'],
       icon: 'activity',
     },
   ],
