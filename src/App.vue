@@ -47,7 +47,7 @@ watch(() => route.path, (to, from) => {
             :to="item.path"
             class="relative flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium btn-jelly"
             :class="[
-              route.path === item.path 
+              route.path === item.path || (item.path !== '/' && route.path.startsWith(item.path + '/'))
                 ? 'text-blue-600 dark:text-blue-400 bg-white/50 dark:bg-white/10 shadow-sm' 
                 : 'text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/20 dark:hover:bg-white/5'
             ]"

@@ -18,6 +18,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/tools',
     name: 'Tools',
     component: Tools
+  },
+  {
+    path: '/tools/svg-converter',
+    name: 'SvgConverter',
+    component: () => import('../views/tools/ImageTracerView.vue')
   }
 ]
 
