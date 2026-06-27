@@ -4,7 +4,7 @@ import { useClipboard } from '@vueuse/core'
 import { resumeData } from '../data/resume'
 import GlassCard from '../components/GlassCard.vue'
 import BaseItemCard from '../components/BaseItemCard.vue'
-import { User, Download, FileText, BookOpen, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Send, FolderKanban, Info } from 'lucide-vue-next'
+import { User, Download, FileText, BookOpen, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Send, FolderKanban, Info, Server, Gamepad2, ArrowRight } from 'lucide-vue-next'
 
 const showResumePreview = ref(false)
 const showToast = ref(false)
@@ -322,6 +322,66 @@ const printResume = () => {
             </GlassCard>
           </section>
         </div>
+
+        <!-- Open Source & Practice -->
+        <section class="lg:col-span-3 print-break-before" data-portfolio-section>
+          <h2 class="text-[18px] font-bold leading-none mb-4 flex items-center gap-2 text-slate-900 dark:text-white">
+            <Code2 class="w-6 h-6 text-amber-500 dark:text-amber-400" /> 开源与实践
+          </h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <BaseItemCard
+              layout="vertical"
+              theme="amber"
+              tagTheme="amber"
+              title="RyoMonitor × RyoAuthGate"
+              description="面向个人 VPS 的 Go 服务组合：RyoMonitor 负责资源与服务状态采集，RyoAuthGate 通过 Caddy forward-auth 为多个子域提供统一密码登录。两者均已部署并持续运行于个人 VPS。"
+              :tags="['Go', 'Linux', 'systemd', 'Caddy', 'SSO']"
+            >
+              <template #icon>
+                <Server class="w-6 h-6 text-amber-500 dark:text-amber-400" />
+              </template>
+              <template #content-extra>
+                <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-gray-400">
+                  <span class="px-2.5 py-1 rounded-lg bg-black/5 dark:bg-white/5">GitHub</span>
+                  <ArrowRight class="w-3.5 h-3.5" />
+                  <span class="px-2.5 py-1 rounded-lg bg-black/5 dark:bg-white/5">Go Binary</span>
+                  <ArrowRight class="w-3.5 h-3.5" />
+                  <span class="px-2.5 py-1 rounded-lg bg-black/5 dark:bg-white/5">systemd</span>
+                  <ArrowRight class="w-3.5 h-3.5" />
+                  <span class="px-2.5 py-1 rounded-lg bg-black/5 dark:bg-white/5">Caddy / HTTPS</span>
+                </div>
+              </template>
+              <template #footer-extra>
+                <div class="flex flex-wrap items-center gap-5 no-print">
+                  <a href="https://github.com/RyoSXu/RyoMonitor" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-amber-600 dark:text-amber-400 hover:text-amber-500 dark:hover:text-amber-300 text-sm font-medium transition-colors">
+                    <Github class="w-4 h-4" /> RyoMonitor
+                  </a>
+                  <a href="https://github.com/RyoSXu/RyoAuthGate" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-amber-600 dark:text-amber-400 hover:text-amber-500 dark:hover:text-amber-300 text-sm font-medium transition-colors">
+                    <Github class="w-4 h-4" /> RyoAuthGate
+                  </a>
+                </div>
+              </template>
+            </BaseItemCard>
+
+            <BaseItemCard
+              layout="vertical"
+              theme="amber"
+              tagTheme="amber"
+              title="d2-ai-context"
+              description="读取 Bungie Manifest 与用户只读 Profile 数据，将装备、perk、socket 和 craftable 等信息整理为 AI 可直接读取和检索的本地上下文，用于讨论 build、武器 roll 与刷取优先级。"
+              :tags="['Python', 'Bungie API', 'OAuth', 'SQLite', 'AI Context']"
+            >
+              <template #icon>
+                <Gamepad2 class="w-6 h-6 text-amber-500 dark:text-amber-400" />
+              </template>
+              <template #footer-extra>
+                <a href="https://github.com/RyoSXu/d2-ai-context" target="_blank" rel="noopener noreferrer" class="no-print inline-flex items-center gap-1.5 text-amber-600 dark:text-amber-400 hover:text-amber-500 dark:hover:text-amber-300 text-sm font-medium transition-colors">
+                  <Github class="w-4 h-4" /> 查看源代码
+                </a>
+              </template>
+            </BaseItemCard>
+          </div>
+        </section>
 
       <!-- Resume Preview Modal -->
       <Teleport to="body">
