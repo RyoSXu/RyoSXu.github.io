@@ -61,4 +61,4 @@
 
 ---
 
-Built with Vue 3 · Vite · Tailwind CSS · VueUse Motion · Lucide Vue
+Built with Vue 3 · Vite · Tailwind CSS · Lucide Vue

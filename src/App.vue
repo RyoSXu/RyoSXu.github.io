@@ -1,31 +1,14 @@
 <script setup lang="ts">
 import { useDark, useToggle } from '@vueuse/core'
-import { Sun, Moon, Home, User, Wrench } from 'lucide-vue-next'
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { Sun, Moon } from 'lucide-vue-next'
+import About from './views/About.vue'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-const route = useRoute()
-
-const navItems = [
-  { name: '主页', path: '/', icon: Home },
-  { name: '简介', path: '/about', icon: User },
-  { name: '工具', path: '/tools', icon: Wrench },
-]
-
-const transitionName = ref('slide-forward')
-
-watch(() => route.path, (to, from) => {
-  const toIndex = navItems.findIndex(item => item.path === to)
-  const fromIndex = navItems.findIndex(item => item.path === from)
-  // If moving right (e.g. index 0 -> 1)
-  transitionName.value = toIndex > fromIndex ? 'slide-forward' : 'slide-backward'
-})
 </script>
 
 <template>
-  <div class="min-h-screen text-slate-800 dark:text-gray-200 relative overflow-hidden pb-32 transition-colors duration-500">
+  <div class="min-h-screen text-slate-800 dark:text-gray-200 relative overflow-x-hidden pb-24 transition-colors duration-500">
     <!-- Ambient Fixed Background -->
     <div class="fixed inset-0 z-0 pointer-events-none transition-colors duration-500 bg-slate-100 dark:bg-[#0b0c10]">
       <div class="absolute inset-0 opacity-50 dark:opacity-40">
@@ -36,45 +19,18 @@ watch(() => route.path, (to, from) => {
       </div>
     </div>
 
-    <!-- Top Navigation Bar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 mt-6 no-print pointer-events-none px-4 sm:px-6">
-      <div class="relative max-w-5xl mx-auto flex items-center justify-center">
-        <!-- Tab Bar -->
-        <div class="pointer-events-auto flex items-center gap-1 md:gap-2 p-1.5 glass-liquid rounded-2xl shadow-lg dark:shadow-none transition-colors duration-500">
-          <router-link 
-            v-for="item in navItems" 
-            :key="item.path" 
-            :to="item.path"
-            class="relative flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium btn-jelly"
-            :class="[
-              route.path === item.path || (item.path !== '/' && route.path.startsWith(item.path + '/'))
-                ? 'text-blue-600 dark:text-blue-400 bg-white/50 dark:bg-white/10 shadow-sm' 
-                : 'text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/20 dark:hover:bg-white/5'
-            ]"
-          >
-            <component :is="item.icon" class="w-4 h-4" />
-            <span class="hidden sm:inline">{{ item.name }}</span>
-          </router-link>
-        </div>
-        
-        <!-- Theme Toggle -->
-        <button @click="toggleDark()" class="pointer-events-auto fixed right-6 top-6 p-3 glass-liquid rounded-2xl shadow-lg dark:shadow-none text-slate-600 dark:text-gray-400 hover:bg-white/50 dark:hover:bg-white/10 btn-jelly focus:outline-none flex items-center justify-center z-50">
-          <Sun v-if="isDark" class="w-4 h-4 md:w-5 md:h-5" />
-          <Moon v-else class="w-4 h-4 md:w-5 md:h-5" />
-        </button>
-      </div>
-    </nav>
+    <button
+      @click="toggleDark()"
+      class="fixed right-4 top-4 sm:right-6 sm:top-6 p-3 glass-liquid rounded-2xl shadow-lg dark:shadow-none text-slate-600 dark:text-gray-400 hover:bg-white/50 dark:hover:bg-white/10 btn-jelly focus:outline-none flex items-center justify-center z-50 no-print"
+      aria-label="切换深色模式"
+    >
+      <Sun v-if="isDark" class="w-4 h-4 md:w-5 md:h-5" />
+      <Moon v-else class="w-4 h-4 md:w-5 md:h-5" />
+    </button>
 
-    <!-- Main Content Route View -->
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-28 z-10">
-      <div class="relative w-full">
-        <router-view v-slot="{ Component }">
-          <transition :name="transitionName">
-            <component :is="Component" />
-          </transition>
-        </router-view>
-      </div>
-    </div>
+    <main class="relative max-w-5xl mx-auto px-4 sm:px-6 pt-14 sm:pt-16 z-10">
+      <About />
+    </main>
   </div>
 </template>
 
@@ -98,39 +54,5 @@ watch(() => route.path, (to, from) => {
 }
 .animation-delay-4000 {
   animation-delay: 4s;
-}
-
-/* Page Transitions */
-.slide-forward-enter-active,
-.slide-forward-leave-active,
-.slide-backward-enter-active,
-.slide-backward-leave-active {
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.slide-forward-leave-active,
-.slide-backward-leave-active {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.slide-forward-enter-from {
-  opacity: 0;
-  transform: translateX(40px);
-}
-.slide-forward-leave-to {
-  opacity: 0;
-  transform: translateX(-40px);
-}
-
-.slide-backward-enter-from {
-  opacity: 0;
-  transform: translateX(-40px);
-}
-.slide-backward-leave-to {
-  opacity: 0;
-  transform: translateX(40px);
 }
 </style>
