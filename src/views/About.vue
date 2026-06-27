@@ -4,7 +4,6 @@ import { useClipboard } from '@vueuse/core'
 import { resumeData } from '../data/resume'
 import GlassCard from '../components/GlassCard.vue'
 import BaseItemCard from '../components/BaseItemCard.vue'
-import MasonryLayout from '../components/MasonryLayout.vue'
 import { User, Download, FileText, BookOpen, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Send, FolderKanban, Info } from 'lucide-vue-next'
 
 const showResumePreview = ref(false)
@@ -236,32 +235,6 @@ const printResume = () => {
                 </template>
               </BaseItemCard>
             </div>
-          </section>
-
-          <!-- Projects (Masonry) -->
-          <section class="print-break-before">
-            <h2 class="text-[18px] font-bold leading-none mb-4 flex items-center gap-2 text-slate-900 dark:text-white">
-              <Code2 class="w-6 h-6 text-amber-500 dark:text-amber-400" /> 软件开发
-            </h2>
-            <MasonryLayout :items="resumeData.projects">
-              <template #default="{ item }">
-                <BaseItemCard
-                  layout="vertical"
-                  theme="amber"
-                  tagTheme="amber"
-                  :title="item.title"
-                  :description="item.description"
-                  :image="item.image"
-                  :tags="item.tags"
-                >
-                  <template #icon v-if="item.icon || !item.image">
-                    <Activity v-if="item.icon === 'activity'" class="w-6 h-6 text-amber-500 dark:text-amber-400" />
-                    <ShoppingBag v-else-if="item.icon === 'shopping-bag'" class="w-6 h-6 text-amber-500 dark:text-amber-400" />
-                    <Code2 v-else class="w-6 h-6 text-amber-500 dark:text-amber-400" />
-                  </template>
-                </BaseItemCard>
-              </template>
-            </MasonryLayout>
           </section>
 
         </div>

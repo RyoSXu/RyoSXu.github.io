@@ -107,30 +107,4 @@ export const resumeData: ResumeData = {
       icon: 'activity',
     },
   ],
-  projects: [
-    {
-      title: '2Prac - 自定义刷题程序',
-      description: '一个将题库转换为刷题程序的工具。基于开源程序修改，增加了通过脚本将自定义题库转换为 JSON 格式并导入的功能。解决了同类产品付费且使用复杂的痛点。',
-      tags: ['Vue.js', 'JavaScript', 'JSON Processing'],
-      images: ['./assets/projects/2prac1.png', './assets/projects/2prac2.png'],
-    },
-    {
-      title: 'loveCom - 微信小程序平台',
-      description: '一个自定义商品售卖的小程序平台，旨在为用户提供零手续费的开店体验。采用微信小程序原生开发 + 腾讯云开发（CloudBase）架构。',
-      tags: ['微信小程序', 'CloudBase', 'Serverless'],
-      icon: 'shopping-bag',
-    },
-    {
-      title: '今日食份 - 数字化冰箱',
-      description: '情侣伙食助手，基于微信小程序云开发。包含食材入库、库存看板（过期预警）、菜谱管理及饮食日志等核心功能，实现精细化膳食管理。',
-      tags: ['微信小程序', '云开发', 'MVP'],
-      images: [
-        '/assets/projects/OurDailyMeal_1.png',
-        '/assets/projects/OurDailyMeal_2.png',
-        '/assets/projects/OurDailyMeal_3.png',
-        '/assets/projects/OurDailyMeal_4.png',
-        '/assets/projects/OurDailyMeal_5.png',
-      ],
-    },
-  ],
 }

@@ -67,5 +67,4 @@ export interface ResumeData {
   skills: SkillCategory[];
   research: Research[];
   projectExperience: Project[];
-  projects: Project[];
 }
