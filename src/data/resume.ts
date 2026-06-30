@@ -52,7 +52,7 @@ export const resumeData: ResumeData = {
   skills: [
     {
       name: '编程语言',
-      skills: ['Python', 'C++', 'JavaScript'],
+      skills: ['Python', 'C++', 'TypeScript', 'Go'],
     },
     {
       name: '深度学习',
@@ -60,7 +60,7 @@ export const resumeData: ResumeData = {
     },
     {
       name: '全栈开发',
-      skills: ['Vue3', 'FastAPI', 'SQLite'],
+      skills: ['Vue3', 'FastAPI', 'SQLite', 'PyInstaller', 'Inno Setup'],
     },
     {
       name: '系统协议',
@@ -68,7 +68,7 @@ export const resumeData: ResumeData = {
     },
     {
       name: '开发工具',
-      skills: ['Git', 'Claude Code', 'Codex', 'Cursor', 'Antigravity'],
+      skills: ['Git', 'Docker', 'Claude Code', 'Codex', 'Cursor', 'Antigravity'],
     },
   ],
   research: [
