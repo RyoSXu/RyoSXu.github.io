@@ -38,7 +38,7 @@ export const resumeData: ResumeData = {
       location: '上海',
       type: '实习',
       period: '2026.04 — 2026.10',
-      description: '独立负责 MDoctor 工业振动分析软件的端到端研发与上线交付；深入产线梳理设备通讯环境并打通底层数据链路，主动对接现场工程师拆解业务需求，成功构建可直接在工控机上落地的状态监测系统。',
+      description: '独立负责 MDoctor 工业振动分析软件从工控机桌面版到 Web 平台的完整架构设计与重构；深入产线理解 B&R PLC + mapp Vibration 采集体系，打通 FTP 波形入库与 OPC UA 实时监测双数据链路；与 mentor 及团队协作拆解振动分析业务需求，独立推进全栈开发与工控机桌面化封装。',
     },
     {
       company: '安徽航展自动化科技有限公司',
@@ -46,7 +46,7 @@ export const resumeData: ResumeData = {
       location: '滁州',
       type: '实习',
       period: '2023.12 — 2024.02',
-      description: '负责自动化系统设计、西门子 PLC 程序编写、传感器配置；参与工厂自动化生产线升级改造与智能仓储系统开发；具备工业现场调试与问题定位经验。',
+      description: '参与工厂自动化生产线升级改造项目，协助完成自动化系统方案设计、PLC 控制程序调试及传感器选型与配置；参与智能仓储系统的现场实施与联调，积累了工业现场环境认知与跨部门协作经验。',
     },
   ],
   skills: [
@@ -102,8 +102,8 @@ export const resumeData: ResumeData = {
   projectExperience: [
     {
       title: 'MDoctor - 工业振动分析软件',
-      description: '在贝加莱（B&R）实习期间，独立承担该项目从 0 到 1 的工程研发。主导系统架构设计并打通工业数据链路：通过 PLC 采集振动数据并经 FTP 传输，同时结合 OPC UA 协议实现与底层设备的交互控制；并独立完成基于 Vue3 + FastAPI 的全栈分析系统开发与桌面化部署。',
-      tags: ['FastAPI', 'Vue3', 'PyInstaller', 'PLC & FTP', 'OPC UA'],
+      description: '独立完成旧版工控机软件到 Web 平台的完整移植。构建双通路数据链路：FTP 增量轮询采集 PLC 振动波形 + asyncua 异步读取 OPC UA 实时 RMS/Peak 经 SSE 推送；后端基于 SciPy 实现 FFT、Hilbert 包络解调、频域积分、MAD 稳健异常检测及轴承机理频率规则诊断；前端 ECharts 实现波形/频谱/包络谱/倒谱/语谱图/瀑布图等 8 类可视化，支持图表联动与触控手势适配；部署采用 PyInstaller + Go 系统托盘 + Edge WebView2 壳架构，支持 WinSW 服务化与 mDNS 局域网发现。',
+      tags: ['Vue3/TypeScript', 'Pinia', 'ECharts', 'FastAPI', 'SciPy', 'SQLite', 'OPC UA', 'FTP', 'PyInstaller', 'Go', 'SSE'],
       icon: 'activity',
     },
   ],
