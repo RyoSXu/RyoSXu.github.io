@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import { resumeData } from '../data/resume'
+import type { OpenSourceContribution } from '../types/resume'
 import GlassCard from '../components/GlassCard.vue'
 import BaseItemCard from '../components/BaseItemCard.vue'
 import { User, Download, FileText, BookOpen, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Send, FolderKanban, Info, Server, Gamepad2, ArrowRight } from 'lucide-vue-next'
@@ -41,6 +42,228 @@ const age = computed(() => {
     a--;
   }
   return a;
+})
+
+// 缓存配置
+const PR_CACHE_KEY = 'github_pr_states_cache'
+const PR_CACHE_EXPIRY = 60 * 60 * 1000 // 1 小时缓存
+const FETCH_TIMEOUT_MS = 5000 // 5 秒超时
+const MAX_CONCURRENCY = 3 // 最大并发请求限制
+
+interface PRCacheData {
+  timestamp: number;
+  states: Record<string, 'merged' | 'open' | 'closed'>;
+}
+
+const contributionsList = ref<OpenSourceContribution[]>(
+  resumeData.contributions ? JSON.parse(JSON.stringify(resumeData.contributions)) : []
+)
+
+// 全局 AbortController，用于组件卸载时取消所有请求，防止内存泄露
+let globalAbortController: AbortController | null = null
+
+/**
+ * 带超时功能的 Fetch 包装器
+ */
+const fetchWithTimeout = async (url: string, signal: AbortSignal, timeout = FETCH_TIMEOUT_MS): Promise<Response> => {
+  const controller = new AbortController()
+  
+  // 联动外部组件卸载信号
+  const onAbort = () => controller.abort()
+  signal.addEventListener('abort', onAbort)
+  
+  const timeoutId = setTimeout(() => controller.abort(), timeout)
+  
+  try {
+    const response = await fetch(url, { signal: controller.signal })
+    clearTimeout(timeoutId)
+    return response;
+  } catch (error) {
+    clearTimeout(timeoutId)
+    throw error;
+  } finally {
+    signal.removeEventListener('abort', onAbort)
+  }
+}
+
+/**
+ * 健壮的 LocalStorage 安全读写器
+ */
+const storage = {
+  get: (): PRCacheData | null => {
+    try {
+      const cached = localStorage.getItem(PR_CACHE_KEY)
+      if (!cached) return null
+      const data = JSON.parse(cached) as PRCacheData
+      if (typeof data === 'object' && typeof data.timestamp === 'number' && typeof data.states === 'object') {
+        return data
+      }
+      return null
+    } catch (e) {
+      console.warn('[GitHub PR] Failed to read localStorage:', e)
+      return null
+    }
+  },
+  
+  set: (data: PRCacheData) => {
+    try {
+      localStorage.setItem(PR_CACHE_KEY, JSON.stringify(data))
+    } catch (e: any) {
+      console.warn('[GitHub PR] Failed to save cache:', e)
+      
+      // 空间超限容灾：自动清理自身
+      if (e.name === 'QuotaExceededError' || e.code === 22) {
+        try {
+          console.warn('[GitHub PR] Storage full, attempting self-clean...')
+          localStorage.removeItem(PR_CACHE_KEY)
+          localStorage.setItem(PR_CACHE_KEY, JSON.stringify(data))
+        } catch (retryError) {
+          console.error('[GitHub PR] Self-clean failed to free space:', retryError)
+        }
+      }
+    }
+  }
+}
+
+/**
+ * 轻量滑动窗口并发控制器
+ */
+const limitConcurrency = async <T>(
+  tasks: (() => Promise<T>)[],
+  limit: number
+): Promise<T[]> => {
+  const results: T[] = []
+  const executing = new Set<Promise<void>>()
+  
+  const pool = tasks.map((task, index) => {
+    const run = async () => {
+      try {
+        results[index] = await task()
+      } catch (err) {
+        console.error(`Task [${index}] failed:`, err)
+      }
+    }
+    return run
+  })
+
+  for (const runTask of pool) {
+    const p = runTask()
+    executing.add(p)
+    const clean = () => executing.delete(p)
+    p.then(clean).catch(clean)
+    
+    if (executing.size >= limit) {
+      await Promise.race(executing)
+    }
+  }
+  await Promise.all(executing)
+  return results
+}
+
+/**
+ * 主同步函数
+ */
+const fetchPRStatuses = async () => {
+  if (!contributionsList.value.length) return
+  
+  if (globalAbortController) globalAbortController.abort()
+  globalAbortController = new AbortController()
+  const { signal } = globalAbortController
+
+  // 1. 读取本地缓存
+  const cachedData = storage.get()
+  const hasValidCache = cachedData && (Date.now() - cachedData.timestamp < PR_CACHE_EXPIRY)
+
+  if (hasValidCache && cachedData) {
+    contributionsList.value.forEach(item => {
+      const key = `${item.repo}/${item.prNumber}`
+      if (cachedData.states[key]) {
+        item.status = cachedData.states[key]
+      }
+    })
+    return
+  }
+
+  // 2. 准备增量更新状态集 (Merge-on-Write 容灾策略)
+  const mergedStates: Record<string, 'merged' | 'open' | 'closed'> = cachedData ? { ...cachedData.states } : {}
+  let hasAnyChange = false
+
+  const tasks = contributionsList.value.map((item) => async () => {
+    const key = `${item.repo}/${item.prNumber}`
+
+    if (!item.repoUrl || !item.prUrl || !item.repo || !item.prNumber) {
+      if (!mergedStates[key]) {
+        mergedStates[key] = item.status || 'closed'
+      }
+      return
+    }
+
+    const apiUrl = `https://api.github.com/repos/${item.repo}/pulls/${item.prNumber}`
+    
+    try {
+      const res = await fetchWithTimeout(apiUrl, signal, FETCH_TIMEOUT_MS)
+      
+      if (res.status === 404) {
+        item.status = 'closed'
+        mergedStates[key] = 'closed'
+        hasAnyChange = true
+      } else if (res.ok) {
+        const prInfo = await res.json()
+        let newStatus: 'merged' | 'open' | 'closed' = 'open'
+        
+        if (prInfo.merged) {
+          newStatus = 'merged'
+        } else if (prInfo.state === 'closed') {
+          newStatus = 'closed'
+        }
+        
+        if (item.status !== newStatus) {
+          item.status = newStatus
+          hasAnyChange = true
+        }
+        mergedStates[key] = newStatus
+      } else if (res.status === 403) {
+        console.warn(`[GitHub PR] Rate limit hit for ${key}. Falling back to existing status.`)
+        if (mergedStates[key]) {
+          item.status = mergedStates[key]
+        }
+      }
+    } catch (err: any) {
+      if (err.name === 'AbortError') {
+        console.log(`[GitHub PR] Fetch aborted for ${key}`)
+      } else {
+        console.error(`[GitHub PR] Fetch error for ${key}:`, err)
+        if (mergedStates[key]) {
+          item.status = mergedStates[key]
+        }
+      }
+    }
+  })
+
+  // 3. 运行限流并发
+  try {
+    await limitConcurrency(tasks, MAX_CONCURRENCY)
+  } catch (concurrencyError) {
+    console.error('[GitHub PR] Critical error during batch fetch:', concurrencyError)
+  }
+
+  // 4. 写入缓存
+  if (hasAnyChange || !cachedData) {
+    storage.set({
+      timestamp: Date.now(),
+      states: mergedStates
+    })
+  }
+}
+
+onMounted(() => {
+  fetchPRStatuses()
+})
+
+onUnmounted(() => {
+  if (globalAbortController) {
+    globalAbortController.abort()
+  }
 })
 
 const printResume = () => {
@@ -388,7 +611,7 @@ const printResume = () => {
               <Github class="w-5 h-5 text-amber-500 dark:text-amber-400" /> 开源贡献 / Open Source Contributions
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div v-for="contribution in resumeData.contributions" :key="contribution.prUrl || contribution.repo" 
+              <div v-for="contribution in contributionsList" :key="contribution.prUrl || contribution.repo" 
                    class="glass-liquid p-4 rounded-xl flex flex-col justify-between border border-white/20 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 h-full">
                 <div>
                   <div class="flex items-start justify-between gap-2 mb-2.5">
