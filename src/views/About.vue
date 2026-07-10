@@ -388,11 +388,13 @@ const printResume = () => {
               <Github class="w-5 h-5 text-amber-500 dark:text-amber-400" /> 开源贡献 / Open Source Contributions
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div v-for="contribution in resumeData.contributions" :key="contribution.prUrl" 
+              <div v-for="contribution in resumeData.contributions" :key="contribution.prUrl || contribution.repo" 
                    class="glass-liquid p-4 rounded-xl flex flex-col justify-between border border-white/20 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 h-full">
                 <div>
                   <div class="flex items-start justify-between gap-2 mb-2.5">
-                    <a :href="contribution.repoUrl" 
+                    <!-- Repo Name (Conditional Link) -->
+                    <a v-if="contribution.repoUrl" 
+                       :href="contribution.repoUrl" 
                        target="_blank" 
                        rel="noopener noreferrer" 
                        :aria-label="`访问 ${contribution.repo} 仓库`"
@@ -400,20 +402,46 @@ const printResume = () => {
                       <Github class="w-3.5 h-3.5 shrink-0" />
                       <span class="truncate">{{ contribution.repo }}</span>
                     </a>
+                    <span v-else 
+                          class="font-bold text-[14px] text-slate-500 dark:text-gray-400 flex items-center gap-1.5 min-w-0 cursor-default">
+                      <Github class="w-3.5 h-3.5 shrink-0" />
+                      <span class="truncate">{{ contribution.repo }}</span>
+                    </span>
                     
+                    <!-- PR Status & Number (Conditional Link) -->
                     <div class="flex items-center gap-1.5 shrink-0">
-                      <span v-if="contribution.merged" 
-                            class="tag-glass bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-300 border-purple-500/20 dark:border-purple-500/30 text-[10px] font-semibold py-0.5 px-2 rounded-full flex items-center gap-1">
+                      <!-- Merged Status -->
+                      <span v-if="contribution.status === 'merged'" 
+                            class="tag-glass bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-300 border-purple-500/20 dark:border-purple-500/30 text-[10px] font-semibold py-0.5 px-1.5 rounded-full flex items-center gap-1 select-none">
                         <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 16 16" version="1.1" aria-hidden="true"><path d="M5.45 5.15a1.75 1.75 0 1 1-2.18 2.18l-.92.92a1.75 1.75 0 1 1-1.22-.38l.92-.92a1.75 1.75 0 0 1 2.18-2.18l3.15-3.15a1.75 1.75 0 1 1 2.18-2.18l3.15 3.15a1.75 1.75 0 1 1-2.18 2.18L8.78 6.07a1.75 1.75 0 0 1-2.18 2.18L5.45 5.15Z"></path></svg>
                         Merged
                       </span>
-                      <a :href="contribution.prUrl" 
+                      <!-- Open Status -->
+                      <span v-else-if="contribution.status === 'open'" 
+                            class="tag-glass bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 border-emerald-500/20 dark:border-emerald-500/30 text-[10px] font-semibold py-0.5 px-1.5 rounded-full flex items-center gap-1 select-none">
+                        <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 16 16" version="1.1" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM6.5 7.75A.75.75 0 1 1 8 7.75a.75.75 0 0 1-1.5 0zm3.75 0a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0z"></path></svg>
+                        Open
+                      </span>
+                      <!-- Closed Status -->
+                      <span v-else-if="contribution.status === 'closed'" 
+                            class="tag-glass bg-rose-500/10 dark:bg-rose-500/20 text-rose-600 dark:text-rose-300 border-rose-500/20 dark:border-rose-500/30 text-[10px] font-semibold py-0.5 px-1.5 rounded-full flex items-center gap-1 select-none">
+                        <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 16 16" version="1.1" aria-hidden="true"><path d="M1.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0zM8 5a.75.75 0 0 0-.75.75v3.5a.75.75 0 0 0 1.5 0v-3.5A.75.75 0 0 0 8 5zm0 6a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"></path></svg>
+                        Closed
+                      </span>
+
+                      <!-- PR Number Link -->
+                      <a v-if="contribution.prUrl" 
+                         :href="contribution.prUrl" 
                          target="_blank" 
                          rel="noopener noreferrer" 
                          :aria-label="`查看 Pull Request #${contribution.prNumber}`"
-                         class="tag-glass bg-amber-500/10 dark:bg-amber-500/20 text-amber-600 dark:text-amber-300 border-amber-500/20 dark:border-amber-500/30 text-[11px] font-mono font-semibold py-0.5 px-2 hover:bg-amber-500/20 transition-all">
+                         class="tag-glass bg-amber-500/10 dark:bg-amber-500/20 text-amber-600 dark:text-amber-300 border-amber-500/20 dark:border-amber-500/30 text-[11px] font-mono font-semibold py-0.5 px-2 hover:bg-amber-500/20 transition-all select-none">
                         #{{ contribution.prNumber }}
                       </a>
+                      <span v-else 
+                            class="tag-glass bg-slate-500/10 dark:bg-slate-500/20 text-slate-500 dark:text-gray-400 border-slate-500/20 dark:border-slate-500/30 text-[11px] font-mono font-semibold py-0.5 px-2 select-none cursor-default">
+                        #{{ contribution.prNumber }}
+                      </span>
                     </div>
                   </div>
                   <p :title="contribution.description" class="text-[13px] text-slate-600 dark:text-gray-300 line-clamp-3 mb-4 leading-relaxed cursor-help">
@@ -421,7 +449,7 @@ const printResume = () => {
                   </p>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mt-auto">
-                  <span v-for="tag in contribution.tags" :key="tag" class="text-[10px] px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 text-slate-500 dark:text-gray-400 font-medium">
+                  <span v-for="tag in contribution.tags" :key="tag" class="text-[10px] px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 text-slate-500 dark:text-gray-400 font-medium select-none">
                     {{ tag }}
                   </span>
                 </div>

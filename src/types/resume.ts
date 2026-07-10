@@ -72,11 +72,11 @@ export interface ResumeData {
 
 export interface OpenSourceContribution {
   repo: string;
-  repoUrl: string;
+  repoUrl?: string;
   prNumber: number;
-  prUrl: string;
+  prUrl?: string;
   description: string;
   tags: string[];
-  merged?: boolean;
+  status?: 'merged' | 'open' | 'closed';
 }
 
