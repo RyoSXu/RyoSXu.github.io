@@ -154,8 +154,10 @@ export const resumeData: ResumeData = {
       status: 'open'
     },
     {
-      repo: 'imn1yy/DailyHotApi',
+      repo: 'imsyy/DailyHotApi',
+      repoUrl: 'https://github.com/imsyy/DailyHotApi',
       prNumber: 141,
+      prUrl: 'https://github.com/imsyy/DailyHotApi/pull/141',
       description: '将快手热搜爬取路由重构为更加稳定、高吞吐的官方 GraphQL API 接口。',
       tags: ['Node.js', 'GraphQL API'],
       status: 'closed'
