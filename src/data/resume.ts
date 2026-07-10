@@ -107,4 +107,61 @@ export const resumeData: ResumeData = {
       icon: 'activity',
     },
   ],
+  contributions: [
+    {
+      repo: 'glanceapp/glance',
+      repoUrl: 'https://github.com/glanceapp/glance',
+      prNumber: 1033,
+      prUrl: 'https://github.com/glanceapp/glance/pull/1033',
+      description: '修复 X-Forwarded-For 获取客户端 IP 漏洞，提取尾部真实 IP 避免速率限制绕过。',
+      tags: ['Go', 'Network Security'],
+      merged: true
+    },
+    {
+      repo: 'iib0011/omni-tools',
+      repoUrl: 'https://github.com/iib0011/omni-tools',
+      prNumber: 398,
+      prUrl: 'https://github.com/iib0011/omni-tools/pull/398',
+      description: '在随机密码生成器中将 Math.random() 替换为密码学安全的 crypto.getRandomValues()。',
+      tags: ['TypeScript', 'Security'],
+      merged: true
+    },
+    {
+      repo: 'hmjz100/LinkSwift',
+      repoUrl: 'https://github.com/hmjz100/LinkSwift',
+      prNumber: 431,
+      prUrl: 'https://github.com/hmjz100/LinkSwift/pull/431',
+      description: '为阿里云盘接口引入 Token 空值安全校验，解决不同域名兼容性导致的请求中断。',
+      tags: ['TypeScript', 'Compatibility'],
+      merged: true
+    },
+    {
+      repo: 'transmute-app/transmute',
+      repoUrl: 'https://github.com/transmute-app/transmute',
+      prNumber: 214,
+      prUrl: 'https://github.com/transmute-app/transmute/pull/214',
+      description: '为 PDF 转换服务增加自定义 CSS 样式注入支持，并编写完善排版配置指南。',
+      tags: ['TypeScript', 'PDF Engine', 'CSS'],
+      merged: true
+    },
+    {
+      repo: 'C4illin/ConvertX',
+      repoUrl: 'https://github.com/C4illin/ConvertX',
+      prNumber: 571,
+      prUrl: 'https://github.com/C4illin/ConvertX/pull/571',
+      description: '修复 PDF 文件导出在转换中文字体时的兼容性缺失，增加完整的 CJK 字体映射支持。',
+      tags: ['TypeScript', 'CJK Fonts'],
+      merged: true
+    },
+    {
+      repo: 'imn1yy/DailyHotApi',
+      repoUrl: 'https://github.com/imn1yy/DailyHotApi',
+      prNumber: 141,
+      prUrl: 'https://github.com/imn1yy/DailyHotApi/pull/141',
+      description: '将快手热搜爬取路由重构为更加稳定、高吞吐的官方 GraphQL API 接口。',
+      tags: ['Node.js', 'GraphQL API'],
+      merged: true
+    }
+  ],
 }
+

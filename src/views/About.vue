@@ -381,6 +381,53 @@ const printResume = () => {
               </template>
             </BaseItemCard>
           </div>
+
+          <!-- Divider line and Contributions Section -->
+          <div v-if="resumeData.contributions && resumeData.contributions.length" class="mt-8 pt-8 border-t border-slate-200/50 dark:border-white/5 no-print">
+            <h3 class="text-[16px] font-bold mb-4 flex items-center gap-2 text-slate-800 dark:text-gray-200">
+              <Github class="w-5 h-5 text-amber-500 dark:text-amber-400" /> 开源贡献 / Open Source Contributions
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div v-for="contribution in resumeData.contributions" :key="contribution.prUrl" 
+                   class="glass-liquid p-4 rounded-xl flex flex-col justify-between border border-white/20 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 h-full">
+                <div>
+                  <div class="flex items-start justify-between gap-2 mb-2.5">
+                    <a :href="contribution.repoUrl" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       :aria-label="`访问 ${contribution.repo} 仓库`"
+                       class="font-bold text-[14px] text-slate-800 dark:text-gray-200 hover:text-amber-500 dark:hover:text-amber-400 transition-colors flex items-center gap-1.5 min-w-0">
+                      <Github class="w-3.5 h-3.5 shrink-0" />
+                      <span class="truncate">{{ contribution.repo }}</span>
+                    </a>
+                    
+                    <div class="flex items-center gap-1.5 shrink-0">
+                      <span v-if="contribution.merged" 
+                            class="tag-glass bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-300 border-purple-500/20 dark:border-purple-500/30 text-[10px] font-semibold py-0.5 px-2 rounded-full flex items-center gap-1">
+                        <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 16 16" version="1.1" aria-hidden="true"><path d="M5.45 5.15a1.75 1.75 0 1 1-2.18 2.18l-.92.92a1.75 1.75 0 1 1-1.22-.38l.92-.92a1.75 1.75 0 0 1 2.18-2.18l3.15-3.15a1.75 1.75 0 1 1 2.18-2.18l3.15 3.15a1.75 1.75 0 1 1-2.18 2.18L8.78 6.07a1.75 1.75 0 0 1-2.18 2.18L5.45 5.15Z"></path></svg>
+                        Merged
+                      </span>
+                      <a :href="contribution.prUrl" 
+                         target="_blank" 
+                         rel="noopener noreferrer" 
+                         :aria-label="`查看 Pull Request #${contribution.prNumber}`"
+                         class="tag-glass bg-amber-500/10 dark:bg-amber-500/20 text-amber-600 dark:text-amber-300 border-amber-500/20 dark:border-amber-500/30 text-[11px] font-mono font-semibold py-0.5 px-2 hover:bg-amber-500/20 transition-all">
+                        #{{ contribution.prNumber }}
+                      </a>
+                    </div>
+                  </div>
+                  <p :title="contribution.description" class="text-[13px] text-slate-600 dark:text-gray-300 line-clamp-3 mb-4 leading-relaxed cursor-help">
+                    {{ contribution.description }}
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mt-auto">
+                  <span v-for="tag in contribution.tags" :key="tag" class="text-[10px] px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 text-slate-500 dark:text-gray-400 font-medium">
+                    {{ tag }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
       <!-- Resume Preview Modal -->

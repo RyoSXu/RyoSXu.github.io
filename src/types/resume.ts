@@ -67,4 +67,16 @@ export interface ResumeData {
   skills: SkillCategory[];
   research: Research[];
   projectExperience: Project[];
+  contributions?: OpenSourceContribution[];
 }
+
+export interface OpenSourceContribution {
+  repo: string;
+  repoUrl: string;
+  prNumber: number;
+  prUrl: string;
+  description: string;
+  tags: string[];
+  merged?: boolean;
+}
+
