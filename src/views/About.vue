@@ -623,12 +623,12 @@ const printResume = () => {
                        :aria-label="`访问 ${contribution.repo} 仓库`"
                        class="font-bold text-[14px] text-slate-800 dark:text-gray-200 hover:text-amber-500 dark:hover:text-amber-400 transition-colors flex items-center gap-1.5 min-w-0">
                       <Github class="w-3.5 h-3.5 shrink-0" />
-                      <span class="truncate">{{ contribution.repo }}</span>
+                      <span class="truncate py-0.5">{{ contribution.repo }}</span>
                     </a>
                     <span v-else 
                           class="font-bold text-[14px] text-slate-500 dark:text-gray-400 flex items-center gap-1.5 min-w-0 cursor-default">
                       <Github class="w-3.5 h-3.5 shrink-0" />
-                      <span class="truncate">{{ contribution.repo }}</span>
+                      <span class="truncate py-0.5">{{ contribution.repo }}</span>
                     </span>
                     
                     <!-- PR Status & Number (Conditional Link) -->
