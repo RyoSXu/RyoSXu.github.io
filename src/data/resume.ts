@@ -73,7 +73,7 @@ export const resumeData: ResumeData = {
   ],
   research: [
     {
-      title: 'Phonon Density of States Prediction from the Pre-trained Phonon Transformer',
+      title: 'Phonon Density of States Prediction from the Atomic Relative Position Encoding Attention Transformer',
       status: 'npj Computational Materials',
       journalMetrics: {
         publisher: 'Nature Portfolio',
@@ -82,7 +82,7 @@ export const resumeData: ResumeData = {
         jcr: 'Q1',
         cas: '材料科学1区 (TOP期刊)'
       },
-      description: '针对传统计算方法预测声子态密度（Phonon Density of States）成本高、速度慢的问题，提出了 PPhT (Pre-trained Phonon Transformer) 模型。该模型将径向基函数编码的相对距离与球谐函数编码的方向特征融合至注意力机制中，大幅增强了对三维晶格几何与长程原子相互作用的表征能力。',
+      description: '针对传统计算方法预测声子态密度（Phonon Density of States）成本高、速度慢的问题，提出了 ARPAT (Atomic Relative Position Encoding Attention Transformer) 模型。该模型将径向基函数编码的相对距离与球谐函数编码的方向特征融合至注意力机制中，大幅增强了对三维晶格几何与长程原子相互作用的表征能力。',
       highlights: [
         '构建并验证了包含逾 2.4 万条数据、覆盖 86 种元素的声子态密度大规模数据集',
         '在预测精度上显著优于 E3NN、GATGNN、M3GNet 以及原 SOTA 模型 Mat2Spec',
@@ -91,11 +91,11 @@ export const resumeData: ResumeData = {
       tags: ['Python', 'PyTorch', 'Transformer', 'Materials AI'],
       githubUrl: 'https://github.com/RyoSXu/ARPAT',
       images: [
-        './assets/ppht/Figure 1.jpg',
-        './assets/ppht/Figure 2.jpg',
-        './assets/ppht/Figure 3.jpg',
-        './assets/ppht/Figure 4.jpg',
-        './assets/ppht/Figure 5.jpg',
+        './assets/arpat/Figure 1.jpg',
+        './assets/arpat/Figure 2.jpg',
+        './assets/arpat/Figure 3.jpg',
+        './assets/arpat/Figure 4.jpg',
+        './assets/arpat/Figure 5.jpg',
       ],
     },
   ],

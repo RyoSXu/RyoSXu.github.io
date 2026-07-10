@@ -6,15 +6,15 @@
 
 ## 学术研究
 
-### PPhT — Pre-trained Phonon Transformer
+### ARPAT — Atomic Relative Position Encoding Attention Transformer
 
-针对传统计算方法预测声子态密度（Phonon Density of States）成本高、速度慢的问题，提出了 PPhT (Pre-trained Phonon Transformer) 模型。该模型将径向基函数编码的相对距离与球谐函数编码的方向特征融合至注意力机制中，大幅增强了对三维晶格几何与长程原子相互作用的表征能力。
+针对传统计算方法预测声子态密度（Phonon Density of States）成本高、速度慢的问题，提出了 ARPAT (Atomic Relative Position Encoding Attention Transformer) 模型。该模型将径向基函数编码的相对距离与球谐函数编码的方向特征融合至注意力机制中，大幅增强了对三维晶格几何与长程原子相互作用的表征能力。
 
 - 构建并验证了包含逾 2.4 万条数据、覆盖 86 种元素的声子态密度大规模数据集。
 - 在预测精度上显著优于 E3NN、GATGNN、M3GNet 以及原 SOTA 模型 Mat2Spec。
 - 具备极高的计算效率（较传统方法实现数个数量级的速度跨越），及在复杂体系中的优异泛化能力，为新材料高通量筛选提供了全新路径。
 
-- **论文**：*Phonon Density of States Prediction from the Pre-trained Phonon Transformer*（npj Computational Materials）
+- **论文**：*Phonon Density of States Prediction from the Atomic Relative Position Encoding Attention Transformer*（npj Computational Materials）
 - **代码**：[github.com/RyoSXu/ARPAT](https://github.com/RyoSXu/ARPAT)
 - **技术栈**：Python · PyTorch · Transformer · Materials AI
 
