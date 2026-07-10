@@ -5,20 +5,12 @@ import { resumeData } from '../data/resume'
 import type { OpenSourceContribution } from '../types/resume'
 import GlassCard from '../components/GlassCard.vue'
 import BaseItemCard from '../components/BaseItemCard.vue'
-import { User, Download, FileText, BookOpen, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Send, FolderKanban, Info, Server, Gamepad2, ArrowRight } from 'lucide-vue-next'
+import { User, Download, FileText, BookOpen, X, Mail, Phone, Github, MapPin, GraduationCap, Briefcase, Cpu, Microscope, Code2, Activity, ShoppingBag, Send, FolderKanban, Server, Gamepad2, ArrowRight } from 'lucide-vue-next'
 
 const showResumePreview = ref(false)
-const showToast = ref(false)
 
 const { copy } = useClipboard()
 const copyStatus = ref<'email' | 'phone' | null>(null)
-
-const handleArticleClick = () => {
-  showToast.value = true
-  setTimeout(() => {
-    showToast.value = false
-  }, 3000)
-}
 
 const handleCopy = (text: string, type: 'email' | 'phone') => {
   let copyText = text
@@ -394,9 +386,13 @@ const printResume = () => {
                 <template #footer-extra>
                   <div class="flex flex-wrap items-center gap-6">
                     <div class="relative group/tooltip inline-flex items-center">
-                      <button @click="handleArticleClick" class="no-print inline-flex items-center gap-1.5 text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 text-sm font-medium transition-colors cursor-pointer text-left">
+                      <a v-if="res.paperUrl" 
+                         :href="res.paperUrl" 
+                         target="_blank" 
+                         rel="noopener noreferrer" 
+                         class="no-print inline-flex items-center gap-1.5 text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 text-sm font-medium transition-colors cursor-pointer text-left">
                         <BookOpen class="w-4 h-4" /> 查看原文
-                      </button>
+                      </a>
                       
                       <!-- Hover Tooltip -->
                       <div v-if="res.journalMetrics" class="absolute bottom-full left-0 md:left-1/2 md:-translate-x-1/2 mb-2 w-64 p-3 glass-liquid rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] dark:shadow-none opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-200 z-50 transform-gpu translate-y-2 group-hover/tooltip:translate-y-0 pointer-events-none cursor-default antialiased text-left font-sans">
@@ -707,22 +703,6 @@ const printResume = () => {
         </div>
       </Teleport>
 
-      <!-- Toast Notification -->
-      <Teleport to="body">
-        <Transition
-          enter-active-class="transition duration-300 ease-out"
-          enter-from-class="transform translate-y-4 opacity-0"
-          enter-to-class="transform translate-y-0 opacity-100"
-          leave-active-class="transition duration-200 ease-in"
-          leave-from-class="transform translate-y-0 opacity-100"
-          leave-to-class="transform translate-y-4 opacity-0"
-        >
-          <div v-if="showToast" class="fixed bottom-10 left-1/2 -translate-x-1/2 z-[200] flex items-center gap-3 px-5 py-3.5 glass-liquid rounded-2xl shadow-2xl text-slate-800 dark:text-gray-100 no-print">
-            <Info class="w-5 h-5 text-blue-500 dark:text-blue-400 shrink-0" />
-            <span class="font-medium text-[15px] leading-none">该文章正在编辑出版中</span>
-          </div>
-        </Transition>
-      </Teleport>
     </div>
   </div>
 </template>

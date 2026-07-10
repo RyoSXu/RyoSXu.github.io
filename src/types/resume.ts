@@ -39,6 +39,7 @@ export interface Research {
   githubUrl: string;
   images?: string[];
   journalMetrics?: JournalMetrics;
+  paperUrl?: string;
 }
 
 export interface Project {

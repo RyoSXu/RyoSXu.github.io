@@ -90,6 +90,7 @@ export const resumeData: ResumeData = {
       ],
       tags: ['Python', 'PyTorch', 'Transformer', 'Materials AI'],
       githubUrl: 'https://github.com/RyoSXu/ARPAT',
+      paperUrl: 'https://doi.org/10.1038/s41524-026-02199-3',
       images: [
         './assets/arpat/Figure 1.jpg',
         './assets/arpat/Figure 2.jpg',
