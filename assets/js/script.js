@@ -258,7 +258,7 @@ if (galleryNextBtn) {
 }
 
 // GitHub PR live status
-const PR_CACHE_KEY = "github_pr_states_cache_v2";
+const PR_CACHE_KEY = "github_pr_states_cache_v3";
 const PR_CACHE_EXPIRY = 60 * 60 * 1000;
 const PR_FETCH_TIMEOUT = 8000;
 const PR_MAX_CONCURRENCY = 3;
@@ -337,8 +337,11 @@ const syncPrStatuses = async function () {
   const items = Array.from(document.querySelectorAll("[data-pr-repo][data-pr-number]"));
   if (!items.length) return;
 
-  // clear stale empty cache from older logic
-  try { localStorage.removeItem("github_pr_states_cache_v1"); } catch (e) {}
+  // clear stale caches from older logic and status snapshots
+  try {
+    localStorage.removeItem("github_pr_states_cache_v1");
+    localStorage.removeItem("github_pr_states_cache_v2");
+  } catch (e) {}
 
   const cached = readPrCache();
   const cacheValid = cached && (Date.now() - cached.timestamp < PR_CACHE_EXPIRY);

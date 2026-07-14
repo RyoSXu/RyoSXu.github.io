@@ -39,6 +39,30 @@
 - **全栈开发**：Vue3 · FastAPI · SQLite
 - **系统协议**：Linux · OPC UA
 - **开发工具**：Git · Claude Code · Codex · Cursor · Antigravity
+
+---
+
+## 开源贡献
+
+### 已合并
+
+- [TokenTracker #311](https://github.com/mm7894215/TokenTracker/pull/311) — 为 AnythingLLM Desktop 增加跨平台、隐私友好的增量 Token 用量采集，已随 v0.79.3 发布
+- [transmute #214](https://github.com/transmute-app/transmute/pull/214) — 为 PDF 转换增加 Docker 友好的自定义 CSS 支持
+- [LinkSwift #431](https://github.com/hmjz100/LinkSwift/pull/431) — 修复 `alipan.com` 域名兼容场景下的 Token 空值问题
+
+### 开放 / 审核中
+
+- [transmute #222](https://github.com/transmute-app/transmute/pull/222) — 支持跟随系统并分别配置浅色、深色主题
+- [transmute #220](https://github.com/transmute-app/transmute/pull/220) — 为文件与任务历史增加 API 驱动的服务端分页
+- [transmute-app.github.io #13](https://github.com/transmute-app/transmute-app.github.io/pull/13) — 补充 PDF 自定义样式与 Docker 挂载文档
+- [ConvertX #571](https://github.com/C4illin/ConvertX/pull/571) — 增加面向 PDF 转换的区域感知 CJK 字体支持
+- [glance #1033](https://github.com/glanceapp/glance/pull/1033) — 修复 `X-Forwarded-For` 解析导致的速率限制绕过
+- [DailyHotApi #141](https://github.com/imsyy/DailyHotApi/pull/141) — 将快手热榜路由由 HTML 抓取切换至 GraphQL API
+
+### 已关闭 / 获致谢
+
+- [omni-tools #398](https://github.com/iib0011/omni-tools/pull/398) — 提议使用密码学安全随机数生成密码；并行实现 [#401](https://github.com/iib0011/omni-tools/pull/401) 合并时，维护者公开致谢本贡献
+
 ---
 
 ## 教育背景
