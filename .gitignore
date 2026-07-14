@@ -7,9 +7,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies / build
 node_modules
 dist
 dist-ssr
+_site
 *.local
 
 # Editor directories and files
@@ -23,6 +25,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# Personal materials
+# Personal materials / local only
 00_简历与主页素材/
+.cursor/
+.gemini/
 old_index.html
