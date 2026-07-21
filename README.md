@@ -15,7 +15,7 @@
 - 具备极高的计算效率（较传统方法实现数个数量级的速度跨越），及在复杂体系中的优异泛化能力，为新材料高通量筛选提供了全新路径。
 
 - **论文**：*Phonon Density of States Prediction from the Atomic Relative Position Encoding Attention Transformer*（npj Computational Materials）
-- **代码**：[github.com/RyoSXu/Phonon Transformer](https://github.com/RyoSXu/ARPAT)
+- **代码**：[github.com/RyoSXu/ARPAT](https://github.com/RyoSXu/ARPAT)
 - **技术栈**：Python · PyTorch · Transformer · Materials AI
 
 ---
