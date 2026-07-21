@@ -375,7 +375,7 @@
           <div class="entry-sub">研发部 | AI应用开发实习生</div>
           <div class="entry-date"><span class="entry-location">上海 |</span><span class="entry-time">2026-04 至 2026-10</span></div>
         </div>
-        <div class="desc">独立负责工业振动预测性维护平台的 Web 化重构，完成原系统调研、需求拆解、架构设计、全栈开发、测试及部署交付。主导数据采集接入、信号分析、异常诊断、资产与配置管理、专家分析工作台等核心模块，并针对工业现场完善数据可靠性、故障恢复和运行监控机制，将桌面分析工具建设为兼顾在线监测、离线诊断与工程部署的完整产品。</div>
+        <div class="desc">独立负责工业振动分析平台 MDoctor 的 Web 化重构与部署交付，并负责 PLC 侧诊断程序和数据处理链路的重构维护；参与 MCode 工业 Coding Agent 的测试与领域能力建设，以及 MHelp 工业语音助手的 PLC 数据联调、RAG 召回测试和本地模型测评。</div>
       </div>
       <div class="row">
         <div class="entry-line">
@@ -395,7 +395,15 @@
           <div class="entry-sub">独立全栈开发</div>
           <div class="entry-date"><span class="entry-location"></span><span class="entry-time">2026-04 至 2026-10</span></div>
         </div>
-        <div class="desc">面向设备预测性维护场景，将原 PyQt 振动分析工具重构为 FastAPI + Vue 3 / TypeScript 前后端分离平台，贯通 PLC、FTP 及 CSV 数据接入、存储、分析、诊断与展示链路。后端基于 NumPy / SciPy 实现时域特征提取、FFT、包络解调、速度谱转换和异常检测，结合轴承与齿轮故障频率、ISO 限值、频带告警及自适应基线，输出包含严重度、判断证据和处置建议的诊断结果；前端基于 ECharts 构建资产树、时域波形图、频谱图、包络谱图、瀑布图、健康趋势、交互游标及跨时间与跨通道对比工作台。系统支持在线监测、离线导入、配置管理、报告归档与 Windows 独立部署，并完善可靠入库、异常恢复及链路状态监控机制。</div>
+        <div class="desc">面向设备预测性维护场景，将原 PyQt 振动分析工具重构为 FastAPI + Vue 3 / TypeScript 前后端分离平台，贯通 PLC、FTP 及 CSV 数据接入、存储、分析、诊断与展示链路。基于 B&amp;R Automation Studio，使用 Structured Text 与 C 重构 PLC 侧采集、诊断及数据处理程序，规范代码结构并对齐上位机的数据接口和诊断流程。后端基于 NumPy / SciPy 实现时域特征提取、FFT、包络解调、速度谱转换和异常检测；前端基于 ECharts 构建波形、频谱、瀑布图和健康趋势等分析功能。系统支持在线监测、离线导入、配置管理、报告归档与 Windows 独立部署。</div>
+      </div>
+      <div class="row">
+        <div class="entry-line">
+          <div class="entry-main">B&amp;R / MCode 工业智能编程工具</div>
+          <div class="entry-sub">Coding Agent 测试</div>
+          <div class="entry-date"><span class="entry-location"></span><span class="entry-time">2026-05 至 2026-10</span></div>
+        </div>
+        <div class="desc">参与面向 B&amp;R Automation Studio 工程的 Coding Agent 测试，围绕代码修改、上下文管理和编译诊断独立设计测试用例，提交缺陷并开展版本回归验证。参与设计与迭代 AGENTS.md、Agent Skill 及 MCP 接入配置，将文档规范、Structured Text / C 代码规范、AS 工程约束、知识检索和 Build 诊断反馈纳入 Agent 工作流，并使用 Codex 等外部 Agent 验证执行效果。</div>
       </div>
       <div class="row">
         <div class="entry-line">
@@ -404,14 +412,6 @@
           <div class="entry-date"><span class="entry-location"></span><span class="entry-time">2024-11 至 2025-08</span></div>
         </div>
         <div class="desc">基于 PyTorch 独立实现 ARPAT 模型，用于从晶体结构预测声子态密度。在 Transformer 注意力机制中引入原子相对位置/距离编码以捕获晶体几何关系，MAE 较原 SOTA 模型 Mat2Spec 降低 27.6%，将传统 DFT 小时级计算压缩至毫秒级推理。相关研究成果以第一作者身份发表于 Nature 合作期刊 npj Computational Materials (中科院一区，JCR Q1，IF 11.9)。</div>
-      </div>
-      <div class="row">
-        <div class="entry-line">
-          <div class="entry-main">基于 1D-CNN 的时间序列预测系统</div>
-          <div class="entry-sub">本科毕业设计</div>
-          <div class="entry-date"><span class="entry-location"></span><span class="entry-time">2023-11 至 2024-06</span></div>
-        </div>
-        <div class="desc">开发基于 1D-CNN 的时间序列预测桌面系统，支持 CSV 数据导入、字段选择、数据清洗、归一化、训练集划分、模型参数配置、训练过程可视化与预测结果展示。使用 PyTorch 实现 1D-CNN 预测模型，Tkinter 构建 GUI，Matplotlib 集成训练与预测曲线可视化。</div>
       </div>
     </section>
 

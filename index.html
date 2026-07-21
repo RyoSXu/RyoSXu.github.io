@@ -178,7 +178,7 @@
               <h4 class="h4 timeline-item-title">ABB(中国)有限公司 - B&amp;R工业自动化 · AI应用开发（实习）</h4>
               <span>2026.04 — 2026.10 · 上海</span>
               <p class="timeline-text">
-                独立负责工业振动预测性维护平台的 Web 化重构，完成原系统调研、需求拆解、架构设计、全栈开发、测试及部署交付。主导数据采集接入、信号分析、异常诊断、资产与配置管理、专家分析工作台等核心模块，并将桌面分析工具建设为兼顾在线监测、离线诊断与工程部署的完整产品。
+                独立负责工业振动分析平台 MDoctor 的 Web 化重构与部署交付，并负责 PLC 侧诊断程序和数据处理链路的重构维护；参与 MCode 工业 Coding Agent 的测试与领域能力建设，以及 MHelp 工业语音助手的 PLC 数据联调、RAG 召回测试和本地模型测评。
               </p>
             </li>
             <li class="timeline-item">
@@ -270,7 +270,7 @@
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">MDoctor - 工业振动分析软件</h4>
               <p class="timeline-text">
-                面向设备预测性维护场景，将原 PyQt 振动分析工具重构为 FastAPI + Vue 3 / TypeScript 前后端分离平台，贯通 PLC、FTP 及 CSV 数据接入、存储、分析、诊断与展示链路。后端基于 NumPy / SciPy 实现时域特征提取、FFT、包络解调、速度谱转换和异常检测；前端基于 ECharts 构建资产树与多种谱图工作台。系统支持在线监测、离线导入、配置管理、报告归档与 Windows 独立部署。
+                面向设备预测性维护场景，将原 PyQt 振动分析工具重构为 FastAPI + Vue 3 / TypeScript 前后端分离平台，贯通 PLC、FTP 及 CSV 数据接入、存储、分析、诊断与展示链路。基于 B&amp;R Automation Studio，使用 Structured Text 与 C 重构 PLC 侧采集、诊断及数据处理程序，规范代码结构并对齐上位机的数据接口和诊断流程。后端基于 NumPy / SciPy 实现时域特征提取、FFT、包络解调、速度谱转换和异常检测；前端基于 ECharts 构建波形、频谱、瀑布图和健康趋势等分析功能。系统支持在线监测、离线导入、配置管理、报告归档与 Windows 独立部署。
               </p>
               <ul class="tag-list">
                 <li>Vue3/TypeScript</li>
@@ -283,6 +283,19 @@
                 <li>Tauri</li>
                 <li>Electron</li>
                 <li>Inno Setup</li>
+              </ul>
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">MCode - 工业智能编程工具</h4>
+              <p class="timeline-text">
+                参与面向 B&amp;R Automation Studio 工程的 Coding Agent 测试，围绕代码修改、上下文管理和编译诊断独立设计测试用例，提交缺陷并开展版本回归验证。参与设计与迭代 AGENTS.md、Agent Skill 及 MCP 接入配置，将文档规范、Structured Text / C 代码规范、AS 工程约束、知识检索和 Build 诊断反馈纳入 Agent 工作流，并使用 Codex 等外部 Agent 验证执行效果。
+              </p>
+              <ul class="tag-list">
+                <li>Coding Agent</li>
+                <li>MCP</li>
+                <li>Automation Studio</li>
+                <li>Structured Text</li>
+                <li>Codex</li>
               </ul>
             </li>
           </ol>
