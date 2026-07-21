@@ -258,7 +258,7 @@ if (galleryNextBtn) {
 }
 
 // GitHub PR live status
-const PR_CACHE_KEY = "github_pr_states_cache_v2";
+const PR_CACHE_KEY = "github_pr_states_cache_v3";
 const PR_CACHE_EXPIRY = 60 * 60 * 1000;
 const PR_FETCH_TIMEOUT = 8000;
 const PR_MAX_CONCURRENCY = 3;
@@ -334,11 +334,14 @@ const runWithConcurrency = async function (tasks, limit) {
 };
 
 const syncPrStatuses = async function () {
-  const items = Array.from(document.querySelectorAll("[data-pr-repo][data-pr-number]"));
+  const items = Array.from(document.querySelectorAll("[data-pr-status][data-pr-repo][data-pr-number]"));
   if (!items.length) return;
 
-  // clear stale empty cache from older logic
-  try { localStorage.removeItem("github_pr_states_cache_v1"); } catch (e) {}
+  // clear stale caches from older logic and status snapshots
+  try {
+    localStorage.removeItem("github_pr_states_cache_v1");
+    localStorage.removeItem("github_pr_states_cache_v2");
+  } catch (e) {}
 
   const cached = readPrCache();
   const cacheValid = cached && (Date.now() - cached.timestamp < PR_CACHE_EXPIRY);
@@ -352,7 +355,7 @@ const syncPrStatuses = async function () {
   if (cacheValid && missing.length === 0) {
     items.forEach(function (item) {
       const key = item.dataset.prRepo + "/" + item.dataset.prNumber;
-      setPrStatus(item.querySelector("[data-pr-status]"), states[key]);
+      setPrStatus(item, states[key]);
     });
     return;
   }
@@ -360,7 +363,7 @@ const syncPrStatuses = async function () {
   // show cached ones immediately, fetch the rest
   items.forEach(function (item) {
     const key = item.dataset.prRepo + "/" + item.dataset.prNumber;
-    if (states[key]) setPrStatus(item.querySelector("[data-pr-status]"), states[key]);
+    if (states[key]) setPrStatus(item, states[key]);
   });
 
   const targets = missing.length ? missing : items;
@@ -371,7 +374,7 @@ const syncPrStatuses = async function () {
       const repo = item.dataset.prRepo;
       const number = item.dataset.prNumber;
       const key = repo + "/" + number;
-      const statusEl = item.querySelector("[data-pr-status]");
+      const statusEl = item;
 
       try {
         const status = await fetchPrStatus(repo, number);

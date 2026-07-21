@@ -2341,6 +2341,21 @@ textarea.form-input::-webkit-resizer { display: none; }
   font-weight: var(--fw-500);
 }
 
+.timeline-item > .tag-list a {
+  color: var(--orange-yellow-crayola);
+  display: inline;
+  font-weight: var(--fw-500);
+}
+
+.timeline-item > .tag-list a:hover,
+.timeline-item > .tag-list a:focus {
+  color: var(--white-2);
+}
+
+.timeline-item > .tag-list li {
+  white-space: nowrap;
+}
+
 .timeline-item-title a {
   color: inherit;
   display: inline;
