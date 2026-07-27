@@ -856,6 +856,19 @@ main {
   line-height: 1.6;
 }
 
+.achievement-list {
+  margin: 10px 0 14px;
+  padding-left: 18px;
+}
+
+.achievement-list li {
+  list-style: disc;
+}
+
+.achievement-list li:not(:last-child) {
+  margin-bottom: 8px;
+}
+
 
 /**
  * skills 

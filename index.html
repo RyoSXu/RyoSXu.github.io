@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>徐尚 · Ryo Xu</title>
-  <meta name="description" content="徐尚（Ryo Xu）个人主页 — AI应用开发 / 软件开发 / 机器学习">
+  <meta name="description" content="徐尚（Ryo Xu），上海大学计算机科学与技术硕士（2027 届），具备 AI 应用、工业软件全栈开发与 PLC 工程实践经验。">
 
   <link rel="shortcut icon" href="./assets/images/logo.png" type="image/png">
   <link rel="stylesheet" href="./assets/css/style.css?v=20260714e">
@@ -71,16 +71,6 @@
 
           <li class="contact-item">
             <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">生日</p>
-              <time datetime="2003-06-25">2003-06-25</time>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box">
               <ion-icon name="location-outline"></ion-icon>
             </div>
             <div class="contact-info">
@@ -138,6 +128,14 @@
         <header>
           <h2 class="h2 article-title">简历</h2>
         </header>
+
+        <section class="about-text" aria-labelledby="profile-summary-title">
+          <h3 class="h3" id="profile-summary-title">个人简介</h3>
+          <p><strong>求职意向：</strong>AI 应用开发工程师 / 工业软件开发工程师｜上海</p>
+          <p>
+            上海大学计算机科学与技术硕士（2027 届），具备 AI 应用、工业软件全栈开发与 PLC 工程实践经验。于 ABB/B&amp;R 独立承担振动分析平台 MDoctor 的 Web 化重构与部署交付，覆盖数据采集、信号算法、故障诊断、可视化及工控机部署；以第一作者身份在 npj Computational Materials 发表材料机器学习论文（中科院一区TOP、JCR Q1）。
+          </p>
+        </section>
 
         <section class="timeline">
           <div class="title-wrapper">
@@ -199,15 +197,16 @@
                 <h4 class="h4 service-item-title">编程语言</h4>
                 <ul class="tag-list">
                   <li>Python</li>
-                  <li>C++</li>
                   <li>TypeScript</li>
+                  <li>C/C++</li>
                   <li>Go</li>
+                  <li>Structured Text</li>
                 </ul>
               </div>
             </li>
             <li class="service-item">
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">深度学习</h4>
+                <h4 class="h4 service-item-title">机器学习</h4>
                 <ul class="tag-list">
                   <li>PyTorch</li>
                   <li>Transformer</li>
@@ -219,43 +218,39 @@
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">全栈开发</h4>
                 <ul class="tag-list">
-                  <li>Vue3</li>
+                  <li>Vue 3</li>
                   <li>FastAPI</li>
+                  <li>ECharts</li>
                   <li>SQLite</li>
-                  <li>PyInstaller</li>
-                  <li>Inno Setup</li>
+                  <li>REST API</li>
                 </ul>
               </div>
             </li>
             <li class="service-item">
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">系统与工具</h4>
+                <h4 class="h4 service-item-title">工业与部署</h4>
                 <ul class="tag-list">
-                  <li>Linux</li>
+                  <li>PLC</li>
                   <li>OPC UA</li>
+                  <li>FTP</li>
                   <li>Git</li>
+                  <li>Windows/Linux</li>
                   <li>Docker</li>
-                  <li>Cursor</li>
+                </ul>
+              </div>
+            </li>
+            <li class="service-item">
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">AI 工程</h4>
+                <ul class="tag-list">
+                  <li>RAG</li>
+                  <li>Agent Skill</li>
+                  <li>MCP</li>
+                  <li>Coding Agent</li>
                 </ul>
               </div>
             </li>
           </ul>
-        </section>
-
-        <section class="timeline">
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="ribbon-outline"></ion-icon>
-            </div>
-            <h3 class="h3">资格证书</h3>
-          </div>
-
-          <ol class="timeline-list">
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">大学英语四级（CET-4）</h4>
-              <span>2021-03 · 永久有效</span>
-            </li>
-          </ol>
         </section>
 
       </article>
@@ -269,27 +264,30 @@
           <ol class="timeline-list">
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">MDoctor - 工业振动分析软件</h4>
-              <p class="timeline-text">
-                面向设备预测性维护场景，将原 PyQt 振动分析工具重构为 FastAPI + Vue 3 / TypeScript 前后端分离平台，贯通 PLC、FTP 及 CSV 数据接入、存储、分析、诊断与展示链路。基于 B&amp;R Automation Studio，使用 Structured Text 与 C 重构 PLC 侧采集、诊断及数据处理程序，规范代码结构并对齐上位机的数据接口和诊断流程。后端基于 NumPy / SciPy 实现时域特征提取、FFT、包络解调、速度谱转换和异常检测；前端基于 ECharts 构建波形、频谱、瀑布图和健康趋势等分析功能。系统支持在线监测、离线导入、配置管理、报告归档与 Windows 独立部署。
-              </p>
+              <ul class="timeline-text achievement-list">
+                <li>将原 PyQt 振动分析工具重构为 FastAPI + Vue 3 / TypeScript 前后端分离平台，独立完成需求分析、架构设计、核心开发及 Windows 部署交付。</li>
+                <li>打通 PLC、FTP、CSV、SQLite、特征提取和诊断展示链路，支持在线监测、离线导入、异常重试、配置管理及报告归档。</li>
+                <li>基于 NumPy / SciPy 实现时域特征、FFT、包络解调、速度谱和异常检测，并通过 ECharts 构建波形、频谱、瀑布图及健康趋势分析。</li>
+                <li>使用 Structured Text 与 C 重构 PLC 侧采集和诊断程序，对齐上下位机数据接口及诊断流程。</li>
+                <li>建立 pytest + Vitest 自动化测试与历史样本回归体系，覆盖采集入库、信号算法、诊断契约、离线导入及前端状态管理等关键链路共 1,200+ 项后端及 69 项前端测试，并基于 720 份历史采样验证重构一致性。</li>
+              </ul>
               <ul class="tag-list">
-                <li>Vue3/TypeScript</li>
+                <li>Vue 3/TypeScript</li>
                 <li>FastAPI</li>
                 <li>ECharts</li>
-                <li>SciPy/NumPy</li>
-                <li>OPC UA</li>
+                <li>NumPy/SciPy</li>
+                <li>PLC</li>
+                <li>FTP</li>
                 <li>SQLite</li>
-                <li>Go</li>
-                <li>Tauri</li>
-                <li>Electron</li>
-                <li>Inno Setup</li>
+                <li>Windows</li>
               </ul>
             </li>
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">MCode - 工业智能编程工具</h4>
-              <p class="timeline-text">
-                参与面向 B&amp;R Automation Studio 工程的 Coding Agent 测试，围绕代码修改、上下文管理和编译诊断独立设计测试用例，提交缺陷并开展版本回归验证。参与设计与迭代 AGENTS.md、Agent Skill 及 MCP 接入配置，将文档规范、Structured Text / C 代码规范、AS 工程约束、知识检索和 Build 诊断反馈纳入 Agent 工作流，并使用 Codex 等外部 Agent 验证执行效果。
-              </p>
+              <ul class="timeline-text achievement-list">
+                <li>围绕代码修改、上下文管理和编译诊断独立设计 3 类场景、80+ 条测试用例，提交 20+ 个有效缺陷并完成多轮版本回归。</li>
+                <li>参与迭代 AGENTS.md、Agent Skill 与 MCP 配置，将代码规范、工程约束、知识检索和 Build 反馈接入 Agent 工作流。</li>
+              </ul>
               <ul class="tag-list">
                 <li>Coding Agent</li>
                 <li>MCP</li>
@@ -339,8 +337,7 @@
                   <div class="service-content-box">
                     <h4 class="h4 service-item-title">发表期刊</h4>
                     <p class="service-item-text">
-                      npj Computational Materials<br>
-                      IF 13.1 · JCR Q1 · 中科院一区TOP
+                      发表于 npj Computational Materials（第一作者，JCR Q1）
                     </p>
                   </div>
                 </li>

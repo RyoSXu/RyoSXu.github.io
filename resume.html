@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>徐尚 - 简历</title>
+  <meta name="description" content="徐尚，上海大学计算机科学与技术硕士（2027 届），具备 AI 应用、工业软件全栈开发与 PLC 工程实践经验。">
   <style>
     :root {
       --font-sans: "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", "思源黑体", sans-serif;
@@ -16,7 +17,7 @@
       --level-3-line: var(--level-2-line);
       --level-3-weight: var(--level-2-weight);
       --level-4-size: 9.6pt;
-      --level-4-line: 1.44;
+      --level-4-line: 1.4;
       --level-4-weight: 400;
     }
 
@@ -44,10 +45,10 @@
 
     .page {
       width: 210mm;
-      height: 297mm;
+      min-height: 297mm;
       padding: 6.4mm;
       background: #fff;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .contact-bar {
@@ -61,10 +62,16 @@
       font-size: var(--level-2-size);
       line-height: var(--level-2-line);
       font-weight: var(--level-2-weight);
+      font-style: normal;
     }
 
     .contact-bar span {
       white-space: nowrap;
+    }
+
+    .contact-bar a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .profile {
@@ -98,6 +105,7 @@
     }
 
     .name {
+      margin: 0;
       color: #111;
       font-size: var(--level-1-size);
       line-height: var(--level-1-line);
@@ -112,8 +120,7 @@
     }
 
     .profile-intention {
-      display: flex;
-      gap: 10mm;
+      margin: 0;
       color: #111;
       font-size: var(--level-2-size);
       line-height: var(--level-2-line);
@@ -122,6 +129,7 @@
     }
 
     .intro {
+      margin: 0;
       max-width: 170mm;
       color: #555;
       font-size: var(--level-4-size);
@@ -132,15 +140,23 @@
     }
 
     .section {
-      margin-top: 5.5mm;
+      margin-top: 4.3mm;
     }
 
     .section-title {
       display: flex;
       align-items: center;
-      margin-bottom: 2.2mm;
+      margin: 0 0 1.8mm;
       border-bottom: 1px solid #d6d7db;
       height: 6.6mm;
+    }
+
+    h3.entry-main {
+      margin: 0;
+    }
+
+    p.desc {
+      margin: .8mm 0 0;
     }
 
     .section-title span {
@@ -166,7 +182,7 @@
     .row {
       position: relative;
       padding-left: 6mm;
-      margin: 2mm 0 0;
+      margin: 1.6mm 0 0;
     }
 
     .row::before {
@@ -279,8 +295,35 @@
       text-justify: inter-ideograph;
     }
 
-    .skills,
-    .certs {
+    .achievement-list {
+      margin: .8mm 0 0;
+      padding-left: 5mm;
+    }
+
+    .achievement-list li {
+      margin: 0 0 .35mm;
+      padding-left: .4mm;
+    }
+
+    .compact-section {
+      margin-top: 3mm;
+    }
+
+    .compact-section .section-title {
+      height: 5.8mm;
+      margin-bottom: 1.2mm;
+    }
+
+    .compact-section .achievement-list {
+      font-size: 9.2pt;
+      line-height: 1.32;
+    }
+
+    .compact-section .achievement-list li {
+      margin-bottom: .25mm;
+    }
+
+    .skills {
       padding-left: 6mm;
       font-size: var(--level-4-size);
       line-height: var(--level-4-line);
@@ -296,159 +339,122 @@
       font-weight: 500;
     }
 
-    .cert-row {
-      position: relative;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 6mm;
-      color: #111;
-      font-size: var(--level-4-size);
-      line-height: var(--level-4-line);
-      font-weight: var(--level-4-weight);
-      padding-left: 6mm;
-    }
-
-    .cert-row::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 1.45mm;
-      width: 2.4mm;
-      height: 2.4mm;
-      background: #e2e3e8;
-    }
-
-    .cert-row span:last-child {
-      align-self: center;
-    }
   </style>
 </head>
 <body>
   <main class="page">
-    <div class="contact-bar">
-      <span>手机 18701898786</span>
-      <span>邮箱 xushang@shu.edu.cn</span>
-      <span>微信 18701898786</span>
+    <address class="contact-bar" aria-label="联系方式">
+      <span>手机/微信 <a href="tel:+8618701898786">18701898786</a></span>
+      <span>邮箱 <a href="mailto:xushang@shu.edu.cn">xushang@shu.edu.cn</a></span>
+      <span>GitHub <a href="https://github.com/RyoSXu">github.com/RyoSXu</a></span>
       <span>网站 ryosxu.github.io</span>
-    </div>
+    </address>
 
     <section class="profile">
       <img class="avatar" src="./assets/images/avatar.jpg" alt="徐尚照片">
       <div class="profile-copy">
         <div class="identity">
-          <div class="name">徐尚</div>
-          <div class="meta"><span id="resume-age">22</span>岁&nbsp;&nbsp;男</div>
+          <h1 class="name">徐尚</h1>
         </div>
-        <div class="profile-intention">
-          <span>期望职位： AI应用开发 / 软件开发 / 机器学习</span>
-          <span>期望地点： 上海市</span>
-        </div>
-        <div class="intro">
-          上海大学 27 届计算机科学与技术硕士，研究方向为材料机器学习。熟悉 Python、C++、TypeScript 与 PyTorch，具备机器学习算法、工业软件全栈开发及 PLC 工程实践经验。在 ABB/B&amp;R 实习期间，独立负责振动分析软件 MDoctor 的工程研发，覆盖需求分析、全栈开发、PLC 数据链路、故障诊断及工控机部署，并参与工业 AI 产品的测试与评测。
-        </div>
+        <p class="profile-intention">求职意向：AI 应用开发工程师 / 工业软件开发工程师｜上海</p>
+        <p class="intro">上海大学计算机科学与技术硕士（2027 届），具备 AI 应用、工业软件全栈开发与 PLC 工程实践经验。于 ABB/B&amp;R 独立承担振动分析平台 MDoctor 的 Web 化重构与部署交付，覆盖数据采集、信号算法、故障诊断、可视化及工控机部署；以第一作者身份在 npj Computational Materials 发表材料机器学习论文（中科院一区TOP、JCR Q1）。</p>
       </div>
     </section>
 
     <section class="section education">
-      <div class="section-title"><span>教育背景</span></div>
-      <div class="row">
+      <h2 class="section-title"><span>教育背景</span></h2>
+      <article class="row">
         <div class="entry-line">
-          <div class="entry-main">上海大学</div>
+          <h3 class="entry-main">上海大学</h3>
           <div class="entry-sub education-sub"><span>材料基因组工程研究院</span><span>| 计算机科学与技术 |</span><span>硕士</span></div>
-          <div class="entry-date">2024-09 至 2027-06</div>
+          <div class="entry-date"><time datetime="2024-09">2024-09</time> 至 <time datetime="2027-06">2027-06</time></div>
         </div>
-      </div>
-      <div class="row">
+      </article>
+      <article class="row">
         <div class="entry-line">
-          <div class="entry-main">安徽财经大学</div>
+          <h3 class="entry-main">安徽财经大学</h3>
           <div class="entry-sub education-sub"><span>管理科学与工程学院</span><span class="education-program-undergrad">| 计算机科学与技术 |</span><span>本科</span></div>
-          <div class="entry-date">2020-09 至 2024-06</div>
+          <div class="entry-date"><time datetime="2020-09">2020-09</time> 至 <time datetime="2024-06">2024-06</time></div>
         </div>
-      </div>
+      </article>
     </section>
 
     <section class="section aligned-entries">
-      <div class="section-title"><span>工作经历</span></div>
-      <div class="row">
+      <h2 class="section-title"><span>工作经历</span></h2>
+      <article class="row">
         <div class="entry-line">
-          <div class="entry-main">ABB(中国)有限公司 / B&amp;R(贝加莱工业自动化)</div>
+          <h3 class="entry-main">ABB(中国)有限公司 / B&amp;R(贝加莱工业自动化)</h3>
           <div class="entry-sub">研发部 | AI应用开发实习生</div>
           <div class="entry-date"><span class="entry-location">上海 |</span><span class="entry-time">2026-04 至 2026-10</span></div>
         </div>
-        <div class="desc">独立负责工业振动分析平台 MDoctor 的 Web 化重构与部署交付，并负责 PLC 侧诊断程序和数据处理链路的重构维护；参与 MCode 工业 Coding Agent 的测试与领域能力建设，以及 MHelp 工业语音助手的 PLC 数据联调、RAG 召回测试和本地模型测评。</div>
-      </div>
-      <div class="row">
+        <p class="desc">独立负责工业振动分析平台 MDoctor 的 Web 化重构与部署交付，并负责 PLC 侧诊断程序和数据处理链路的重构维护；参与 MCode 工业 Coding Agent 的测试与领域能力建设，以及 MHelp 工业语音助手的 PLC 数据联调、RAG 召回测试和本地模型测评。</p>
+      </article>
+      <article class="row">
         <div class="entry-line">
-          <div class="entry-main">安徽航展自动化科技有限公司</div>
+          <h3 class="entry-main">安徽航展自动化科技有限公司</h3>
           <div class="entry-sub">自动化实习生</div>
           <div class="entry-date"><span class="entry-location">滁州 |</span><span class="entry-time">2023-12 至 2024-02</span></div>
         </div>
-        <div class="desc">参与工厂自动化生产线升级改造项目，协助完成自动化系统方案设计、PLC 控制程序调试及传感器选型与配置；参与智能仓储系统的现场实施与联调，积累了工业现场环境认知与跨部门协作经验。</div>
-      </div>
+        <p class="desc">参与工厂自动化生产线升级改造项目，协助完成自动化系统方案设计、PLC 控制程序调试及传感器选型与配置；参与智能仓储系统的现场实施与联调，积累了工业现场环境认知与跨部门协作经验。</p>
+      </article>
     </section>
 
     <section class="section aligned-entries">
-      <div class="section-title"><span>项目经历</span></div>
-      <div class="row">
+      <h2 class="section-title"><span>项目经历</span></h2>
+      <article class="row">
         <div class="entry-line">
-          <div class="entry-main">B&amp;R / MDoctor 工业振动分析软件</div>
+          <h3 class="entry-main">B&amp;R / MDoctor 工业振动分析软件</h3>
           <div class="entry-sub">独立全栈开发</div>
           <div class="entry-date"><span class="entry-location"></span><span class="entry-time">2026-04 至 2026-10</span></div>
         </div>
-        <div class="desc">面向设备预测性维护场景，将原 PyQt 振动分析工具重构为 FastAPI + Vue 3 / TypeScript 前后端分离平台，贯通 PLC、FTP 及 CSV 数据接入、存储、分析、诊断与展示链路。基于 B&amp;R Automation Studio，使用 Structured Text 与 C 重构 PLC 侧采集、诊断及数据处理程序，规范代码结构并对齐上位机的数据接口和诊断流程。后端基于 NumPy / SciPy 实现时域特征提取、FFT、包络解调、速度谱转换和异常检测；前端基于 ECharts 构建波形、频谱、瀑布图和健康趋势等分析功能。系统支持在线监测、离线导入、配置管理、报告归档与 Windows 独立部署。</div>
-      </div>
-      <div class="row">
+        <ul class="desc achievement-list">
+          <li>将原 PyQt 振动分析工具重构为 FastAPI + Vue 3 / TypeScript 前后端分离平台，独立完成需求分析、架构设计、核心开发及 Windows 部署交付。</li>
+          <li>打通 PLC、FTP、CSV、SQLite、特征提取和诊断展示链路，支持在线监测、离线导入、异常重试、配置管理及报告归档。</li>
+          <li>基于 NumPy / SciPy 实现时域特征、FFT、包络解调、速度谱和异常检测，并通过 ECharts 构建波形、频谱、瀑布图及健康趋势分析。</li>
+          <li>使用 Structured Text 与 C 重构 PLC 侧采集和诊断程序，对齐上下位机数据接口及诊断流程。</li>
+          <li>建立 pytest + Vitest 自动化测试与历史样本回归体系，覆盖采集入库、信号算法、诊断契约、离线导入及前端状态管理等关键链路共 1,200+ 项后端及 69 项前端测试，并基于 720 份历史采样验证重构一致性。</li>
+        </ul>
+      </article>
+      <article class="row">
         <div class="entry-line">
-          <div class="entry-main">B&amp;R / MCode 工业智能编程工具</div>
+          <h3 class="entry-main">B&amp;R / MCode 工业智能编程工具</h3>
           <div class="entry-sub">Coding Agent 测试</div>
           <div class="entry-date"><span class="entry-location"></span><span class="entry-time">2026-05 至 2026-10</span></div>
         </div>
-        <div class="desc">参与面向 B&amp;R Automation Studio 工程的 Coding Agent 测试，围绕代码修改、上下文管理和编译诊断独立设计测试用例，提交缺陷并开展版本回归验证。参与设计与迭代 AGENTS.md、Agent Skill 及 MCP 接入配置，将文档规范、Structured Text / C 代码规范、AS 工程约束、知识检索和 Build 诊断反馈纳入 Agent 工作流，并使用 Codex 等外部 Agent 验证执行效果。</div>
-      </div>
-      <div class="row">
+        <ul class="desc achievement-list">
+          <li>围绕代码修改、上下文管理和编译诊断独立设计 3 类场景、80+ 条测试用例，提交 20+ 个有效缺陷并完成多轮版本回归。</li>
+          <li>参与迭代 AGENTS.md、Agent Skill 与 MCP 配置，将代码规范、工程约束、知识检索和 Build 反馈接入 Agent 工作流。</li>
+        </ul>
+      </article>
+      <article class="row">
         <div class="entry-line">
-          <div class="entry-main">Phonon Transformer / 晶体材料声子态密度预测</div>
+          <h3 class="entry-main">Phonon Transformer / 晶体材料声子态密度预测</h3>
           <div class="entry-sub">第一作者</div>
           <div class="entry-date"><span class="entry-location"></span><span class="entry-time">2024-11 至 2025-08</span></div>
         </div>
-        <div class="desc">基于 PyTorch 独立实现 Phonon Transformer 模型，用于从晶体结构预测声子态密度。在 Transformer 注意力机制中引入原子相对位置/距离编码以捕获晶体几何关系，MAE 较原 SOTA 模型 Mat2Spec 降低 27.6%，将传统 DFT 小时级计算压缩至毫秒级推理。相关研究成果以第一作者身份发表于 Nature 合作期刊 npj Computational Materials (中科院一区，JCR Q1，IF 11.9)。</div>
-      </div>
+        <p class="desc">基于 PyTorch 独立实现 Phonon Transformer 模型，用于从晶体结构预测声子态密度。在 Transformer 注意力机制中引入原子相对位置/距离编码以捕获晶体几何关系，MAE 较原 SOTA 模型 Mat2Spec 降低 27.6%，将传统 DFT 小时级计算压缩至毫秒级推理。相关成果发表于 npj Computational Materials（第一作者，JCR Q1）。</p>
+      </article>
     </section>
 
     <section class="section">
-      <div class="section-title"><span>个人技能</span></div>
+      <h2 class="section-title"><span>个人技能</span></h2>
       <div class="skills">
-        <p><span class="skill-label">编程语言：</span>Python, C++, TypeScript, Go</p>
-        <p><span class="skill-label">深度学习：</span>PyTorch, Transformer, GNN</p>
-        <p><span class="skill-label">全栈开发：</span>Vue3, FastAPI, SQLite, PyInstaller, Inno Setup</p>
-        <p><span class="skill-label">系统协议：</span>Linux, OPC UA</p>
-        <p><span class="skill-label">开发工具：</span>Git, Docker, Claude Code, Codex, Cursor, Antigravity</p>
+        <p><span class="skill-label">编程语言：</span>Python, TypeScript, C/C++, Go, Structured Text</p>
+        <p><span class="skill-label">机器学习：</span>PyTorch, Transformer, GNN</p>
+        <p><span class="skill-label">全栈开发：</span>Vue 3, FastAPI, ECharts, SQLite, REST API</p>
+        <p><span class="skill-label">工业与部署：</span>PLC, OPC UA, FTP, Git, Windows/Linux, Docker</p>
+        <p><span class="skill-label">AI 工程：</span>RAG, Agent Skill, MCP, Coding Agent</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-title"><span>资格证书</span></div>
-      <div class="cert-row">
-        <span>大学英语四级（CET-4）</span>
-        <span>2021-03 永久有效</span>
-      </div>
+    <section class="section compact-section">
+      <h2 class="section-title"><span>代表性开源贡献</span></h2>
+      <ul class="skills achievement-list">
+        <li><span class="skill-label">TokenTracker：</span>实现 AnythingLLM Desktop 跨平台 SQLite 数据发现与增量 Token 用量采集，已随 v0.79.3 发布。</li>
+        <li><span class="skill-label">transmute：</span>贡献系统主题、API 服务端分页及 Docker 环境 PDF 自定义 CSS，覆盖 Python / TypeScript 前后端开发。</li>
+      </ul>
     </section>
   </main>
-  <script>
-    (function() {
-      var birthDate = new Date('2003-06-25');
-      var today = new Date();
-      var age = today.getFullYear() - birthDate.getFullYear();
-      var m = today.getMonth() - birthDate.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-      }
-      var ageSpan = document.getElementById('resume-age');
-      if (ageSpan) {
-        ageSpan.textContent = age;
-      }
-    })();
-  </script>
 </body>
 </html>
 

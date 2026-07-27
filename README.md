@@ -2,6 +2,31 @@
 
 **🌐 网站**：[ryosxu.github.io](https://ryosxu.github.io)　｜　**📧 邮箱**：[xushang@shu.edu.cn](mailto:xushang@shu.edu.cn)　｜　**💻 GitHub**：[RyoSXu](https://github.com/RyoSXu)
 
+**求职意向**：AI 应用开发工程师 / 工业软件开发工程师｜上海
+
+---
+
+## 个人简介
+
+上海大学计算机科学与技术硕士（2027 届），具备 AI 应用、工业软件全栈开发与 PLC 工程实践经验。于 ABB/B&R 独立承担振动分析平台 MDoctor 的 Web 化重构与部署交付，覆盖数据采集、信号算法、故障诊断、可视化及工控机部署；以第一作者身份在 npj Computational Materials 发表材料机器学习论文（中科院一区TOP、JCR Q1）。
+
+---
+
+## 项目经历
+
+### MDoctor — 工业振动分析平台
+
+- 将原 PyQt 振动分析工具重构为 FastAPI + Vue 3 / TypeScript 前后端分离平台，独立完成需求分析、架构设计、核心开发及 Windows 部署交付。
+- 打通 PLC、FTP、CSV、SQLite、特征提取和诊断展示链路，支持在线监测、离线导入、异常重试、配置管理及报告归档。
+- 基于 NumPy / SciPy 实现时域特征、FFT、包络解调、速度谱和异常检测，并通过 ECharts 构建波形、频谱、瀑布图及健康趋势分析。
+- 使用 Structured Text 与 C 重构 PLC 侧采集和诊断程序，对齐上下位机数据接口及诊断流程。
+- 建立 pytest + Vitest 自动化测试与历史样本回归体系，覆盖采集入库、信号算法、诊断契约、离线导入及前端状态管理等关键链路共 1,200+ 项后端及 69 项前端测试，并基于 720 份历史采样验证重构一致性。
+
+### MCode — 工业智能编程工具
+
+- 围绕代码修改、上下文管理和编译诊断独立设计 3 类场景、80+ 条测试用例，提交 20+ 个有效缺陷并完成多轮版本回归。
+- 参与迭代 AGENTS.md、Agent Skill 与 MCP 配置，将代码规范、工程约束、知识检索和 Build 反馈接入 Agent 工作流。
+
 ---
 
 ## 学术研究
@@ -14,7 +39,7 @@
 - 在预测精度上显著优于 E3NN、GATGNN、M3GNet 以及原 SOTA 模型 Mat2Spec。
 - 具备极高的计算效率（较传统方法实现数个数量级的速度跨越），及在复杂体系中的优异泛化能力，为新材料高通量筛选提供了全新路径。
 
-- **论文**：*Phonon Density of States Prediction from the Atomic Relative Position Encoding Attention Transformer*（npj Computational Materials）
+- **论文**：*Phonon Density of States Prediction from the Atomic Relative Position Encoding Attention Transformer*，发表于 npj Computational Materials（第一作者，JCR Q1）
 - **代码**：[github.com/RyoSXu/ARPAT](https://github.com/RyoSXu/ARPAT)
 - **技术栈**：Python · PyTorch · Transformer · Materials AI
 
@@ -24,7 +49,7 @@
 
 ### ABB(中国)有限公司 - B&R工业自动化
 **AI应用开发（实习）** | 上海 | 2026.04 — 至今
-负责 MDoctor 工业振动分析软件项目，独立完成从立项到工控机上线的完整交付，构建可在产线部署的振动监测与故障诊断系统；期间主动对接现场工程师、梳理设备数据，并持续沟通以对齐产品方向与现场需求。
+独立负责工业振动分析平台 MDoctor 的 Web 化重构与部署交付，并负责 PLC 侧诊断程序和数据处理链路的重构维护；参与 MCode 工业 Coding Agent 的测试与领域能力建设，以及 MHelp 工业语音助手的 PLC 数据联调、RAG 召回测试和本地模型测评。
 
 ### 安徽航展自动化科技有限公司
 **自动化实习生** | 滁州 | 2023.12 — 2024.02
@@ -34,11 +59,11 @@
 
 ## 技术技能
 
-- **编程语言**：Python · C++ · JavaScript
-- **深度学习**：PyTorch · Transformer · GNN
-- **全栈开发**：Vue3 · FastAPI · SQLite
-- **系统协议**：Linux · OPC UA
-- **开发工具**：Git · Claude Code · Codex · Cursor · Antigravity
+- **编程语言**：Python · TypeScript · C/C++ · Go · Structured Text
+- **机器学习**：PyTorch · Transformer · GNN
+- **全栈开发**：Vue 3 · FastAPI · ECharts · SQLite · REST API
+- **工业与部署**：PLC · OPC UA · FTP · Git · Windows/Linux · Docker
+- **AI 工程**：RAG · Agent Skill · MCP · Coding Agent
 
 ---
 
