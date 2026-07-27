@@ -39,7 +39,7 @@
 - 在预测精度上显著优于 E3NN、GATGNN、M3GNet 以及原 SOTA 模型 Mat2Spec。
 - 具备极高的计算效率（较传统方法实现数个数量级的速度跨越），及在复杂体系中的优异泛化能力，为新材料高通量筛选提供了全新路径。
 
-- **论文**：*Phonon Density of States Prediction from the Atomic Relative Position Encoding Attention Transformer*，发表于 npj Computational Materials（第一作者，JCR Q1）
+- **论文**：*Phonon Density of States Prediction from the Atomic Relative Position Encoding Attention Transformer*，发表于 npj Computational Materials（第一作者，中科院一区TOP，JCR Q1）
 - **代码**：[github.com/RyoSXu/ARPAT](https://github.com/RyoSXu/ARPAT)
 - **技术栈**：Python · PyTorch · Transformer · Materials AI
 

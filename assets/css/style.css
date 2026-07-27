@@ -2023,8 +2023,16 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .resume-modal-actions .form-btn {
   width: auto;
-  padding-inline: 16px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 8px;
+  gap: 7px;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
 }
+
+.resume-modal-actions .form-btn ion-icon { font-size: 16px; }
 
 .resume-modal-close {
   width: 36px;
