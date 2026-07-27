@@ -1,5 +1,7 @@
 # 徐尚 · Ryo Xu — 个人主页
 
+**中文** ｜ [English](./README_EN.md)
+
 **🌐 网站**：[ryosxu.github.io](https://ryosxu.github.io)　｜　**📧 邮箱**：[xushang@shu.edu.cn](mailto:xushang@shu.edu.cn)　｜　**💻 GitHub**：[RyoSXu](https://github.com/RyoSXu)
 
 **求职意向**：AI 应用开发工程师 / 工业软件开发工程师｜上海

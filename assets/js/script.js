@@ -135,6 +135,40 @@ const resumeModal = document.querySelector("[data-resume-modal]");
 const resumePreviewBtns = document.querySelectorAll("[data-resume-preview]");
 const resumePrintBtns = document.querySelectorAll("[data-resume-print]");
 const resumeCloseEls = document.querySelectorAll("[data-resume-close]");
+const resumeLanguageBtns = document.querySelectorAll("[data-resume-language]");
+const resumeFrame = document.querySelector("[data-resume-frame]");
+
+const resumeVariants = {
+  zh: {
+    src: "./resume.html",
+    frameTitle: "中文简历预览",
+    documentTitle: "徐尚_个人简历"
+  },
+  en: {
+    src: "./resume-en.html",
+    frameTitle: "English resume preview",
+    documentTitle: "Shang_Xu_Resume"
+  }
+};
+
+let activeResumeLanguage = "zh";
+
+const setResumeLanguage = function (language) {
+  const variant = resumeVariants[language];
+  if (!variant) return;
+
+  activeResumeLanguage = language;
+  if (resumeFrame && resumeFrame.getAttribute("src") !== variant.src) {
+    resumeFrame.setAttribute("src", variant.src);
+    resumeFrame.setAttribute("title", variant.frameTitle);
+  }
+
+  for (let i = 0; i < resumeLanguageBtns.length; i++) {
+    const isActive = resumeLanguageBtns[i].dataset.resumeLanguage === language;
+    resumeLanguageBtns[i].classList.toggle("active", isActive);
+    resumeLanguageBtns[i].setAttribute("aria-pressed", String(isActive));
+  }
+}
 
 const openResumeModal = function () {
   if (!resumeModal) return;
@@ -149,12 +183,13 @@ const closeResumeModal = function () {
 }
 
 const printResume = function () {
+  const variant = resumeVariants[activeResumeLanguage];
   const iframe = document.createElement("iframe");
   iframe.style.position = "fixed";
   iframe.style.width = "0";
   iframe.style.height = "0";
   iframe.style.border = "0";
-  iframe.src = "./resume.html";
+  iframe.src = variant.src;
   document.body.appendChild(iframe);
 
   iframe.onload = function () {
@@ -163,12 +198,12 @@ const printResume = function () {
       if (style && iframe.contentDocument) {
         style.textContent = "* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }";
         iframe.contentDocument.head.appendChild(style);
-        iframe.contentDocument.title = "徐尚_个人简历";
+        iframe.contentDocument.title = variant.documentTitle;
       }
     } catch (e) {}
 
     const originalTitle = document.title;
-    document.title = "徐尚_个人简历";
+    document.title = variant.documentTitle;
     if (iframe.contentWindow) iframe.contentWindow.print();
 
     setTimeout(function () { document.title = originalTitle; }, 500);
@@ -184,6 +219,12 @@ for (let i = 0; i < resumePreviewBtns.length; i++) {
 
 for (let i = 0; i < resumePrintBtns.length; i++) {
   resumePrintBtns[i].addEventListener("click", printResume);
+}
+
+for (let i = 0; i < resumeLanguageBtns.length; i++) {
+  resumeLanguageBtns[i].addEventListener("click", function () {
+    setResumeLanguage(this.dataset.resumeLanguage);
+  });
 }
 
 for (let i = 0; i < resumeCloseEls.length; i++) {

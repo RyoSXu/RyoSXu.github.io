@@ -9,7 +9,7 @@
   <meta name="description" content="徐尚（Ryo Xu），上海大学计算机科学与技术硕士（2027 届），具备 AI 应用、工业软件全栈开发与 PLC 工程实践经验。">
 
   <link rel="shortcut icon" href="./assets/images/logo.png" type="image/png">
-  <link rel="stylesheet" href="./assets/css/style.css?v=20260714e">
+  <link rel="stylesheet" href="./assets/css/style.css?v=20260727a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -575,6 +575,10 @@
       <div class="resume-modal-header">
         <h3>简历预览</h3>
         <div class="resume-modal-actions">
+          <div class="resume-language-switch" role="group" aria-label="简历语言">
+            <button type="button" class="active" data-resume-language="zh" aria-pressed="true">中文</button>
+            <button type="button" data-resume-language="en" aria-pressed="false">English</button>
+          </div>
           <button type="button" class="form-btn" data-resume-print>
             <ion-icon name="download-outline"></ion-icon>
             <span>下载 PDF</span>
@@ -584,7 +588,7 @@
           </button>
         </div>
       </div>
-      <iframe src="./resume.html" title="Resume Preview" class="resume-modal-frame"></iframe>
+      <iframe src="./resume.html" title="中文简历预览" class="resume-modal-frame" data-resume-frame></iframe>
     </div>
   </div>
 
@@ -614,7 +618,7 @@
 
   <div class="copy-toast" data-copy-toast hidden>已复制</div>
 
-  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/script.js?v=20260727a"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

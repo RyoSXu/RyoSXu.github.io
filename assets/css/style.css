@@ -1990,7 +1990,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 .resume-modal-panel {
   position: relative;
   z-index: 1;
-  width: min(210mm, 100%);
+  width: min(calc(210mm + 18px), 100%);
   height: min(90vh, 100%);
   background: var(--eerie-black-2);
   border: 1px solid var(--jet);
@@ -2019,6 +2019,37 @@ textarea.form-input::-webkit-resizer { display: none; }
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.resume-language-switch {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 3px;
+  border: 1px solid var(--jet);
+  border-radius: 8px;
+  background: var(--eerie-black-1);
+}
+
+.resume-language-switch button {
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 5px;
+  color: var(--light-gray-70);
+  font-size: 13px;
+  font-weight: var(--fw-500);
+  line-height: 1;
+  transition: background var(--transition-1), color var(--transition-1);
+}
+
+.resume-language-switch button:hover,
+.resume-language-switch button:focus {
+  color: var(--white-2);
+}
+
+.resume-language-switch button.active {
+  background: var(--jet);
+  color: var(--orange-yellow-crayola);
 }
 
 .resume-modal-actions .form-btn {
@@ -2050,6 +2081,30 @@ textarea.form-input::-webkit-resizer { display: none; }
   width: 100%;
   border: 0;
   background: #fff;
+}
+
+@media (max-width: 580px) {
+  .resume-modal {
+    padding: 10px;
+  }
+
+  .resume-modal-header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 12px;
+  }
+
+  .resume-modal-header h3 {
+    width: 100%;
+  }
+
+  .resume-modal-actions {
+    width: 100%;
+  }
+
+  .resume-modal-actions .form-btn {
+    margin-left: auto;
+  }
 }
 
 .tag-list {
