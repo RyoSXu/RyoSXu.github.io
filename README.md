@@ -8,7 +8,7 @@
 
 ## 个人简介
 
-上海大学计算机科学与技术硕士（2027 届），具备 AI 应用、工业软件全栈开发与 PLC 工程实践经验。于 ABB/B&R 独立承担振动分析平台 MDoctor 的 Web 化重构与部署交付，覆盖数据采集、信号算法、故障诊断、可视化及工控机部署；以第一作者身份在 npj Computational Materials 发表材料机器学习论文（中科院一区TOP、JCR Q1）。
+上海大学计算机科学与技术硕士（2027 届），具备 AI 应用、工业软件全栈开发与 PLC 工程实践经验。于 ABB/B&R 独立承担振动分析平台 MDoctor 的 Web 化重构与部署交付，覆盖数据采集、信号算法、故障诊断、可视化及工控机部署；以第一作者身份在 npj Computational Materials 发表材料机器学习论文（中科院一区TOP，JCR Q1，IF 13.1）。
 
 ---
 
@@ -39,7 +39,7 @@
 - 在预测精度上显著优于 E3NN、GATGNN、M3GNet 以及原 SOTA 模型 Mat2Spec。
 - 具备极高的计算效率（较传统方法实现数个数量级的速度跨越），及在复杂体系中的优异泛化能力，为新材料高通量筛选提供了全新路径。
 
-- **论文**：*Phonon Density of States Prediction from the Atomic Relative Position Encoding Attention Transformer*，发表于 npj Computational Materials（第一作者，中科院一区TOP，JCR Q1）
+- **论文**：*Phonon Density of States Prediction from the Atomic Relative Position Encoding Attention Transformer*，发表于 npj Computational Materials（第一作者，中科院一区TOP，JCR Q1，IF 13.1）
 - **代码**：[github.com/RyoSXu/ARPAT](https://github.com/RyoSXu/ARPAT)
 - **技术栈**：Python · PyTorch · Transformer · Materials AI
 
